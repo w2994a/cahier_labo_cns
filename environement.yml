@@ -1,0 +1,22 @@
+name: genoscope
+
+channels:
+    - default
+    - conda-forge
+    - bioconda
+
+dependencies:
+    - python=3.9
+    - numpy
+    - scipy
+    - pandas
+    - xlrd # to read .xls files from Pandas
+    - openpyxl # to read .xlsx files from Pandas
+    - matplotlib
+    - seaborn
+    - jupyterlab>=3
+    - pycodestyle
+    - pydocstyle
+    - pylint
+    - pandoc
+    - snakemake
