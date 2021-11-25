@@ -122,16 +122,15 @@ __Différence utilisation en ligne de commande :__
 | p16 | 0:11.31 | 60.38 | 2.24 | 34.56 | 2.365040 |
 | JARVIS |
 | param utilisé | temps écoulé (s) | temps utilisateur (s) | temps cpu |  utilisation cpu (%) |mémoire utilisé (Gb) |
-| p4 | ? | ? | ? | ? | ? |
-| p8 | ? | ? | ? | ? | ? |
+| p4 | 10:48:31 + 11:35:17 | 153657.02 + 160546.74 | 987.10 + 1242.42 | 99.25 + 96.75 | 12.459632 + 26.311436 |
+| p8 | 5:48:32 + 6:13:34 | 163311.33 + 169181.39 | 1987.22 + 1141.71 | 98.75 + 94.88 | 12.226456 + 29.826448 |
 | p12 | 4:04:10 + 4:36:05 | 169691.13 + 181498.04 | 2605.74 + 1216.34 | 98.00 + 91.83 | 10.649516 + 35.187044 |
 | p16 | 2:58:41 + 5:51:39 | 166134.80 + 312672.50 | 1004.25 + 1743.75 | 97.38 + 93.13 | 11.353516 + 43.053008|
 
-Relancer les job pour p = 4 et 8 avec une limite de temps de 16h au lieu de 8h.  
-Comment ne pas tuer un job quand on quitte le terminal ?
+
 ####  2.2.2. <a name='Graphiquesdesperformancesdebcl2fastq'></a>Graphiques des performances de bcl2fastq
 
-![perf_melisse](img/temps_melisse_bcl2fastq.png "Histogramme du temps total en fonction du temps (Melisse)")
+![perf_melisse](img/temps_bcl2fastq.png "Histogramme du temps total en fonction du temps (Melisse)")
 
 ###  2.3. <a name='Rsultatsdebcl-convert'></a>Résultats de bcl-convert
 
