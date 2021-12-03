@@ -5,10 +5,24 @@
 * 2. [Résultats test bcl2fastq (variation du paramètre p avec r = 4 et w = 4)](#Rsultatstestbcl2fastqvariationduparamtrepavecr4etw4)
 	* 2.1. [Tableau des performance de bcl2fastq](#Tableaudesperformancedebcl2fastq)
 	* 2.2. [Graphiques des performances de bcl2fastq](#Graphiquesdesperformancesdebcl2fastq)
+		* 2.2.1. [Temps total](#Tempstotal)
+		* 2.2.2. [Temps cpu](#Tempscpu)
 * 3. [Résultats test bcl2fastq (variation du paramètre r et w avec p = 12)](#Rsultatstestbcl2fastqvariationduparamtreretwavecp12)
 	* 3.1. [Tableau des performance de bcl2fastq](#Tableaudesperformancedebcl2fastq-1)
 	* 3.2. [Graphiques des performances de bcl2fastq](#Graphiquesdesperformancesdebcl2fastq-1)
-* 4. [Résultats de bcl-convert](#Rsultatsdebcl-convert)
+		* 3.2.1. [Temps total](#Tempstotal-1)
+		* 3.2.2. [Temps cpu](#Tempscpu-1)
+* 4. [Résultats test bcl2fastq (variation du paramètre p, r et w)](#Rsultatstestbcl2fastqvariationduparamtrepretw)
+	* 4.1. [Tableau des performance de bcl2fastq](#Tableaudesperformancedebcl2fastq-1)
+	* 4.2. [Graphiques des performances de bcl2fastq](#Graphiquesdesperformancesdebcl2fastq-1)
+		* 4.2.1. [Temps total](#Tempstotal-1)
+		* 4.2.2. [Temps cpu](#Tempscpu-1)
+* 5. [Résultats test bcl2fastq (variation du paramètre r et w avec p = 8)](#Rsultatstestbcl2fastqvariationduparamtreretwavecp8)
+	* 5.1. [Tableau des performance de bcl2fastq](#Tableaudesperformancedebcl2fastq-1)
+	* 5.2. [Graphiques des performances de bcl2fastq](#Graphiquesdesperformancesdebcl2fastq-1)
+		* 5.2.1. [Temps total](#Tempstotal-1)
+		* 5.2.2. [Temps cpu](#Tempscpu-1)
+* 6. [Résultats de bcl-convert](#Rsultatsdebcl-convert)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -34,6 +48,7 @@ Options utilisées en ligne de commande :
 `-r` ==> nombre de coeurs alloués en lecture (fichiers BCL)  
 `-p` ==> nombre de coeurs alloués pour le processus de bcl2fastq  
 `-w` ==> nombre de coeurs alloués en ecriture (FASTQ)  
+`-d` ==> nombre de coeurs alloués pour le démultipléxage  
 
 Autres options :  
 `--sample-sheet` ==> path de la sample sheet (par défaut : <`runfolder-dir`>/SampleSheet.csv)  
@@ -58,9 +73,7 @@ Option utilisées en ligne de commande :
 `--output-directory` ==> path du répertoire de sortie des fichiers générés par bcl-convert. cette option est obligatoire et le répertoire spécifié ne doit pas exister. (si le répertoire existe alors il faut utiliser `--force` / `-f` en plus)  
 `--sample-sheet` ==> path de la sample sheet (oblgatoire, par défaut : <`--bcl-input-directory`>/SampleSheet.csv)  
 Option non mentionnées dans la doc de bcl-convert :  
-`-r` ==> nombre de coeurs alloués en lecture (fichiers BCL)  
-`-p` ==> nombre de coeurs alloués pour le processus de bcl2fastq  
-`-w` ==> nombre de coeurs alloués en ecriture (FASTQ)
+`--bcl-sampleproject-subdirectories` ==> création de sous-répertoires Sample_ Project comme spécifié dans la SampleSheet
 
 Option de bcl-convert dans les fichiers SampleSheet (formats V1 et V2 acceptés) :  
 Data section (comme pour bcl2fastq):  
@@ -71,8 +84,9 @@ Data section (comme pour bcl2fastq):
 `Sample_Project`  
 Settings section :  
 `BarcodeMismatchesIndex1`  
-`BarcodeMismatchesIndex2` 
-`OverrideCycles` 
+`BarcodeMismatchesIndex2`  
+`OverrideCycles`  
+
 
 __Différences d'utilisations en ligne de commande (utilisé actuellement) :__  
 | bcl2fastq | bcl-convert | changement utilisation |
@@ -113,7 +127,11 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 
 ###  2.2. <a name='Graphiquesdesperformancesdebcl2fastq'></a>Graphiques des performances de bcl2fastq
 
-![perf_melisse](img/temps_bcl2fastq.png "Histogramme du temps total en fonction du temps (Melisse)")  
+####  2.2.1. <a name='Tempstotal'></a>Temps total
+![](img/temps_total1.png "Histogramme du temps total en fonction du nombre de coeurs (Melisse)") 
+
+####  2.2.2. <a name='Tempscpu'></a>Temps cpu
+![](img/temps_cpu1.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)") 
 
 ##  3. <a name='Rsultatstestbcl2fastqvariationduparamtreretwavecp12'></a>Résultats test bcl2fastq (variation du paramètre r et w avec p = 12)  
 ###  3.1. <a name='Tableaudesperformancedebcl2fastq-1'></a>Tableau des performance de bcl2fastq
@@ -131,11 +149,16 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | r12 w12 | 04:01:35 + 04:34:25 | 170304.54 + 182109.10 | 1200.01 + 1514.94 | 98.58 + 92.92 | 11.171612 + 38.953616 |  
 
 ###  3.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
-![perf_melisse](img/temps2_bcl2fastq.png "Histogramme du temps total en fonction du temps (Melisse)") 
 
-##  2. <a name='Rsultatstestbcl2fastqvariationduparamtrepavecr4etw4'></a>Résultats test bcl2fastq (variation du paramètre p, r et w)
+####  3.2.1. <a name='Tempstotal-1'></a>Temps total
+![](img/temps_total2.png "Histogramme du temps total en fonction du nombre de coeurs (Melisse)") 
 
-###  2.1. <a name='Tableaudesperformancedebcl2fastq'></a>Tableau des performance de bcl2fastq
+####  3.2.2. <a name='Tempscpu-1'></a>Temps cpu
+![](img/temps_cpu2.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)") 
+
+##  4. <a name='Rsultatstestbcl2fastqvariationduparamtrepretw'></a>Résultats test bcl2fastq (variation du paramètre p, r et w)
+
+###  4.1. <a name='Tableaudesperformancedebcl2fastq-1'></a>Tableau des performance de bcl2fastq
 
 | bcl2fastq ||||||
 |---|---|---|---|---|---|
@@ -153,11 +176,43 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | p16 r16 w16 | 3:24:32 + 3:40:24 | 164043.36 + 179308.08 | 1115.50 + 2165.33 | 84.06 + 85.75 | 11.793640 + 44.042212 |
 
 
-###  2.2. <a name='Graphiquesdesperformancesdebcl2fastq'></a>Graphiques des performances de bcl2fastq
+###  4.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
 
-![perf_melisse](img/temps_bcl2fastq.png "Histogramme du temps total en fonction du temps (Melisse)")  
+####  4.2.1. <a name='Tempstotal-1'></a>Temps total
+![](img/temps_total3.png "Histogramme du temps total en fonction du nombre de coeurs (Melisse)") 
 
+####  4.2.2. <a name='Tempscpu-1'></a>Temps cpu
+![](img/temps_cpu3.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)") 
+
+##  5. <a name='Rsultatstestbcl2fastqvariationduparamtreretwavecp8'></a>Résultats test bcl2fastq (variation du paramètre r et w avec p = 8)
+
+###  5.1. <a name='Tableaudesperformancedebcl2fastq-1'></a>Tableau des performance de bcl2fastq
+
+| bcl2fastq ||||||
+|---|---|---|---|---|---|
+| MELISSE |
+| param utilisé | temps écoulé (h) | temps utilisateur (s) | temps cpu |  utilisation cpu (%) |mémoire utilisé (Gb) |
+| p8 r2 w2 | 00:00:36.49 | 51.24 | 1.92 | 18.13 | 1.872452 |
+| p8 r4 w4 | 00:00:07.59 | 40.22 | 2.96 | 71.00 | 2.361540 |
+| p8 r6 w6 | 00:00:08.55 | 48.33 | 2.46 | 74.25 | 2.346620 |
+| p8 r8 w8 | 00:00:34.75 | 49.85 | 2.13 | 18.63 | 1.869064 |
+| JARVIS |
+| param utilisé | temps écoulé (h) | temps utilisateur (s) | temps cpu |  utilisation cpu (%) |mémoire utilisé (Gb) |
+| p8 r2 w2 | 05:56:38 + 06:50:56 | 166537.24 + 185472.18 | 1030.47 + 3059.25 | 97.88 + 95.5 | 10.172972 + 27.979624 |
+| p8 r4 w4 | 05:48:32 + 06:13:34 | 163311.33 + 169181.39 | 1987.22 + 1141.71 | 98.75 + 94.88 | 12.226456 + 29.826448 |
+| p8 r6 w6 | 05:54:49 + 06:31:55 | 166619.43 + 178909.97 | 975.12 + 1204.78 | 98.38 + 95.63 | 10.559480 + 30.853492 |
+| p8 r8 w8 | 05:40:55 + 06:51:09 | 159463.53 + 171599.59 | 1014.37 + 3312.31 | 98.0 + 88.63 | 10.509808 + 30.503808 |
+
+
+
+###  5.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
+
+####  5.2.1. <a name='Tempstotal-1'></a>Temps total
+![](img/temps_total4.png "Histogramme du temps total en fonction du nombre de coeurs (Melisse)") 
+
+####  5.2.2. <a name='Tempscpu-1'></a>Temps cpu
+![](img/temps_cpu4.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)") 
 ---
 ---
 
-##  4. <a name='Rsultatsdebcl-convert'></a>Résultats de bcl-convert
+##  6. <a name='Rsultatsdebcl-convert'></a>Résultats de bcl-convert

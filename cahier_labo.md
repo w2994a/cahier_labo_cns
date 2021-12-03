@@ -39,4 +39,5 @@ Le programme prend en argument un fichier FASTQ. Les options du programme (au mo
 1. Test du soft bcl2fastq  
 Test du temps de calcul de bcl2fstq et de la taille mémoire utiliser en fonction des paramètre -r (coeurs alloués en lecture), -p (coeurs alloués pour le processus), -w (coeurs alloués en écriture). (cf fichier )
 1. lecture de la doc de bcl-convert  
-Lecture de la doc cd bcl-convert, ayant pour objectif de déterminer les différences d'utilisation entre bcl2fasq et bcl-convert.
+Lecture de la doc cd bcl-convert, ayant pour objectif de déterminer les différences d'utilisation entre bcl2fasq et bcl-convert.  
+1. test de bcl-convert, pour tenter de reproduire les mêmes résultats que bcl2fastq.
