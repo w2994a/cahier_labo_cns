@@ -1,4 +1,4 @@
-# <span style="font-family:Comic Sans MS">Benchmark entre bcl2fastq et bcl-convert </span>
+ # <span style="font-family:Comic Sans MS">Benchmark entre bcl2fastq et bcl-convert </span>
 
 <!-- vscode-markdown-toc -->
 * 1. [Différences d'utilisation entre bcl2fastq et bcl-convert](#Diffrencesdutilisationentrebcl2fastqetbcl-convert)
@@ -22,7 +22,10 @@
 	* 5.2. [Graphiques des performances de bcl2fastq](#Graphiquesdesperformancesdebcl2fastq-1)
 		* 5.2.1. [Temps total](#Tempstotal-1)
 		* 5.2.2. [Temps cpu](#Tempscpu-1)
-* 6. [Résultats de bcl-convert](#Rsultatsdebcl-convert)
+* 6. [Tableau récapitulatif des résultats obtenus pour bcl2fastq](#Tableaurcapitulatifdesrsultatsobtenuspourbcl2fastq)
+	* 6.1. [MELISSE](#MELISSE)
+	* 6.2. [JARVIS](#JARVIS)
+* 7. [Résultats de bcl-convert](#Rsultatsdebcl-convert)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -73,7 +76,11 @@ Option utilisées en ligne de commande :
 `--output-directory` ==> path du répertoire de sortie des fichiers générés par bcl-convert. cette option est obligatoire et le répertoire spécifié ne doit pas exister. (si le répertoire existe alors il faut utiliser `--force` / `-f` en plus)  
 `--sample-sheet` ==> path de la sample sheet (oblgatoire, par défaut : <`--bcl-input-directory`>/SampleSheet.csv)  
 Option non mentionnées dans la doc de bcl-convert :  
-`--bcl-sampleproject-subdirectories` ==> création de sous-répertoires Sample_ Project comme spécifié dans la SampleSheet
+`--bcl-sampleproject-subdirectories` ==> création de sous-répertoires Sample_ Project comme spécifié dans la SampleSheet  
+`--bcl-num-decompression-threads` ==> nombre de coeurs alloués en lecture (fichiers BCL)  
+`--bcl-num-conversion-threads` ==> nombre de coeurs alloués pour le processus de bcl2fastq  
+`--bcl-num-compression-threads` ==> nombre de coeurs alloués en ecriture (FASTQ)  
+`--bcl-num-parallel-tiles` ==>  
 
 Option de bcl-convert dans les fichiers SampleSheet (formats V1 et V2 acceptés) :  
 Data section (comme pour bcl2fastq):  
@@ -98,10 +105,10 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | `--output-dir` | `--output-directory` | même utilisation, mais devient obligatoire (utiliser `--force`/`-f` si le rep de sortie existe déjà) |
 | `--sample-sheet` | `--sample-sheet` | même utilisation |
 | `--use-base-mask` | None | À mettre dans la Sample Sheet (dans la partie settings ==> `OverrideCycles`) |
-| `-r` | ? | même utilisation ? |
-| `-p` | ? | même utilisation ? |
-| `-w` | ? | même utilisation ? |
-
+| `-r` | `--bcl-num-decompression-threads` | même utilisation |
+| `-p` | `--bcl-num-conversion-threads` | même utilisation |
+| `-w` | `--bcl-num-compression-threads` | même utilisation |
+| None | `--bcl-num-parallel-tiles` | spécifier le nombre de fichier traiter en parallèle
 ---
 ---
 
@@ -211,8 +218,53 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ![](img/temps_total4.png "Histogramme du temps total en fonction du nombre de coeurs (Melisse)") 
 
 ####  5.2.2. <a name='Tempscpu-1'></a>Temps cpu
-![](img/temps_cpu4.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)") 
+![](img/temps_cpu4.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)")  
+
+---
+
+##  6. <a name='Tableaurcapitulatifdesrsultatsobtenuspourbcl2fastq'></a>Tableau récapitulatif des résultats obtenus pour bcl2fastq
+###  6.1. <a name='MELISSE'></a>MELISSE
+
+|type run|param utilisé|temps écoulé (h:m:s)|temps utilisateur (h:m:s)|temps cpu (h:m:s)| utilisation cpu (%)|mémoire utilisé (Gb)|
+| --- | --- | --- | --- | --- | --- | --- | 
+|MELISSE|p4|00:00:12.47|00:00:38|00:00:02|80.95|2.346448|
+|MELISSE|p8|<span style="color: green">00:00:07.59</span>|00:00:40|00:00:02|71.12|2.36154|
+|MELISSE|p12|<span style="color: green">00:00:06.45</span>|00:00:40|00:00:02|55.75|2.386592|
+|MELISSE|p16|00:00:11.31|00:01:00|00:00:02|34.56|2.36504|
+|MELISSE|r4 w4|<span style="color: green">00:00:08.58</span>|00:00:55|00:00:02|56.25|2.360844|
+|MELISSE|r8 w8|00:00:18.38|00:00:55|00:00:02|26.33|2.354396|
+|MELISSE|r12 w12|<span style="color: green">00:00:07.51</span>|00:00:54|00:00:02|63.5|2.359704|
+|MELISSE|p4 r4 w4|00:00:12.47|00:00:38|00:00:02|80.95|2.346448|
+|MELISSE|p8 r8 w8|<span style="color: yellow">00:00:34.75</span>|00:00:49|00:00:02|18.63|1.869064|
+|MELISSE|p12 r12 w12|<span style="color: green">00:00:07.51</span>|00:00:54|00:00:02|63.5|2.359704|
+|MELISSE|p16 r16 w16|<span style="color: green">00:00:08.02</span>|00:00:59|00:00:03|49.19|2.360132|
+|MELISSE|p8 r2 w2|<span style="color: yellow">00:00:36.49</span>|00:00:51|00:00:01|18.13|1.872452|
+|MELISSE|p8 r4 w4|<span style="color: green">00:00:07.59</span>|00:00:40|00:00:02|71.0|2.36154|
+|MELISSE|p8 r6 w6|<span style="color: green">00:00:08.55</span>|00:00:48|00:00:02|74.25|2.34662|
+|MELISSE|p8 r8 w8|<span style="color: yellow">00:00:34.75</span>|00:00:49|00:00:02|18.63|1.869064|
+
+###  6.2. <a name='JARVIS'></a>JARVIS
+
+| type run | param utilisé | temps écoulé (h:m:s) | temps utilisateur (h:m:s) | temps cpu (h:m:s) |  utilisation cpu (%) | mémoire utilisé (Gb) | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| JARVIS | p4 r4 w4| <span style="color: red">22:23:48</span> | 87:16:43 | 00:37:09 | 98.0 | 38.771068 | 
+| JARVIS| p8 r4 w4| <span style="color: red">12:02:06</span> | 92:21:32 | 00:52:08 | 96.82 | 42.052904 | 
+| JARVIS| p12 r4 w4| <span style="color: yellow">08:40:15</span>| 97:33:09| 01:03:42| 94.91| 45.83656| 
+| JARVIS| p16 r4 w4| <span style="color: yellow">08:49:20</span>| 133:00:07| 00:45:48| 95.3| 54.406524| 
+| JARVIS| p12 r4 w4| <span style="color: yellow">08:40:15</span>| 97:33:09| 01:03:42| 94.9| 45.83656| 
+| JARVIS| p12 r8 w8| <span style="color: green">07:42:28</span>| 98:07:51| 00:40:22| 95.8| 49.550256| 
+| JARVIS| p12 r12 w12| <span style="color: yellow">08:36:00</span>| 97:53:33| 00:45:14| 95.75| 50.125228| 
+| JARVIS| p4 r4 w4| <span style="color: red">27:04:19</span>| 100:24:00| 00:42:58| 94.35| 33.040992| 
+| JARVIS| p8 r8 w8| <span style="color: red">12:32:08</span>| 91:57:43| 01:12:06| 93.32| 41.013616| 
+| JARVIS| p12 r12 w12| <span style="color: yellow">08:35:00</span>| 97:53:33| 00:45:14| 95.75| 50.125228| 
+| JARVIS| p16 r16 w16| <span style="color: green">07:04:56</span>| 95:22:31| 00:54:40| 84.91| 55.835852| 
+| JARVIS| p8 r2 w2| <span style="color: red">12:47:34</span>| 97:46:49| 01:08:09| 96.69| 38.152596| 
+| JARVIS| p8 r4 w4| <span style="color: red">12:02:06</span>| 92:21:32| 00:52:08| 96.82| 42.052904| 
+| JARVIS| p8 r6 w6| <span style="color: red">12:37:44</span>| 95:58:49| 00:36:19| 97.01| 41.412972| 
+| JARVIS| p8 r8 w8| <span style="color: red">12:32:04 </span>| 91:57:43| 01:12:06| 93.32| 41.013616| 
+
 ---
 ---
 
-##  6. <a name='Rsultatsdebcl-convert'></a>Résultats de bcl-convert
+##  7. <a name='Rsultatsdebcl-convert'></a>Résultats de bcl-convert
+
