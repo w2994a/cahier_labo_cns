@@ -11,7 +11,7 @@ jobify -e 6-r6_p8_w6.e -c 8 -p normal --chrono -t 1200 -b 'bcl2fastq --input-dir
 
 
 # Job bcl-convert JARVIS
-jobify -e test_bcl-convert_6.2.e -c 8 -p normal --chrono -t 1200 -b --mem=100G 'bcl-convert --bcl-input-directory /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE --output-directory /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/test_bcl-convert_6.2  --sample-sheet /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/SampleSheet_6_V2.csv --bcl-sampleproject-subdirectories true' &
+jobify -e test_bcl-convert_6.2.e -c 12 -p normal --chrono -t 1200 -b --mem=100G 'bcl-convert --bcl-input-directory /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE --output-directory /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/test_bcl-convert_6.2  --sample-sheet /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/SampleSheet_6_V2.csv --bcl-sampleproject-subdirectories true --bcl-num-parallel-tiles 1 --bcl-num-compression-threads 12 --bcl-num-conversion-threads 12 --bcl-num-decompression-threads 12' &
 
 
 # Job bcl2fastq JARVIS
