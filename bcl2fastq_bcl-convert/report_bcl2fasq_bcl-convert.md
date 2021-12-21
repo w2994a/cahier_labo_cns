@@ -80,7 +80,7 @@ Option non mentionnées dans la doc de bcl-convert :
 `--bcl-num-decompression-threads` ==> nombre de coeurs alloués en lecture (fichiers BCL)  
 `--bcl-num-conversion-threads` ==> nombre de coeurs alloués pour le processus de bcl2fastq  
 `--bcl-num-compression-threads` ==> nombre de coeurs alloués en ecriture (FASTQ)  
-`--bcl-num-parallel-tiles` ==>  
+`--bcl-num-parallel-tiles` ==>  nombre de tâche effectuer en parallèle  
 
 Option de bcl-convert dans les fichiers SampleSheet (formats V1 et V2 acceptés) :  
 Data section (comme pour bcl2fastq):  
@@ -108,7 +108,7 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | `-r` | `--bcl-num-decompression-threads` | même utilisation |
 | `-p` | `--bcl-num-conversion-threads` | même utilisation |
 | `-w` | `--bcl-num-compression-threads` | même utilisation |
-| None | `--bcl-num-parallel-tiles` | spécifier le nombre de fichier traiter en parallèle
+| None | `--bcl-num-parallel-tiles` | spécifier le nombre de tâche à efectuer en parallèle
 ---
 ---
 
@@ -225,43 +225,43 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ##  6. <a name='Tableaurcapitulatifdesrsultatsobtenuspourbcl2fastq'></a>Tableau récapitulatif des résultats obtenus pour bcl2fastq
 ###  6.1. <a name='MELISSE'></a>MELISSE
 
-|type run|param utilisé|temps écoulé (h:m:s)|temps utilisateur (h:m:s)|temps cpu (h:m:s)| utilisation cpu (%)|mémoire utilisé (Gb)|
-| --- | --- | --- | --- | --- | --- | --- | 
-|MELISSE|p4|00:00:12.47|00:00:38|00:00:02|80.95|2.346448|
-|MELISSE|p8|<span style="color: green">00:00:07.59</span>|00:00:40|00:00:02|71.12|2.36154|
-|MELISSE|p12|<span style="color: green">00:00:06.45</span>|00:00:40|00:00:02|55.75|2.386592|
-|MELISSE|p16|00:00:11.31|00:01:00|00:00:02|34.56|2.36504|
-|MELISSE|r4 w4|<span style="color: green">00:00:08.58</span>|00:00:55|00:00:02|56.25|2.360844|
-|MELISSE|r8 w8|00:00:18.38|00:00:55|00:00:02|26.33|2.354396|
-|MELISSE|r12 w12|<span style="color: green">00:00:07.51</span>|00:00:54|00:00:02|63.5|2.359704|
-|MELISSE|p4 r4 w4|00:00:12.47|00:00:38|00:00:02|80.95|2.346448|
-|MELISSE|p8 r8 w8|<span style="color: yellow">00:00:34.75</span>|00:00:49|00:00:02|18.63|1.869064|
-|MELISSE|p12 r12 w12|<span style="color: green">00:00:07.51</span>|00:00:54|00:00:02|63.5|2.359704|
-|MELISSE|p16 r16 w16|<span style="color: green">00:00:08.02</span>|00:00:59|00:00:03|49.19|2.360132|
-|MELISSE|p8 r2 w2|<span style="color: yellow">00:00:36.49</span>|00:00:51|00:00:01|18.13|1.872452|
-|MELISSE|p8 r4 w4|<span style="color: green">00:00:07.59</span>|00:00:40|00:00:02|71.0|2.36154|
-|MELISSE|p8 r6 w6|<span style="color: green">00:00:08.55</span>|00:00:48|00:00:02|74.25|2.34662|
-|MELISSE|p8 r8 w8|<span style="color: yellow">00:00:34.75</span>|00:00:49|00:00:02|18.63|1.869064|
+|type run|param utilisé|temps écoulé (h\:m\:s)|temps cpu (h : m : s)| utilisation cpu (%)|mémoire utilisé (Gb)|
+| --- | --- | --- | --- | --- | --- |
+|MELISSE|p4 r4 w4|00:00:12.47|00:00:40|80.95|2.346448|
+|MELISSE|p8 r4 w4|<span style="color: green">00:00:07.59</span>|00:00:43|71.12|2.36154|
+|MELISSE|p12 r4 w4|<span style="color: green">00:00:06.45</span>|00:00:43|55.75|2.386592|
+|MELISSE|p16 r4 w4|00:00:11.31|00:01:02|34.56|2.36504|
+|MELISSE|p12 r4 w4|<span style="color: green">00:00:08.58</span>|00:00:57|56.25|2.360844|
+|MELISSE|p12 r8 w8|00:00:18.38|00:00:58|26.33|2.354396|
+|MELISSE|r12 w12|<span style="color: green">00:00:07.51</span>|00:00:57|63.5|2.359704|
+|MELISSE|p4 r4 w4|00:00:12.47|00:00:40|80.95|2.346448|
+|MELISSE|p8 r8 w8|00:00:34.75|00:00:51|18.63|1.869064|
+|MELISSE|p12 r12 w12|<span style="color: green">00:00:07.51|00:00:57|63.5|2.359704|
+|MELISSE|p16 r16 w16|<span style="color: green">00:00:08.02</span>|00:01:03|49.19|2.360132|
+|MELISSE|p8 r2 w2|00:00:36.49|00:00:53|18.13|1.872452|
+|MELISSE|p8 r4 w4|<span style="color: green">00:00:07.59</span>|00:00:43|71.0|2.36154|
+|MELISSE|p8 r6 w6|<span style="color: green">00:00:08.55</span>|00:00:50|74.25|2.34662|
+|MELISSE|p8 r8 w8|00:00:34.75|00:00:51|18.63|1.869064|  
 
 ###  6.2. <a name='JARVIS'></a>JARVIS
 
-| type run | param utilisé | temps écoulé (h:m:s) | temps utilisateur (h:m:s) | temps cpu (h:m:s) |  utilisation cpu (%) | mémoire utilisé (Gb) | 
-| --- | --- | --- | --- | --- | --- | --- | 
-| JARVIS | p4 r4 w4| <span style="color: red">22:23:48</span> | 87:16:43 | 00:37:09 | 98.0 | 38.771068 | 
-| JARVIS| p8 r4 w4| <span style="color: red">12:02:06</span> | 92:21:32 | 00:52:08 | 96.82 | 42.052904 | 
-| JARVIS| p12 r4 w4| <span style="color: yellow">08:40:15</span>| 97:33:09| 01:03:42| 94.91| 45.83656| 
-| JARVIS| p16 r4 w4| <span style="color: yellow">08:49:20</span>| 133:00:07| 00:45:48| 95.3| 54.406524| 
-| JARVIS| p12 r4 w4| <span style="color: yellow">08:40:15</span>| 97:33:09| 01:03:42| 94.9| 45.83656| 
-| JARVIS| p12 r8 w8| <span style="color: green">07:42:28</span>| 98:07:51| 00:40:22| 95.8| 49.550256| 
-| JARVIS| p12 r12 w12| <span style="color: yellow">08:36:00</span>| 97:53:33| 00:45:14| 95.75| 50.125228| 
-| JARVIS| p4 r4 w4| <span style="color: red">27:04:19</span>| 100:24:00| 00:42:58| 94.35| 33.040992| 
-| JARVIS| p8 r8 w8| <span style="color: red">12:32:08</span>| 91:57:43| 01:12:06| 93.32| 41.013616| 
-| JARVIS| p12 r12 w12| <span style="color: yellow">08:35:00</span>| 97:53:33| 00:45:14| 95.75| 50.125228| 
-| JARVIS| p16 r16 w16| <span style="color: green">07:04:56</span>| 95:22:31| 00:54:40| 84.91| 55.835852| 
-| JARVIS| p8 r2 w2| <span style="color: red">12:47:34</span>| 97:46:49| 01:08:09| 96.69| 38.152596| 
-| JARVIS| p8 r4 w4| <span style="color: red">12:02:06</span>| 92:21:32| 00:52:08| 96.82| 42.052904| 
-| JARVIS| p8 r6 w6| <span style="color: red">12:37:44</span>| 95:58:49| 00:36:19| 97.01| 41.412972| 
-| JARVIS| p8 r8 w8| <span style="color: red">12:32:04 </span>| 91:57:43| 01:12:06| 93.32| 41.013616| 
+| type run | param utilisé | temps écoulé (h : m : s) | temps cpu (h : m : s) |  utilisation cpu (%) | mémoire utilisé (Gb) | 
+| --- | --- | --- | --- | --- | --- |
+| JARVIS|p4 r4 w4|<span style="color: red">22:23:48</span>|87:53:53|98.0|38.771068|
+|JARVIS|p8 r4 w4|<span style="color: red">12:02:06</span>|93:13:41|96.82|42.052904|
+|JARVIS|p12 r4 w4|<span style="color: yellow">08:40:15</span>|98:36:51|94.91|45.83656|
+|JARVIS|p16 r4 w4|<span style="color: yellow">08:49:20</span>|133:45:55|95.3|54.406524|
+|JARVIS|p12 r4 w4|<span style="color: yellow">08:40:15</span>|98:36:51|94.9|45.83656|
+|JARVIS|p12 r8 w8|<span style="color: green">07:42:28</span>|98:48:14|95.8|49.550256|
+|JARVIS|p12 r12 w12|<span style="color: yellow">08:36:00</span>|98:38:48|95.75|50.125228|
+|JARVIS|p4 r4 w4|<span style="color: red">27:04:19</span>|101:06:59|94.35|33.040992|
+|JARVIS|p8 r8 w8|<span style="color: red">12:32:08</span>|93:09:49|93.32|41.013616|
+|JARVIS|p12 r12 w12|<span style="color: yellow">08:35:00</span>|98:38:48|95.75|50.125228|
+|JARVIS|p16 r16 w16|<span style="color: green">07:04:56</span>|96:17:12|84.91|55.835852|
+|JARVIS|p8 r2 w2|<span style="color: red">12:47:34</span>|98:54:59|96.69|38.152596|
+|JARVIS|p8 r4 w4|<span style="color: red">12:02:06</span>|93:13:41|96.82|42.052904|
+|JARVIS|p8 r6 w6|<span style="color: red">12:37:44</span>|96:35:09|97.01|41.412972|
+|JARVIS|p8 r8 w8|<span style="color: red">12:32:04</span>|93:09:49|93.32|41.013616|
 
 ---
 ---
