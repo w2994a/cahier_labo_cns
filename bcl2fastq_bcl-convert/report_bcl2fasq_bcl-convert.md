@@ -135,10 +135,13 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ###  2.2. <a name='Graphiquesdesperformancesdebcl2fastq'></a>Graphiques des performances de bcl2fastq
 
 ####  2.2.1. <a name='Tempstotal'></a>Temps total
-![](img/temps_total1.png "Histogramme du temps total en fonction du nombre de coeurs (Melisse)") 
+![](img/temps_total1.png "") 
 
 ####  2.2.2. <a name='Tempscpu'></a>Temps cpu
-![](img/temps_cpu1.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)") 
+![](img/temps_cpu1.png "")  
+
+#### Barplot cummulé des deux run de JARVIS (NovaSeq 6000)
+![](img/barplot_cum_jarvis1.png "")
 
 ##  3. <a name='Rsultatstestbcl2fastqvariationduparamtreretwavecp12'></a>Résultats test bcl2fastq (variation du paramètre r et w avec p = 12)  
 ###  3.1. <a name='Tableaudesperformancedebcl2fastq-1'></a>Tableau des performance de bcl2fastq
@@ -158,10 +161,13 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ###  3.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
 
 ####  3.2.1. <a name='Tempstotal-1'></a>Temps total
-![](img/temps_total2.png "Histogramme du temps total en fonction du nombre de coeurs (Melisse)") 
+![](img/temps_total2.png "") 
 
 ####  3.2.2. <a name='Tempscpu-1'></a>Temps cpu
-![](img/temps_cpu2.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)") 
+![](img/temps_cpu2.png "")  
+
+#### Barplot cummulé des deux run de JARVIS (NovaSeq 6000)
+![](img/barplot_cum_jarvis2.png "")
 
 ##  4. <a name='Rsultatstestbcl2fastqvariationduparamtrepretw'></a>Résultats test bcl2fastq (variation du paramètre p, r et w)
 
@@ -186,10 +192,13 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ###  4.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
 
 ####  4.2.1. <a name='Tempstotal-1'></a>Temps total
-![](img/temps_total3.png "Histogramme du temps total en fonction du nombre de coeurs (Melisse)") 
+![](img/temps_total3.png "") 
 
 ####  4.2.2. <a name='Tempscpu-1'></a>Temps cpu
-![](img/temps_cpu3.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)") 
+![](img/temps_cpu3.png "") 
+
+#### Barplot cummulé des deux run de JARVIS (NovaSeq 6000)
+![](img/barplot_cum_jarvis3.png "")
 
 ##  5. <a name='Rsultatstestbcl2fastqvariationduparamtreretwavecp8'></a>Résultats test bcl2fastq (variation du paramètre r et w avec p = 8)
 
@@ -215,17 +224,20 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ###  5.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
 
 ####  5.2.1. <a name='Tempstotal-1'></a>Temps total
-![](img/temps_total4.png "Histogramme du temps total en fonction du nombre de coeurs (Melisse)") 
+![](img/temps_total4.png "") 
 
 ####  5.2.2. <a name='Tempscpu-1'></a>Temps cpu
-![](img/temps_cpu4.png "Histogramme du temps cpu en fonction du nombre de coeurs (Melisse)")  
+![](img/temps_cpu4.png "")  
+
+#### Barplot cummulé des deux run de JARVIS (NovaSeq 6000)
+![](img/barplot_cum_jarvis4.png "")
 
 ---
 
 ##  6. <a name='Tableaurcapitulatifdesrsultatsobtenuspourbcl2fastq'></a>Tableau récapitulatif des résultats obtenus pour bcl2fastq
 ###  6.1. <a name='MELISSE'></a>MELISSE
 
-|type run|param utilisé|temps écoulé (h\:m\:s)|temps cpu (h : m : s)| utilisation cpu (%)|mémoire utilisé (Gb)|
+|type run|param utilisé|temps écoulé (h : m : s)|temps cpu (h : m : s)| utilisation cpu (%)|mémoire utilisé (Gb)|
 | --- | --- | --- | --- | --- | --- |
 |MELISSE|p4 r4 w4|00:00:12.47|00:00:40|80.95|2.346448|
 |MELISSE|p8 r4 w4|<span style="color: green">00:00:07.59</span>|00:00:43|71.12|2.36154|
