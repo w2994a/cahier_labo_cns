@@ -3,11 +3,11 @@ jobify -e test_inti2.e -c 8 -p normal --chrono -t 240 -b 'bcl2fastq --input-dir 
 
 
 # Job bcl-convert MELISSE
-jobify -e test_inti3.e -c 8 -p normal --chrono -t 240 -b 'bcl-convert --bcl-input-directory /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_MISEQ_SINGLE12/211014_MELISSE_DDL9H.DONE --output-directory /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_MISEQ_SINGLE12/211014_MELISSE_DDL9H.DONE/test_inti3 --sample-sheet /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_MISEQ_SINGLE12/211014_MELISSE_DDL9H.DONE/SampleSheet_test_V2.csv  --bcl-sampleproject-subdirectories true --bcl-num-parallel-tiles 1 --bcl-num-compression-threads 8 --bcl-num-conversion-threads 8 --bcl-num-decompression-threads 8' &
+jobify -e test2_bcl-conv_p8-r8-w8.e -c 8 -p normal --chrono -t 240 -b -w inti040 'bcl-convert --bcl-input-directory /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_MISEQ_SINGLE12/211014_MELISSE_DDL9H.DONE --output-directory /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_MISEQ_SINGLE12/211014_MELISSE_DDL9H.DONE/test2_bcl-conv_p8-r8-w8 --sample-sheet /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_MISEQ_SINGLE12/211014_MELISSE_DDL9H.DONE/SampleSheet_12.csv  --bcl-sampleproject-subdirectories true --bcl-num-parallel-tiles 1 --bcl-num-compression-threads 8 --bcl-num-conversion-threads 8 --bcl-num-decompression-threads 8' &
 
 
 # Job bcl2fastq JARVIS
-jobify -e 6-c16_p8_r4_w4.e -c 16 -p normal --chrono -t 1200 -b --mem=100G -w inti044 'bcl2fastq --input-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/Data/Intensities/BaseCalls --min-log-level WARNING --barcode-mismatches 1 --sample-sheet /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/SampleSheet_6.csv --runfolder-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE --output-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/6-c16_p8_r4_w4 -r 4 -p 8 -w 4 --use-bases-mask Y*,I6nn,nnnnnnnn,Y*' &
+jobify -e 6-c24_p8_r8_w8.e -c 24 -p normal --chrono -t 1200 -b --mem=100G -w inti036 'bcl2fastq --input-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/Data/Intensities/BaseCalls --min-log-level WARNING --barcode-mismatches 1 --sample-sheet /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/SampleSheet_6.csv --runfolder-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE --output-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/6-c24_p8_r8_w8 -r 8 -p 8 -w 8 --use-bases-mask Y*,I6nn,nnnnnnnn,Y*' &
 
 
 # Job bcl-convert JARVIS
@@ -15,7 +15,7 @@ jobify -e test_bcl-convert_6_p12-r12-w12.e -c 12 -p normal --chrono -t 1200 -b -
 
 
 # Job bcl2fastq JARVIS
-jobify -e 8-8-c16_p8_r4_w4.e -c 16 -p normal --chrono -t 1200 -b --mem=100G -w inti045 'bcl2fastq --input-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/Data/Intensities/BaseCalls --min-log-level WARNING --barcode-mismatches 1 --sample-sheet /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/SampleSheet_8-8.csv --runfolder-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE --output-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/8-8-c16_p8_r4_w4 -r 4 -p 8 -w 4 --use-bases-mask Y*,I8,I8,Y*' &
+jobify -e 8-8-c24_p8_r8_w8.e -c 24 -p normal --chrono -t 1200 -b --mem=100G -w inti040 'bcl2fastq --input-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/Data/Intensities/BaseCalls --min-log-level WARNING --barcode-mismatches 1 --sample-sheet /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/SampleSheet_8-8.csv --runfolder-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE --output-dir /env/ig/atelier/illumina/cns/DEV_ILLUMINA/RUN_NOVASEQ_S4_SINGLE6_ET_DUAL8/210930_JARVIS_HKVWHDSX2.DONE/8-8-c24_p8_r8_w8 -r 8 -p 8 -w 8 --use-bases-mask Y*,I8,I8,Y*' &
 
 
 # Job bcl-convert JARVIS

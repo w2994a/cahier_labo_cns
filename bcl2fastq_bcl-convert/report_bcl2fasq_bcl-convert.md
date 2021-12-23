@@ -224,7 +224,6 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | p8 r8 w8 | 05:40:55 + 06:51:09 | 160477.90 + 174911.90 | 98.0 + 88.63 | 10.509808 + 30.503808 |
 
 
-
 ###  5.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
 
 ####  5.2.1. <a name='Tempstotal-1'></a>Temps total
@@ -268,6 +267,17 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | JARVIS | p16 r16 w16 | <span style="color: green">03:24:32 + 03:40:24</span> | 45:52:38 + 50:24:33 | 84.06 + 85.75 | 11.793640 + 44.042212 |
 | JARVIS | p8 r2 w2 | <span style="color: red">05:56:38 + 06:50:56</span> | 46:32:47 + 52:22:11 | 97.88 + 95.5 | 10.172972 + 27.979624 |
 | JARVIS | p8 r6 w6 | <span style="color: red">05:54:49 + 06:31:55</span> | 46:33:14 + 50:01:54 | 98.38 + 95.63 | 10.559480 + 30.853492 |
+
+***
+
+| bcl2fastq : Somme des parramètres pour le nombre de coeurs |||||
+|---|---|---|---|---|
+| JARVIS |
+| param utilisé | temps écoulé (h) | temps cpu | utilisation cpu (%) | mémoire utilisé (Gb) |
+| c28 p12 r8 w8 | 03:46:19 + 04:23:50 | 154089.97 + 166287.98 | 40.50 + 37.50 | 10.811548 + 37.494200 |
+| c20 p12 r4 w4 | 03:35:04 + 04:12:16 | 132959.17 + 148482.30 | 51.50 + 49.0 | 10.508500 | 36.604624 |
+| c24 p8 r8 w8 | sortie du chrono vide |  |  |  |  |
+| c16 p8 r4 w4 | sortie du chrono vide |  |  |  |  |
 
 ---
 ---
