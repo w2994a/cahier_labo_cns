@@ -1,19 +1,13 @@
-.PHONY: clean withversion run
-
 INPUT=slides.md
 OUTPUT=slides.pdf
-DEP=$(wildcard *.sty *.jpg *.png)
+DEP=$(wildcard *.sty img/*.jpg img/*.png)
 THEME=Custom
 
-$(OUTPUT): $(INPUT) $(DEP)
+all: $(INPUT) $(DEP)
 	pandoc -st beamer -V theme:$(THEME) -V lang:fr-FR $(INPUT) -o $(OUTPUT)
 
-withversion: $(INPUT) $(DEP)
-	<$(INPUT) ./inject_version |\
-		pandoc -st beamer -V theme:$(THEME) -V lang:fr-FR -o $(OUTPUT)
-
 run: $(OUTPUT)
-	open $(OUTPUT)
+	code $(OUTPUT)
 
 clean:
 	rm -f $(OUTPUT)
