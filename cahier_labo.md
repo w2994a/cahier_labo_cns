@@ -2,12 +2,8 @@
 
 <!-- vscode-markdown-toc -->
 * 1. [Semaine du 9/09/2021 au 22/10/2021](#Semainedu9092021au22102021)
-* 2. [Semaine du 28/10/2021 au 18/11/2021](#Semainedu28102021au18112021)
-	* 2.1. [Différences d'utilisation entre bcl2fastq et bcl-convert](#Diffrencesdutilisationentrebcl2fastqetbcl-convert)
-	* 2.2. [Résultats test bcl2fastq (variation du paramètre p, r = 4 et w = 4)](#Rsultatstestbcl2fastqvariationduparamtrepr4etw4)
-		* 2.2.1. [Tableau des performance de bcl2fastq](#Tableaudesperformancedebcl2fastq)
-		* 2.2.2. [Graphiques des performances de bcl2fastq](#Graphiquesdesperformancesdebcl2fastq)
-	* 2.3. [Résultats de bcl-convert](#Rsultatsdebcl-convert)
+* 2. [Semaine du 28/10/2021 au 23/12/2021](#Semainedu28102021au23122021)
+* 3. [Semaine du 20/01/2022 au ??/??/2022](#Semainedu20012022au2022)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -34,10 +30,17 @@ Le programme prend en argument un fichier FASTQ. Les options du programme (au mo
 
 
 ---
-##  2. <a name='Semainedu28102021au18112021'></a>Semaine du 28/10/2021 au 18/11/2021
+##  2. <a name='Semainedu28102021au23122021'></a>Semaine du 28/10/2021 au 23/12/2021
 
 1. Test du soft bcl2fastq  
 Test du temps de calcul de bcl2fstq et de la taille mémoire utiliser en fonction des paramètre -r (coeurs alloués en lecture), -p (coeurs alloués pour le processus), -w (coeurs alloués en écriture). (cf fichier )
 1. lecture de la doc de bcl-convert  
 Lecture de la doc cd bcl-convert, ayant pour objectif de déterminer les différences d'utilisation entre bcl2fasq et bcl-convert.  
 1. test de bcl-convert, pour tenter de reproduire les mêmes résultats que bcl2fastq.
+	- cf. rapport du benchmark entre bcl2fastq et bcl-convert.
+	- Les sorties de bcl-convert sont différentes dde bcl2fastq et il est impossible de reproduire la même arborescence obtenu avec bcl2fastq. Il faut donc soit adapter les workflow qui utilisaient ces sorties ou bien créer un worflow qui ce chargera de créer la même arborescence de bcl2fastq. Néaimoins si la seconde méthodes est priviligier il y aura quand des adaptation à faire car le format des fichier de sortie (notament ceux des stats) sont différents.
+
+##  3. <a name='Semainedu20012022au2022'></a>Semaine du 20/01/2022 au ??/??/2022
+
+1. Préparation du diapo et de la soutenance pour le 24/01/2022 (20 et 21/01/2022)
+1. Rédaction du rapport de 5 pages pour le 03/02/2022.
