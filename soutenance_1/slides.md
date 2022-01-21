@@ -1,4 +1,4 @@
-% Présentation Alternance
+% Gestion informatique des données de séquençage
 % William Amory \newline M1 BI-IPFB Université de Paris
 % 24/01/2022
 
@@ -15,7 +15,8 @@
 - Créé en 1996  
     - Participation **projet Génome humain** (Séquençage du chromosome 14 humain)  
     - Développer programmes de génomiques en France  
-    - Plus grand centre de séquençage français et européen 
+    - Plus grand centre de séquençage français  
+    - ajouter 
 
 ## Organigrame CEA - Genoscope - LBGB
 \begin{figure}[H]
@@ -34,7 +35,7 @@
 - Annotation  
 - Visualisation  
 
-### Plusieurs équiques  
+### Plusieurs groupes de travail  
 - Production  
 - Annotation  
 - Assemblage
@@ -45,9 +46,9 @@
 - Veille technologique  
 - Evaluation de nouveaux outils  
 - developper, tester et maintenir les codes  
-- Répondre au besoin des équipes de recherche et de production
+- Répondre aux besoins des équipes de recherche et de production
 - Mise en place de pipeline automatisés  
-    - génération des FATSQ  
+    - génération des fichiers de séquences  
     - Contrôle qualité  
     - Analyses biologiques
 
@@ -93,26 +94,29 @@
 
 # Objectifs
 ## Développement d'un pipeline automatique pour MGI
-### Objectifs du pipline  
-- Générer les fichiers FASTQ à partir des *Bases Calls*  
-- Mise à jour de la base de données NGL  
-- Analyses des FASTQ générés  
-- Rennomage et déplacement des fichiers en fonction des projets  
-- Mise à jour de l'état d'un run  
+### Objectifs du pipeline  
+- développement NGS-RG et NGS-QC pour MGI  
+- Distribution des FASTQ par projets
+- Trie des FASTQ par echantillons, technologies et runs  
+- Mise à jour de la base de données de références (NGL)  
+    - création des entrées runs et readset  
+    - stockage des métriques et analyses correspondants  
+- Nettoyage des FASTQ générés
+- Analyses des FASTQ générés     
 
 ## Développement d'un pipeline automatique pour MGI
 ### Comment ?    
-- Déterminer les outils et methodes nécessaires  
-    - utilisation de nouveaux outils ?  
+- Déterminer les outils et methodes nécessaires    
     - utisation d'outils et méthodes existant pour Illumina ?  
-    - création de nouvelles méthodes pour MGI ?  
+    - utilisation de nouveaux outils et méthodes ?  
 - Ecriture du pipeline  
-    - déterminer de l'ordre d'utilisation des outils et méthodes  
-    - choix du langage de programation (Perl)  
+    - déterminer de l'ordre d'utilisation des outils et méthodes   
 
+## Evaluation et codage d'outils
+ajouter les autres objectifs de ma mission
 
 ## Apprentissage du Perl
-### Pouquoi ?  
+### Pourquoi ?  
 - Raison historique du laboratoire  
 - Toutes les librairies et modules utilisés sont en Perl  
 - Worflow d'Illumina écrit en Perl  
@@ -122,9 +126,13 @@
     - compter le taux de GC  
     - moyene de la qualité de chaque read   
     - ect ...  
-- Lecture des modules utilisé dans le workflow d'illumina  
+- Utilisation des modules utilisé dans le workflow d'illumina  
 
 ## Test de 2 software de génération de FASTQ (bcl2fastq et bcl-convert)
+Permet la génération des FASTQ et de réaliser le démultiplexage  
+### Comparaison des performances
+- Recherche 
+
 ## bcl2fastq vs bcl-convert (Temps total)
 \begin{minipage}{0.45\textwidth}
     \begin{figure}[H]
@@ -190,3 +198,5 @@
 
 ### Worflow MGI  
 - Automatisation total du workflow
+
+### Ajouter les autres perspectives
