@@ -55,7 +55,7 @@
 ## LBGB - Workflow NGS 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{img/Workflow.png}
+    \includegraphics[width=0.8\textwidth]{img/Workflow.png}
     \caption{\tiny{Workflow de génération, de controle qualité et d'analyse biologique des FASTQ}}
     \label{fig-worklow}
 \end{figure}
@@ -133,62 +133,29 @@ Permet la génération des FASTQ et de réaliser le démultiplexage
 ### Comparaison des performances
 - Recherche 
 
-## bcl2fastq vs bcl-convert (Temps total)
-\begin{minipage}{0.45\textwidth}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{img/barplot_cum_bcl-convert1.png}
-        \caption{\tiny{Temps total de génération \newline des FASTQ pour bcl2fastq}}
-        \label{fig-total-time-illu}
-    \end{figure}
-\end{minipage} 
-\hfill
-\begin{minipage}{0.5\textwidth}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.95\textwidth]{img/barplot_cum_bcl2fastq1.png}
-        \caption{\tiny{Temps total de génération \newline des FASTQ pour bcl-convert}}
-        \label{fig-total-time-mgi}
-    \end{figure}
-\end{minipage} 
+## bcl2fastq vs bcl-convert (Temps total)  
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/barplot_total_time_comp.png}
+    \caption{Temps total de génération des FASTQ pour bcl2fastq et bcl-convert}
+    \label{fig-total-time}
+\end{figure}  
 
-## bcl2fastq vs bcl-convert (Temps cpu)
-\begin{minipage}{0.45\textwidth}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{img/barplot_cum_bcl-convert2.png}
-        \caption{\tiny{Temps cpu de génération des \newline FASTQ pour bcl2fastq}}
-        \label{fig-total-time-illu}
-    \end{figure}
-\end{minipage} 
-\hfill
-\begin{minipage}{0.5\textwidth}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.95\textwidth]{img/barplot_cum_bcl2fastq2.png}
-        \caption{\tiny{Temps cpu de génération des \newline FASTQ pour bcl-convert}}
-        \label{fig-total-time-mgi}
-    \end{figure}
-\end{minipage} 
+## bcl2fastq vs bcl-convert (Temps cpu)  
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/barplot_cpu_time_comp.png}
+    \caption{Temps cpu de génération des FASTQ pour bcl2fastq et bcl-convert}
+    \label{fig-cpu-time}
+\end{figure}  
 
-## bcl2fastq vs bcl-convert (Pourcentage d'utilisation cpu)
-\begin{minipage}{0.45\textwidth}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=1\textwidth]{img/barplot_cum_bcl-convert3.png}
-        \caption{\tiny{Pourcentage d'ulisation cpu pour \newline la génération des FASTQ pour bcl2fastq}}
-        \label{fig-total-time-illu}
-    \end{figure}
-\end{minipage} 
-\hfill
-\begin{minipage}{0.5\textwidth}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.95\textwidth]{img/barplot_cum_bcl2fastq3.png}
-        \caption{\tiny{Pourcentage d'ulisation cpu pour \newline la génération des FASTQ pour bcl-convert}}
-        \label{fig-total-time-mgi}
-    \end{figure}
-\end{minipage} 
+## bcl2fastq vs bcl-convert (Pourcentage d'utilisation cpu)  
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/barplot_pourcnetage_cpu_comp.png}
+    \caption{Pourcentage d'ulisation cpu pour la génération des FASTQ \newline pour bcl2fastq et bcl-convert}
+    \label{fig-pourcentage-cpu}
+\end{figure}  
 
 # Perspective
 ## Perspective
