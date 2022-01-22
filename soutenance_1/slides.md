@@ -21,8 +21,8 @@
 ## Organigrame CEA - Genoscope - LBGB
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{img/organigramme.jpg}
-    \caption{\tiny{Organigramme situant l'équipe du \emph{Laboratoire de Bioinformatique pour la Génomique et la Biodiversité (LBGB)} au sein du genoscope et du CEA}}
+    \includegraphics[width=0.75\textwidth]{img/organigramme.jpg}
+    \caption{\tiny{Organigramme situant l'équipe du \emph{Laboratoire de Bioinformatique pour la Génomique} \newline \emph{et la Biodiversité (LBGB)} au sein du genoscope et du CEA}}
     \label{fig-organigramme}
 \end{figure}
 
@@ -59,6 +59,7 @@
     \caption{\tiny{Workflow de génération, de controle qualité et d'analyse biologique des FASTQ}}
     \label{fig-worklow}
 \end{figure}
+<cite>https://www.genoscope.cns.fr/rdbioseq/</cite>
 
 ## LBGB - MGI
 \begin{block}{Arrivé de séquenceurs MGI}
@@ -78,7 +79,7 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{img/MGI_vs_Illumina.png}
-    \caption{\tiny{Différences entre Illumina et MGI de technologie NGL}}
+    \caption{\tiny{Différences entre Illumina et MGI de technologie NGL \newline J. Patterson \& all. (2019). Impact of sequencing depth and technology on de novo RNA-Seq assembly. \newline BMC Genomics. 20. 10.1186/s12864-019-5965-x.}}
     \label{fig-Illu-vs-MGI}
 \end{figure}
 
@@ -89,7 +90,7 @@
     \caption{\tiny{Schéma techno MGI}}
     \label{fig-techno-MGI}
 \end{figure}
-
+<cite>https://en.mgi-tech.com/products/</cite>
 
 
 # Objectifs
@@ -130,9 +131,13 @@ ajouter les autres objectifs de ma mission
 
 ## Test de 2 software de génération de FASTQ (bcl2fastq et bcl-convert)
 Permet la génération des FASTQ et de réaliser le démultiplexage  
-### Comparaison des performances
-- Recherche 
 
+\begin{block}{Comparaison des performances}
+    \begin{itemize}
+        \item Recherche  
+        \item ?????  
+    \end{itemize}
+\end{block}
 ## bcl2fastq vs bcl-convert (Temps total)  
 \begin{figure}[H]
     \centering

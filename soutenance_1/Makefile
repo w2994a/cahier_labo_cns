@@ -7,7 +7,7 @@ all: $(INPUT) $(DEP)
 	pandoc -st beamer -V theme:$(THEME) -V lang:fr-FR $(INPUT) -o $(OUTPUT)
 
 run: $(OUTPUT)
-	code $(OUTPUT)
+	open $(OUTPUT)
 
 clean:
 	rm -f $(OUTPUT)
