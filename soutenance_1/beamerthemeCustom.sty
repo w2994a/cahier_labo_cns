@@ -5,10 +5,15 @@
 \definecolor{texte1}{HTML}{494949}
 
 % the logo on the title page
-\titlegraphic{\includegraphics[height=1.5cm]{img/cea.jpg}}
+%\titlegraphic{
+%  \includegraphics[height=1.5cm]{img/cea.jpg}
+%}
 % the logo on every page
-\logo{\includegraphics[height=1.5cm]{img/logo_Genoscope_ORIG_344.png}}
+\logo{
+  \includegraphics[height=1.5cm]{img/logo_Genoscope_ORIG_344.png}
+}
 
+\usepackage{biblatex}
 \usepackage{booktabs,latexsym,amssymb,wasysym}
 
 \hypersetup{colorlinks,linkcolor=,urlcolor=Color3}
@@ -46,7 +51,7 @@
 
 % Does not work when generated from markdown using pandoc
 %\AtBeginPart{\frame{\partpage}}
-%
+
 %\AtBeginSection[]
 %{
 %  \begin{frame}<beamer>
