@@ -86,16 +86,6 @@
     \label{fig-Illu-vs-MGI}
 \end{figure}
 
-##  La technologie MGI
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{img/Techno_MGI.png}
-    \caption{\tiny{Schéma techno MGI}}
-    \label{fig-techno-MGI}
-\end{figure}
-<cite>https://en.mgi-tech.com/products/</cite>
-
-
 # Objectifs
 ## Développement d'un pipeline automatique pour MGI
 ### Objectifs du pipeline  
@@ -126,8 +116,8 @@
 - Remplacement ou arrêt des outils non pertinents  
 
 ### codage d'outils 
-- maintenir les pipelines  
-- distributions des résultats d'analyses par projet, échantillon/run  
+- Maintenir les pipelines  
+- Distributions des résultats d'analyses par projet, échantillon/run  
 - Mettre à jour la base de données (NGL)
 
 ## Apprentissage du Perl
@@ -151,7 +141,7 @@ permettent la génération des FASTQ et de réaliser le démultiplexage
         \item Recherche des meilleurs paramètres pour bcl2fastq
         \begin{itemize}
         \item Nombre de threads lecture/décompression \emph{Bases Calls} (\textbf{r})
-        \item Nombre de threads Génération FASTQ (\textbf{p})
+        \item Nombre de threads Conversion \emph{Bases Calls} en FASTQ (\textbf{p})
         \item Nombre de threads écriture/compression FASTQ (\textbf{w})
         \end{itemize}
         \item Comparaison des performances entres les 2 soft
@@ -184,12 +174,15 @@ permettent la génération des FASTQ et de réaliser le démultiplexage
 
 # Perspective
 ## Perspective
-### Détermination de la Migration de bcl2fastq vers bcl-convert    
+### Détermination de la migration de bcl2fastq vers bcl-convert    
+- Discussion avec les équipes **LIS** et **LS**  
 - Mise à jour du pipeline de génération des FASTQ  
 - Prise en charge des sorties de bcl-convert pour les autres pipelines  
-- Discussion avec les équipes LIS et LS
+
 
 ### Worflow MGI  
+- Ecriture du pipeline MGI
+- Mise en service du pipeline MGI  
 - Automatisation total du workflow
 
 ## Perspective
@@ -223,3 +216,13 @@ permettent la génération des FASTQ et de réaliser le démultiplexage
 \includegraphics[width=0.2\textwidth]{img/cea.jpg}
 \end{figure} 
 \end{center}
+
+
+##  Données supplémentaires - La technologie MGI
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/Techno_MGI.png}
+    \caption{\tiny{Schéma de la technologie des \emph{DNA nanoballs} de MGI}}
+    \label{fig-techno-MGI}
+\end{figure}
+<cite>https://en.mgi-tech.com/products/</cite>
