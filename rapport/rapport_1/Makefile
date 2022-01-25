@@ -9,4 +9,4 @@ run: $(OUTPUT)
 	open $(OUTPUT)
 
 clean:
-	rm -f *.aux *.bbl *.blg *.dvi *.fdb_latexmk *.fls *.log *.out *.toc
+	rm -f *.aux *.bbl *.blg *.dvi *.fdb_latexmk *.fls *.log *.out *.toc *.synctex.gz
