@@ -106,7 +106,7 @@
 - Ecriture du pipeline  
     - déterminer l'ordre d'utilisation des outils et méthodes   
 
-## Autres objectifs de la missions
+## Autres objectifs de la mission
 ### Evaluation d'outils  
 - pour les pipelines :
   - Illumina  
