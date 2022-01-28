@@ -17,6 +17,15 @@
 \usepackage{amsfonts,amssymb}
 \usepackage{float}
 
+\usepackage{multirow} % tableau avancé
+
+\usepackage{endnotes} % note en fin de document
+\let\footnote = \endnote % redéfinit la commande \footnote en \endnote 
+
+% \renewcommand{\thefigure}{\ifnum\value{section}>0 
+% 	\thesection.\fi\arabic{figure}} % redéfinit la numérotation des figures en fonction des section
+% \renewcommand{\thetable}{\ifnum\value{section}>0 
+% 	\thesection.\fi\arabic{figure}} % redéfinit la numérotation des tables en fonction des section
 %=============== changement de la numérotation des section ect...=============%
 % \renewcommand{\thesection}{\Alph{section}}  % ex: ici les section sont définis avec des lettre
 % \Alph --> Lettre	;	\Roman --> chiffre romain
@@ -31,7 +40,7 @@
 
 %============================ marge document =================================%
 \usepackage{geometry}
-\geometry{hmargin = 2.5cm, vmargin = 2.5cm}
+\geometry{hmargin = 2cm, vmargin = 2cm}
 
 %============================ mode paysage ===================================%
 \usepackage{lscape} % page en paysage
