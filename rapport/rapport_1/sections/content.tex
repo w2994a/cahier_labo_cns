@@ -2,7 +2,7 @@
 %================================== intro =====================================%
 \section{Introduction}
 \subsection{LBGB au sein du Genoscope et du CEA}
-Le Genoscope (CNS\footnote{Centre National de Séquençage}) a été créé en 1996 pour participer au projet mondial de séquençage du génome humain (\emph{Human Genome Project}) qui à débuté en 1990 et s'est terminé en 2003. Il a notament participé au séquençage du chromosome 14. Le Genoscope impliqué dans le développemant de programme de génomique en France dans le cadre du projet France génomique. Aujourd'hui un des projets phare du Genoscope est le projet \textbf{Tara}, qui a pour objectifs l'étude des écosystèmes marins.
+Le Genoscope (CNS\footnote{Centre National de Séquençage}) a été créé en 1996 pour participer au projet mondial de séquençage du génome humain (\emph{Human Genome Project}) qui à débuté en 1990 et s'est terminé en 2003. Il a notament participé au séquençage du chromosome 14. Le Genoscope impliqué dans le développement de programme de génomique en France dans le cadre du projet France génomique. Aujourd'hui un des projets phare du Genoscope est le projet \textbf{Tara}, qui a pour objectifs l'étude des écosystèmes marins.
 
 \begin{minipage}{0.40\textwidth}
 \begin{figure}[H]
@@ -34,11 +34,11 @@ Les missions du groupe de \emph{production} sont de tester des logiciels tiers, 
 \end{minipage} 
 \hfill
 \begin{minipage}{0.45\textwidth}
-	Le workflow ngs\footnote{\emph{Next Generation Sequencing}} est composé de trois pipelines pour les technologies Illumina, Oxford Nanopore, PacBio. Le premier (ngs\_rg\footnote{\emph{Next Generation Sequencing - reads generation}}), permet la génération des reads\footnote{Lecture d'une séquence par un séquenceur d'un fragments d'ADN}. Le second (ngs\_qc\footnote{\emph{Next Generation Sequencing - quality control}}), permet de réaliser le contrôle qualité des fichiers de séquences. Le dernier (ngs\_ba\footnote{\emph{Next Generation Sequencing - biological analysis}}), permet de faire les analyses biologiques de lot de séquence\footnote{un lot de séquences est une instance de séquences (ou reads) d'un échantillon}. Ces trois pipelines sont automatisés dans le workflow et permmettent de réaliser la distribution des données de séquences par projet, de les trier par échantillons, runs\footnote{séquençage d'un ou plusieurs échantillons sur un séquenceur} et technologies de séquençage. Ils réalisent aussi le nettoyage, l'analyse de ces fichiers et mettent à jour la base de données de référence ngl\footnote{\emph{Next Generation LIMS (Laboratory Information Management System)}}.
+	Le workflow ngs\footnote{\emph{Next Generation Sequencing}} est composé de trois pipelines pour les technologies Illumina, Oxford Nanopore, PacBio. Le premier (ngs\_rg\footnote{\emph{Next Generation Sequencing - reads generation}}), permet la génération des reads\footnote{Lecture d'une séquence par un séquenceur d'un fragments d'ADN}. Le second (ngs\_qc\footnote{\emph{Next Generation Sequencing - quality control}}), permet de réaliser le contrôle qualité des fichiers de séquence. Le dernier (ngs\_ba\footnote{\emph{Next Generation Sequencing - biological analysis}}), permet de faire les analyses biologiques de lot de séquence\footnote{Un lot de séquences est une instance de séquences (ou reads) d'un échantillon}. Ces trois pipelines sont automatisés dans le workflow et permmettent de réaliser la distribution des données de séquences par projet, de les trier par échantillons, runs\footnote{Séquençage d'un ou plusieurs échantillons sur un séquenceur} et technologies de séquençage. Ils réalisent aussi le nettoyage, l'analyse de ces fichiers et mettent à jour la base de données de référence ngl\footnote{\emph{Next Generation LIMS (Laboratory Information Management System)}}.
 \end{minipage} 
 
 \subsection{La technologie MGI}
-Le genoscope et le CNRGH\footnote{Centre National de Recherche en Génétique Humaine} ont récement fait l'aquisition de séquenceurs MGI\footnote{Membre du groupe BGI dont les missions sont : R\&D, production et vente d'instruments de séquençage d'ADN, de réactifs et de produits connexes} (2 DNBSEQ-G400 et 1 DNBSEQ-T7).
+Le genoscope et le CNRGH\footnote{Centre National de Recherche en Génétique Humaine} ont récement fait l'aquisition de séquenceurs MGI\footnote{Filiale du groupe BGI dont les missions sont : R\&D, production et vente d'instruments de séquençage d'ADN, de réactifs et de produits connexes} (2 DNBSEQ-G400 et 1 DNBSEQ-T7).
 
 % \begin{figure}[H]
 % 	\centering
@@ -52,14 +52,14 @@ Le genoscope et le CNRGH\footnote{Centre National de Recherche en Génétique Hu
 \begin{minipage}{0.45\textwidth}
 	\begin{figure}[H]
         \centering
-        \includegraphics[width=1\textwidth]{img/MGI_vs_Illumina.png}
+        \includegraphics[width=0.85\textwidth]{img/MGI_vs_Illumina.png}
         \caption{\footnotesize{Différences entre Illumina et MGI de technologie NGS}}
         \label{fig-Illu-vs-MGI}
     \end{figure}
 \end{minipage} 
 \hfill
 \begin{minipage}{0.45\textwidth}
-    Il s'agit de séquenceurs à haut débit, dont les principales différences entre MGI et Illumina sont dans la création des librairies et la méthode d'amplification d'ADN. Les librairies sont double brins circulaire pour MGI, alors que pour Illumina elle est double brins linéaire. L'amplification ADN est réalisée en solution et forme des \emph{DNA-nanoballs}\footnote{nanobilles d'ADN générer par la réplication de l'ADN circulaire} pour MGI puis déposée sur la Flowcell\footnote{Lame d'absorbtion des fragment d'ADN et cuve réacteur du séquençage}, alors que pour Illumina elle esr réalisée après immobilisation sur les Flowcell.
+    Il s'agit de séquenceurs à haut débit, dont les principales différences entre MGI et Illumina sont dans la création des librairies et la méthode d'amplification d'ADN. Les librairies sont double brins circulaire pour MGI, alors que pour Illumina elle est double brins linéaire. L'amplification ADN est réalisée en solution et forme des \emph{DNA-nanoballs}\footnote{Nanobilles d'ADN générées par la réplication de l'ADN circulaire} pour MGI puis déposée sur la Flowcell\footnote{Lame d'absorbtion des fragments d'ADN et cuve réacteur du séquençage}, alors que pour Illumina elle est réalisée après immobilisation sur les Flowcell.
 \end{minipage}
 
 \begin{table}[H]
@@ -81,48 +81,63 @@ Le genoscope et le CNRGH\footnote{Centre National de Recherche en Génétique Hu
 %==============================================================================%
 %=============================== Objectifs ====================================%
 \section{Objectifs}
-L'objectif principal de ma mission est la mise en place d'un workflow pour les séquenceurs de MGI. Plus précissément il s'agira de créer un pipeline de génération de reads (ngs\_rg\_mgi\footnote{\emph{Next Generation Sequencing - reads generation - mgi}) et un pour le contrôle qualité (ngs\_qc\_mgi\footnote{\emph{Next Generation Sequencing - quality control - mgi}). Le workflow devra créer et mettre à jour l'état des runs et des \emph{lanes}\footnote{pistes présentes sur la \emph{flow cell}} dans ngl, réaliser le contrôle qualité des fichiers de séquence, au format fastq, obtenu après démultiplexage\footnote{Séparation des différents \emph{reads} d'une \emph{lane} en fonction de l'index d'échantillon} des runs. Il devra mettre à jour l'avancement du traitement d'un run dans ngl, en y indiquant les statistiques obtenu lors du démultiplexage, les résultats des contrôles qualités, etc. Puisque l'objectif est d'obtenir un premier niveau de valorisation des fichier de séquences, permettant aux autres groupes (\emph{assemblage}, \emph{anotation}) de prendre en charge ses fichier avant de les mettrent à disposition des laboratoires collaborateurs.\\
+L'objectif principal de ma mission est la mise en place d'un workflow pour les séquenceurs de MGI. Plus précissément il s'agira de créer un pipeline de génération de reads (ngs\_rg\_mgi\footnote{\emph{Next Generation Sequencing - reads generation - mgi}}) et un pour le contrôle qualité (ngs\_qc\_mgi\footnote{\emph{Next Generation Sequencing - quality control - mgi}}). Le workflow devra créer et mettre à jour l'état des runs et des \emph{lanes}\footnote{pistes présentes sur la \emph{flow cell}} dans ngl, réaliser le contrôle qualité des fichiers de séquence, au format fastq, obtenu après démultiplexage\footnote{Séparation des différents \emph{reads} d'une \emph{lane} en fonction de l'index d'échantillon} des runs. Il devra mettre à jour l'avancement du traitement d'un run dans ngl, en y indiquant les statistiques obtenues lors du démultiplexage, les résultats des contrôles qualités, etc. Puisque l'objectif est d'obtenir un premier niveau de valorisation des fichier de séquences, permettant aux autres groupes (\emph{assemblage}, \emph{anotation}) de prendre en charge ces fichiers avant de les mettrent à disposition des laboratoires collaborateurs.\\
 
-Je devrais également, rechercher et réaliser des évaluations de nouveaux outils pour les différents pipelines des différentes technologies de séquençage. En vue d'un potentiel ajout d'outils ou de remplacement d'outils. Il sera donc necessaire de maintenir les pipelines des différentes technologies de séquençage en conséquence.
+Je dois également, rechercher et réaliser des évaluations de nouveaux outils pour les différents pipelines des différentes technologies de séquençage. En vue d'un potentiel ajout d'outils ou de remplacement d'outils. Il sera donc necessaire de maintenir les pipelines des différentes technologies de séquençage en conséquence.
 
 
 %==============================================================================%
 %================================ Méthodes ====================================%
 \section{Matériels et Méthodes}
+\subsection{Le cluster de calcul et Slurm}
+Le Genoscope possède 10 noeuds de calculs pour la \emph{production} sur le nouveau cluster \emph{inti}, ces derniers disposent de 16 cœurs et de 257 Go de RAM\footnote{Random Access Memory}(mémoire vive). L'accès à l'utilisation des clusters est réalisé par le logiciel Slurm\footnote{Logiciel open source d'ordonnancement des tâches informatiques}.
 
-La Genoscope possède 7 clusters de calucls pour la \emph{production} sur le serveur \emph{inti}, ces derniers disposent de 16 coeurs et de 257 Go d'espace de stockage. L'accès à l'utilisation des clusters est réalisé par le logiciel Slurm\footnote{Logiciel open source d'ordonnancement des tâches informatiques}. Il dispose également de sa propre base de données de référence (ngl). La gestion et le suivi du développememnt informatique est réalisé par le système Jira\footnote{Logiciel de gestion de projet, d'incidents et de suivi de bugs}. 
-L'écriture du workflow des pipelines pour les séquenceurs MGI sera réalisée dans le langage de programmation Perl. L'utilisation de ce langage est rendu necessaire pour des raisons historique du laboratoire, puisque de nombreuses librairies et modules qui seront à utiliser dans l'écriture des pipelines sont écrits en Perl. Le workflow pour MGI s'appuirera sur le workflow d'Illumina qui est totalement implémenté en Perl. 
+\subsection{La base de données de référence ngl et la gestion des projets}
+Le Genoscope dispose de sa propre base de données de référence ngl. Celle-ci est divisée en plusieurs parties. ngl\_bi\footnote{ngl bioinformatic}, est la partie de la base de données utilisée par les équipes de bioinformatique. ngl\_seq\footnote{ngl sequencing}, est la partie de la base de données utilisée dès la réception des échantillons et jusqu'au séquençage de ces derniers. Il y a également les parties ngl\_sub\footnote{ngl submission (base de données des job soumis aux clusters)}, ngl\_reagent\footnote{ngl reagent (base de données des réactifs)} et ngl\_projects\footnote{ngl projects (base de données des projets en cours et passé)}. La gestion et le suivi du développement informatique sont réalisés par le système de tickets Jira\footnote{Logiciel de gestion de projet, d'incidents et de suivi de bugs}.
 
-C'est pour toutes ces raisons qu'il m'a été nécessaire d'apprendre à coder en Perl en réalisant un programme permettant de faire des analyses statistiques élémentaires sur des fichiers fastq. Tel que le taux de GC, la moyenne du score de la qualité, ainsi que plusieurs autres métriques. Le programme est capable de gérer les fichiers fastq issue de séquençage \emph{single end\footnote{Lecture dans un seul sens des reads par le séquenceur}} et \emph{paired end\footnote{Lecture dans les deux sens des reads par le séquenceur}}. Cela m'a permis de prendre en main les modules utilisés pour les différents pipelines déja en place, notament pour le pipelines d'llumina. De plus cela m'a permi de prendre en main de l'environement de travail, l'utilisation du lancement de job sur les noeuds de calculs et l'utilisation des modules utilisés pour le workflow d'llumina\\
+\subsection{Le langage de programmation Perl}
+L'écriture du workflow des pipelines pour les séquenceurs MGI sera réalisée dans le langage de programmation Perl. L'utilisation de ce langage est rendu necessaire pour des raisons historique du laboratoire, puisque de nombreuses librairies et modules qui seront à utiliser dans l'écriture des pipelines sont écrits en Perl\footnote{Pratical Extraction and Report Language}.\\
 
-Une première évaluation d'outils a également été efféctuée en vu du remplacement de bcl2fastq par bcl-convert. Il s'agit de deux logiciels de génération de fichiers fastq et de démultiplexage qui sont développés et commercialisés par Illumina.
+C'est pour toutes ces raisons qu'il m'a été nécessaire d'apprendre à coder en Perl. j'ai donc commencé par réaliser un programme permettant de faire des analyses statistiques élémentaires sur des fichiers fastq, tel que le taux de GC, la moyenne du score de la qualité, ainsi que plusieurs autres métriques. Le programme est capable de gérer les fichiers fastq issue de séquençage \emph{single end\footnote{Lecture dans un seul sens des reads par le séquenceur}} et \emph{paired end\footnote{Lecture dans les deux sens des reads par le séquenceur}}. Cela m'a permis de prendre en main les librairies Perl utilisées pour les différents pipelines déja en place. Ainsi que de m'habituer à l'environement de travail, l'utilisation du lancement de job sur les noeuds de calculs et l'utilisation des modules\footnote{Un module contient un ou plusieurs logiciels tiers ou dévellopé par les équipes du genoscope. Il est néccessaire de les charger dans notre environement de travail pour pouvoir utiliser ces logiciels.} pour les différents pipelines.
 
-Dans un premier temps, il a été nécessaire de déterminer les conditions optimales (temps total rapide, pourcentage d'utilisation cpu\footnote{Central Processing Unit (unité centrale de traitement, en français)} maximum) en fonction des ressource disponible sur les clusters de la \emph{prodution} (16 coeurs maximum) du nouveau serveur (\emph{inti}), pour bcl2fasq dans l'objectif de pouvoir comparer les performances des deux logiciels dans les mêmes conditions. Les conditions optimales sont déterminées en fonction des paramètres suivant de bcl2fatq : 
+\subsection{Évaluation de bcl2fastq et bcl-convert}
+Une première évaluation de deux logiciels de génération de fichiers fastq et de démultiplexage, développés et commercialisés par Illumina a également été efféctuée. Cette évaluation a été nécessaire pour déterminer les changements qu'il y aura à faire dans les pipelines en vue du remplacement de bcl2fastq (qui sera bientôt obsolète) par bcl-convert.\\
+
+Dans un premier temps, il a été nécessaire de déterminer les conditions optimales de bcl2fastq (temps total, temps cpu\footnote{Central Processing Unit (unité centrale de traitement, en français)}, pourcentage d'utilisation cpu) en fonction des ressources disponibles sur les noeuds du cluster (\emph{inti}) réservé à la \emph{prodution}, avec l'objectif de pouvoir appliquer les mêmes conditions à bcl-convert. Les conditions optimales sont déterminées en fonction des paramètres suivants de bcl2fatq (l'équivalent de bcl-convert est indiqué entre crochets): \\
 \begin{itemize}
-    \item[•] \texttt{r} : nombre de \emph{threads\footnote{Processus : instructions du langage machine d'un processeur.}} accordé pour la décompréssion et la lecture des \emph{Bases Calls\footnote{Fichier d'attribution des bases nucléiques en fonction des pics du chromatogramme lors du séquençage}}
-    \item[•] \texttt{p} : conversion des \emph{Bases Calls} en fastq
-    \item[•] \texttt{w} : écriture et compréssion des fichier fastq
+    \item[•] \texttt{r} [bcl-num-decompression-threads] : nombre de \emph{threads\footnote{Processus : instructions du langage machine d'un processeur.}} accordé pour la décompréssion et la lecture des \emph{Bases Calls\footnote{Fichier d'attribution des bases nucléiques en fonction des pics du chromatogramme lors du séquençage}}
+    \item[•] \texttt{p} [bcl-num-conversion-threads] : conversion des \emph{Bases Calls} en fastq
+    \item[•] \texttt{w} [bcl-num-compression-threads] : écriture et compréssion des fichiers fastq\\
 \end{itemize}
 
 Tous ces tests ont été  réalisés sur le même noeud de calcul, dans l'objectif de minimiser les biais. La comparaison est effectuée sur le temps total de génération des fastq et le démultiplexage, ainsi que le temps cpu et le pourcentage d'utilisation des cpu.
 
 %==============================================================================%
 %================================ Resultats ===================================%
-\section{Résultats des évaluations de bcl2fastq et bcl-convert}
-
-\subsection{Détermination des meilleurs paramètres pour bcl2fastq}
-Après avoir effectué différentes combinaisons des paramètres, nous avons mis en évidence que la variation du paramètre \texttt{r} et \texttt{w} en fixant le paramètre \texttt{p}, n'apportait pas de différences significatives pour le temps total d'exécution, le temps cpu ou le pourcentage d'utilisation cpu, comme on peut l'observé sur la figure \ref{barplot-param}. 
+\section{Résultats}
+\subsection{Résultats des évaluations de bcl2fastq et bcl-convert}
+\subsubsection{Détermination des meilleurs paramètres pour bcl2fastq}
+Après avoir effectué différentes combinaisons des paramètres, il a été mis en évidence que la variation du paramètre \texttt{r} et \texttt{w} en fixant le paramètre \texttt{p}, n'apportait pas de différences significatives pour le temps total d'exécution, le temps cpu ou le pourcentage d'utilisation cpu, comme on peut l'observer sur la figure \ref{barplot-param}, pour p fixé à 12. Des resultats similaires ont été obtenus pour p égale à 4, 8 et 16. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{img/barplot_cum_jarvis2.png}
-    \caption{\footnotesize{Digrammes en bâtons du temps total d'éxécution (à gauche), temps cpu (au milieu) et du pourcentage d'utilisation des cpu (à droite)}}
+    \caption{\footnotesize{Digrammes en bâtons du temps total d'éxécution (à gauche), temps cpu (au milieu) et du pourcentage d'utilisation des cpu (à droite) en fonction des paramètres r et w}}
     \label{barplot-param}
 \end{figure} 
-Il y a deux \emph{sample sheet}, car le nombre de bases considérés des \emph{reads index} entre les \emph{lanes} est différent, obligeant à réaliser deux appels différents au logiciel pour générer les fastq et le démultiplexage.
+Il y a deux \emph{sample sheet}\footnote{Fichier contenant les informations et instructions pour la génération des fastq et le démultiplexage}, car le nombre de bases considérés des \emph{reads index} entre les \emph{lanes} est différent, obligeant à réaliser deux appels différents au logiciel pour générer les fastq et le démultiplexage. Ci dessous, la figure \ref{barplot-param2}, représente les résultats obtenus en faisant varier p et en fixant les paramètres r et w à 4 (ces deux paramètres sont fixés à 4 pour pouvoir comparer les 4 résultats). On observe que plus on augmente le nombre de cours et le nombre de \emph{threads} pour p, plus l'execution est rapide. On observe que le temps cpu augmente bien avec le nombre de cœurs et que le pourcentage d'utilisation des cpu est optimal (> 90\%).
 
-\subsection{Comparaison entre bcl2fastq et bcl-convert}
-Nous avons donc fait varier les paramètres \texttt{p}, \texttt{r} et \texttt{w} de manière à ce que chacun des paramètre soit égale au nombre de coeurs accordés aux deux logiciels. On observe bien, sur la figure \ref{fig-total-time}, que plus on augmente le nombre de coeurs pour chacun des logiciels (et donc le nombre de \emph{threads} pour \texttt{p}, \texttt{r} et \texttt{w}) plus la génération des fastq et le démultiplexage est rapide. De plus on remarque que bcl-convert permet de réduire le temps d'environs 1/3 par rapport à bcl2fatq. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{img/barplot_cum_jarvis1.png}
+    \caption{\footnotesize{Digrammes en bâtons du temps total d'éxécution (à gauche), temps cpu (au milieu) et du pourcentage d'utilisation des cpu (à droite) en fonction du paramètre p}}
+    \label{barplot-param2}
+\end{figure}
+
+Au vue des résultats obtenus nous avons décidé que les meilleurs paramètres étaient de fixer p à 12, puisque le gain apporté en augmentant à 16 est faible. Néanmoins nous le conserverons pour réaliser la comparaison avec bcl-convert, tout comme p fixé à 8, car il nous permettrait de réaliser deux générations de fastq et de démultiplexage en simultané sur un seul noeud de calcul.\\
+
+\subsubsection{Comparaison entre bcl2fastq et bcl-convert}
+J'ai donc fait varier les paramètres \texttt{p}, \texttt{r} et \texttt{w} de manière à ce que chacun des paramètre soient égale au nombre de cœurs accordés aux deux logiciels. On observe bien, sur la figure \ref{fig-total-time}, que plus on augmente le nombre de cœurs pour chacun des logiciels (et donc le nombre de \emph{threads} pour \texttt{p}, \texttt{r} et \texttt{w}) plus la génération des fastq et le démultiplexage est rapide. De plus on remarque que bcl-convert permet de réduire le temps d'environs 1/3 par rapport à bcl2fatq. 
 
 \begin{figure}[H]
     \centering
@@ -131,22 +146,25 @@ Nous avons donc fait varier les paramètres \texttt{p}, \texttt{r} et \texttt{w}
     \label{fig-total-time}
 \end{figure}
 
-
+J'ai également échangé avec le service technique d'Illumina à propos des fichiers de sortie et de l'arborescence de bcl-convert. En effet il s'avère que l'arborescence et les fichiers de sortie sont très différents entre les deux logiciels. Ces échange avaient pour objectif de savoir s'il on pouvait obtenir une arboresnce similaire à bcl2fastq, pour minimiser l'impact du changement de logiciel sur les pipelines. Le changement de bcl2fstq, qui sera bientôt obsolète, par bcl-convert va nous obliger à réaliser de gros changements dans tous les pipelines qui utilisent ces fichiers de sortie et va demander aussi au laboratoire de séquençage de s'adapter à la nouvelle \emph{sample sheet} de bcl-convert.
  
 %==============================================================================%
 %======================== Conclusion et perspectives ==========================%
 \section{Perspectives}
-Concernant les perspectives de bcl-convert il reste à réaliser un cahier des charges référençant tous les changements à effectuer dans les différents pipeplines pour la mise à jour de bcl2fastq vers bcl-convert. Ce cahier des charges prendra en compte le changement d'arborescence des fichiers de sortie entre les deux logiciels, ainsi toutes les modifications à effectuer dans les différents pipelines pour permettre le bon fonctionnement des workflow. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur qui se chargera de suivre ce cahier des charges et de réaliser les modifications.\\
+\subsection{bcl-convert}
+Concernant les perspectives de bcl-convert il reste à réaliser un cahier des charges référençant tous les changements à effectuer dans les différents pipelines pour la mise à jour de bcl2fastq vers bcl-convert. Ce cahier des charges prendra en compte le changement d'arborescence des fichiers de sortie entre les deux logiciels, ainsi que toutes les modifications à effectuer dans les différents pipelines (commande de lancement de bcl-convert, module à chargé dans l'environement, path\footnote{Chemin d'accès à un fichier ou à un répertoire dans le système de fichiers} des fichiers de sortie) pour permettre le bon fonctionnement des workflows. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur qui se chargera de suivre ce cahier des charges et de réaliser ces modifications.\\
 
+\subsection{Workflow MGI}
 Concernant le workflow de MGI, il nous faut dans un premier temps déterminer les outils et méthodes necessaires (utilisation de ceux du workflow d'Illumina ou de nouveaux). Une fois ceci déterminé il restera à écrire les deux pipelines, celui de génération de reads (ngs\_rg\_mgi) et celui de contrôle qualité (ngs\_rg\_mgi). L'objectif sur le long terme est d'arriver à un workflow totalment automatisé, comme celui d'Illumina.\\
 
-Il y a aussi l'évaluation d'autres outils utiles pour les pipelines, comme l'évaluation d'outils de \emph{trimming}, \emph{filtering}, d'assignation taxonomique, ect.
+\subsection{Évaluation d'outils}
+Il y aura aussi l'évaluation d'autres outils utiles pour les pipelines, comme des outils de \emph{trimming}, \emph{filtering}, d'assignation taxonomique, etc.
 
-\newpage
+
 \subsection{diagramme de gantt}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{digramme_gant/diag_gantt.png}
+    \includegraphics[width=0.95\textwidth]{digramme_gant/diag_gantt.png}
     \caption{Digramme de gantt des différents projets et missions}
     \label{diag-gantt}
 \end{figure}
