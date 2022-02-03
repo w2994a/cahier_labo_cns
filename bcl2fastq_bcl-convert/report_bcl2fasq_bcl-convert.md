@@ -30,6 +30,13 @@
 	* 6.1. [MELISSE](#MELISSE)
 	* 6.2. [JARVIS](#JARVIS)
 * 7. [Résultats de bcl-convert](#Rsultatsdebcl-convert)
+	* 7.1. [Tableau des performance de bcl2fastq (p = r = w)](#Tableaudesperformancedebcl2fastqprw)
+	* 7.2. [Graphiques des performances de bcl-convert](#Graphiquesdesperformancesdebcl-convert)
+* 8. [Comparaison bcl2fastq et bcl-convert](#Comparaisonbcl2fastqetbcl-convert)
+	* 8.1. [Comparaison du temps total](#Comparaisondutempstotal)
+	* 8.2. [Comparaison du tems cpu](#Comparaisondutemscpu)
+	* 8.3. [Comparaison du pourcentage d'utilisation des cpu](#Comparaisondupourcentagedutilisationdescpu)
+	* 8.4. [Tableau comparatif entre bcl2fastq et bcl-convert](#Tableaucomparatifentrebcl2fastqetbcl-convert)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -283,4 +290,235 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ---
 
 ##  7. <a name='Rsultatsdebcl-convert'></a>Résultats de bcl-convert
+
+###  7.1. <a name='Tableaudesperformancedebcl2fastqprw'></a>Tableau des performance de bcl2fastq (p = r = w)
+
+|type run|param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
+|---|---|---|---|---|---|
+|JARVIS|p8 r8 w8|04:03:46 + 04:01:15|81043.66 + 86491.64|69.25 + 74.63|13.563916 + 22.383716|
+|JARVIS|p12 r12 w12|02:54:04 + 02:56:50|96397.79 + 108461.85|76.83 + 85.17|16.297744 + 24.742460|
+|JARVIS|p16 r16 w16|02:43:45 + 02:28:32|99892.88 + 85732.81|63.5 + 60.06|15.500356 + 20.536340|
+
+###  7.2. <a name='Graphiquesdesperformancesdebcl-convert'></a>Graphiques des performances de bcl-convert
+![](img/barplot_cum_bcl-convert.png "")
+
+##  8. <a name='Comparaisonbcl2fastqetbcl-convert'></a>Comparaison bcl2fastq et bcl-convert
+###  8.1. <a name='Comparaisondutempstotal'></a>Comparaison du temps total
+![](img/barplot_total_time_comp.png "")
+
+###  8.2. <a name='Comparaisondutemscpu'></a>Comparaison du tems cpu
+![](img/barplot_cpu_time_comp.png "")
+
+###  8.3. <a name='Comparaisondupourcentagedutilisationdescpu'></a>Comparaison du pourcentage d'utilisation des cpu
+![](img/barplot_pourcnetage_cpu_comp.png "")
+
+###  8.4. <a name='Tableaucomparatifentrebcl2fastqetbcl-convert'></a>Tableau comparatif entre bcl2fastq et bcl-convert
+
+|   |temps total (h)|   |temps cpu (h)|   |Utilisation cpu (%)|   |
+|---|---|---|---|---|---|---|
+|paramètres|bcl2fasq|bcl-convert|bcl2fasq|bcl-convert|bcl2fasq|bcl-convert|
+|r8 p8 w8 #coeurs 8|12.52|8.07|93.16|46.54|93.23|71.94|
+|r12 p12 w12 #coeurs 12|8.58|5.83|98.65|56.91|95.75|81.00|
+|r16 p16 w16 #coeurs 16|7.07|5.18|96.29|51.56|84.90|61.78|
+
+
+## Différences d'arborescence entre bcl2fastq et bcl-convert
+### exemple d'arborescence de bcl2fastq
+
+bcl2fastq  
+├── Project_1  
+│   ├── Sample_12BA131_1  
+│   │   ├── 12BA131_S3_L001_R1_001.fastq.gz  
+│   │   └── 12BA131_S3_L001_R2_001.fastq.gz  
+│   ├── Sample_12BA132_1  
+│   │   ├── 12BA132_S6_L001_R1_001.fastq.gz  
+│   │   └── 12BA132_S6_L001_R2_001.fastq.gz  
+│   ├── Sample_12BA133_1  
+│   │   ├── 12BA133_S1_L001_R1_001.fastq.gz  
+│   │   └── 12BA133_S1_L001_R2_001.fastq.gz  
+│   ├── Sample_12BA134_1  
+│   │   ├── 12BA134_S2_L001_R1_001.fastq.gz  
+│   │   └── 12BA134_S2_L001_R2_001.fastq.gz  
+│   ├── Sample_12BA135_1  
+│   │   ├── 12BA135_S5_L001_R1_001.fastq.gz  
+│   │   └── 12BA135_S5_L001_R2_001.fastq.gz  
+│   └── Sample_12BA136_1  
+│       ├── 12BA136_S4_L001_R1_001.fastq.gz  
+│       └── 12BA136_S4_L001_R2_001.fastq.gz  
+├── Reports  
+│   └── html  
+│       ├── 000000000-DDL9H  
+│       │   ├── all  
+│       │   │   └── all  
+│       │   │       ├── all  
+│       │   │       │   ├── laneBarcode.html  
+│       │   │       │   └── lane.html  
+│       │   │       └── unknown  
+│       │   ├── default  
+│       │   │   ├── all  
+│       │   │   │   ├── all  
+│       │   │   │   │   ├── laneBarcode.html  
+│       │   │   │   │   └── lane.html    
+│       │   │   │   └── unknown   
+│       │   │   └── Undetermined   
+│       │   │       ├── all   
+│       │   │       │   ├── laneBarcode.html   
+│       │   │       │   └── lane.html  
+│       │   │       └── unknown  
+│       │   │           ├── laneBarcode.html  
+│       │   │           └── lane.html  
+│       │   └── Project_1  
+│       │       ├── 12BA131  
+│       │       │   ├── all  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   ├── GTCGAAGGAGCC  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   └── unknown  
+│       │       ├── 12BA132  
+│       │       │   ├── AATATGCATCGG  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   ├── all  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   └── unknown  
+│       │       ├── 12BA133  
+│       │       │   ├── all  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   ├── CAGCTAGGATCC  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   └── unknown  
+│       │       ├── 12BA134  
+│       │       │   ├── all  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   ├── TGCGCTAATCTT   
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   └── unknown  
+│       │       ├── 12BA135  
+│       │       │   ├── all  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   ├── TTCAGGAGAGCC  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   └── unknown  
+│       │       ├── 12BA136  
+│       │       │   ├── ACGTAATATCGG  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   ├── all  
+│       │       │   │   ├── laneBarcode.html  
+│       │       │   │   └── lane.html  
+│       │       │   └── unknown  
+│       │       └── all  
+│       │           ├── all  
+│       │           │   ├── laneBarcode.html  
+│       │           │   └── lane.html  
+│       │           └── unknown  
+│       ├── index.html  
+│       ├── Report.css  
+│       └── tree.html  
+├── Stats  
+│   ├── AdapterTrimming.txt  
+│   ├── ConversionStats.xml  
+│   ├── DemultiplexingStats.xml  
+│   ├── DemuxSummaryF1L1.txt  
+│   ├── FastqSummaryF1L1.txt  
+│   └── Stats.json  
+├── Undetermined_S0_L001_R1_001.fastq.gz  
+└── Undetermined_S0_L001_R2_001.fastq.gz  
+
+
+### exemple d'arborescence de bcl-convert
+
+bcl-convert  
+├── Logs  
+│   ├── Errors.log  
+│   ├── FastqComplete.txt  
+│   ├── Info.log  
+│   └── Warnings.log  
+├── Project_1  
+│   ├── 12BA131_S3_L001_R1_001.fastq.gz  
+│   ├── 12BA131_S3_L001_R2_001.fastq.gz  
+│   ├── 12BA132_S6_L001_R1_001.fastq.gz  
+│   ├── 12BA132_S6_L001_R2_001.fastq.gz  
+│   ├── 12BA133_S1_L001_R1_001.fastq.gz  
+│   ├── 12BA133_S1_L001_R2_001.fastq.gz  
+│   ├── 12BA134_S2_L001_R1_001.fastq.gz  
+│   ├── 12BA134_S2_L001_R2_001.fastq.gz  
+│   ├── 12BA135_S5_L001_R1_001.fastq.gz  
+│   ├── 12BA135_S5_L001_R2_001.fastq.gz  
+│   ├── 12BA136_S4_L001_R1_001.fastq.gz  
+│   └── 12BA136_S4_L001_R2_001.fastq.gz  
+├── Reports  
+│   ├── Adapter_Metrics.csv  
+│   ├── Demultiplex_Stats.csv  
+│   ├── fastq_list.csv  
+│   ├── Index_Hopping_Counts.csv  
+│   ├── IndexMetricsOut.bin  
+│   ├── Quality_Metrics.csv  
+│   ├── RunInfo.xml  
+│   ├── SampleSheet.csv  
+│   └── Top_Unknown_Barcodes.csv  
+├── Undetermined_S0_L001_R1_001.fastq.gz  
+└── Undetermined_S0_L001_R2_001.fastq.gz  
+
+
+
+## Description des sorties de bcl-convert
+
+- Répertoire `logs` ==> contient les différents log
+	- `Errors.log` ==> log des erreurs qu'il y a eu lors l'execution
+	- `FastqComplete.txt` ==> Contient la version utilisé de bcl-convert et la date et l'heure de fin d'excution de bcl-convert
+	- `Info.log` ==> Contient les information sur l'execution de bcl-convert
+		- les réglages de la partie settings de la sample sheet
+		- les info sur la version de bcl-convert et les options désactivés, le copyright
+		- la ligne de commande lancé pour executer bcl-convert
+		- les information à propos des cpu utilisés (le nombre de cpu dispo sur le neud, le nombre de cpu utilisés, le nombre de cpu utilisé pour la décompression et la compression)
+		- indique si la converssion est complétée ou non  
+	- `Warnings.log` ==> contient tous les warrnings détecter lors de l'execution
+- Répertoire `Project_1` ==> contient les fastq du projet 1  (<span style="color: red">Attention ne trie pas par échantillons</span>)
+- Répertoire `Reports` ==> contient les fichiers de statistiques, des métriques et la liste des échantillons
+	- `Adapter_Metrics.csv` ==> contient les informations à propos des adaptateurs
+		- $1^{er}$ colonne {Lane} : numéro de la _Lane_ 
+		- $2^{éme}$ colonne {Sample_ID} : l'ID de l'échantillon 
+		- $3^{éme}$ colonne {index} : l'index 1 
+		- $4^{éme}$ colonne {index2} : l'index 2 
+		- $5^{éme}$ colonne {ReadNumber} : # du reads (forward ou reverse) 
+		- $6^{éme}$ colonne {AdapterBases} : # de base provenant des adapteurs 
+		- $7^{éme}$ colonne {SampleBases} : # de base provenant de l'échantillon 
+		- $8^{éme}$ colonne {% Adapter Bases} : % de bases provenant des adaptateurs 
+	- `Demultiplex_Stats.csv` ==> contient les informations à propos du demultiplexage
+		- $1^{er}$ colonne {Lane} : numéro de la _Lane_ 
+		- $2^{éme}$ colonne {SampleID} : l'ID de l'échantillon
+		- $3^{éme}$ colonne {Index} : la séquence de l'index
+		- $4^{éme}$ colonne {# Reads} : le nombre de reads de l'échatillon
+		- $5^{éme}$ colonne {# Perfect Index Reads} : le nombre de reads sans miss match
+		- $6^{éme}$ colonne {# One Mismatch Index Reads} :
+		- $7^{éme}$ colonne {# Two Mismatch Index Reads} :
+		- $8^{éme}$ colonne {% Reads} :
+		- $9^{éme}$ colonne {% Perfect Index Reads} :
+		- $10^{éme}$ colonne {% One Mismatch Index Reads} :
+		- $11^{éme}$ colonne {% Two Mismatch Index Reads} :
+		3,Sample_IND19_3,GTGAAA-,112436289,111210391,1225898,0,0.0342,0.9891,0.0109,0.0000
+	- `fastq_list.csv` ==> contient les informations des echantillons et de leurs reads
+		- $1^{er}$ colonne {RGID} : l'ID de l'index
+		- $2^{éme}$ colonne {RGSM} : l'ID de l'échantillon
+		- $3^{éme}$ colonne {RGLB} : nom ou type de librairie
+		- $4^{éme}$ colonne {Lane} : numéro de la _Lane_ 
+		- $5^{éme}$ colonne {Read1File} : path vers le fichier fastq du read 1 (forward) de l'échantillon
+		- $6^{éme}$ colonne {Read2File} : path vers le fichier fastq du read 2 (reverse) de l'échantillon
+	- `Index_Hopping_Counts.csv`
+	- `IndexMetricsOut.bin`
+	- `Quality_Metrics.csv`
+	- `RunInfo.xml`
+	- `SampleSheet.csv`
+	- `Top_Unknown_Barcodes.csv`
+- Les fichiers fastq des reads indétermnés
 

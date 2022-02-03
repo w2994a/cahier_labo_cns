@@ -2,7 +2,7 @@
 %================================== intro =====================================%
 \section{Introduction}
 \subsection{LBGB au sein du Genoscope et du CEA}
-Le Genoscope (CNS\footnote{Centre National de Séquençage}) a été créé en 1996 pour participer au projet mondial de séquençage du génome humain (\emph{Human Genome Project}) qui à débuté en 1990 et c'est terminé en 2003. Il a notament participé au séquençage du chromosome 14 humain. Le Genoscope participe également à développer des programmes de génomiques en France dans le cadre du projet France génomique. Aujourd'hui un des projets phare du Genoscope est le projet \textbf{Tara}, qui a pour objectifs l'étude des écosystèmes marins.
+Le Genoscope (CNS\footnote{Centre National de Séquençage}) a été créé en 1996 pour participer au projet mondial de séquençage du génome humain (\emph{Human Genome Project}) qui à débuté en 1990 et s'est terminé en 2003. Il a notament participé au séquençage du chromosome 14. Le Genoscope impliqué dans le développemant de programme de génomique en France dans le cadre du projet France génomique. Aujourd'hui un des projets phare du Genoscope est le projet \textbf{Tara}, qui a pour objectifs l'étude des écosystèmes marins.
 
 \begin{minipage}{0.40\textwidth}
 \begin{figure}[H]
@@ -14,14 +14,13 @@ Le Genoscope (CNS\footnote{Centre National de Séquençage}) a été créé en 1
 \end{minipage} 
 \hfill
 \begin{minipage}{0.5\textwidth}
-    Le Laboratoire de Bioinformatique pour la Génomique et la Biodiversité (\textbf{LBGB}) dirigé par Jean-Marc Aury, fait partie du Genoscope qui est une composante de l'institut François Jacob (Jacob) de la direction de la recherche fondamental (\textbf{DRF}) du Commissariat à l'Énergie Atomique et aux Énergies Alternatives (\textbf{CEA}), qui à été fondé le 18 octobre 1945 par Charles de Gaulle. L'intégration du genoscope au CEA a été réalisée en 2007, et en 2017 il devient une direction de l'institut François Jacob.
+    Le Laboratoire de Bioinformatique pour la Génomique et la Biodiversité (\textbf{LBGB}) dirigé par Jean-Marc Aury, fait partie du Genoscope qui est une composante de l'institut François Jacob (\textbf{IBFJ}) de la direction de la recherche fondamentale (\textbf{DRF}) du Commissariat à l'Énergie Atomique et aux Énergies Alternatives (\textbf{CEA}), qui a été fondé le 18 octobre 1945 par Charles de Gaulle. L'intégration du genoscope au CEA a été réalisée en 2007, et en 2017 il devient une composante de l'IBFJ.
 \end{minipage}
 
 \subsection{Contexte et missions du LBGB}
-Les missions qui sont confiées au LBGB sont de réaliser le contrôle qualité des données de séquences issues des différents séquenceurs, d'effectuer l'assemblage\footnote{Reconstruction d'un génome à partir fragment de ce dernier} des séquences et l'annotation\footnote{Documenter le plus exhaustivement possible les informations de l'assemblage permmettant de prédire la fonction d'une molécule} des génomes. Tout en permmettant la visualisation de chacune des missions (visualisation des annotations, de la qualité des reads\footnote{Lecture d'une séquence par un séquenceur d'ADN d'un fragments d'ADN.}, ect.). Il a également la mission de faire de la veille technologique d'outils et méthodes permettant de réaliser ses autres missions. 
-Le laboratoire est divisé en plusieurs groupes de travail. Le groupe \emph{production} (dont je fais parti), le groupe \emph{assemblage}, le groupe \emph{annotation} et le groupe \emph{évaluation des technologies de séquençage}.\\
+Les missions qui sont confiées au LBGB sont : réaliser le contrôle qualité des données de séquences issues des différents séquenceurs, d'effectuer l'assemblage\footnote{Reconstruction d'un génome à partir fragment de ce dernier} des séquences et l'annotation\footnote{Documenter le plus exhaustivement possible les informations de l'assemblage permmettant de prédire la fonction d'une molécule} des génomes, dans l'objectif de mettre à disposition des laboratoires collaborateurs les données avec un premiers niveau da valorisation. Le laboratoire est divisé en plusieurs groupes de travail. Le groupe \emph{production} (dont je fais parti), le groupe \emph{assemblage}, le groupe \emph{annotation} et le groupe \emph{évaluation des technologies de séquençage}.\\
 
-Les misssions du groupe de \emph{production} sont de développer, tester et maintenir les scripts dans l'objectif de répondre aux besoins des équipes de recherche et de séquençage en automatisant au maximum les processus. Notament dans la mise en place et au maintient de pipelines automatiques pour la génération des fichiers de séquences, le contrôle qualité et les analyses biologiques de ces derniers. Le groupe a également la mission de faire de la veille technologique et d'évaluer de nouveaux outils et méthodes pour chacune de ses autres missions.
+Les missions du groupe de \emph{production} sont de tester des logiciels tiers, de développer et maintenir des scripts utilisant ces logiciels pour gérer efficacement la prise en charge des données en sortie de séquençeur. Cette prise en charge peut répondre à une demande de la production, mais aussi d'autres laboratoires. L'objectif principale est la mise en place et le maintient de pipelines automatisant l'ensemble. Le groupe s'appuie sur un travail de vielle et d'évaluation technologique pour chacune de ses missions. 
 
 
 \subsection{Présentation du workflow NGS}
@@ -35,7 +34,7 @@ Les misssions du groupe de \emph{production} sont de développer, tester et main
 \end{minipage} 
 \hfill
 \begin{minipage}{0.45\textwidth}
-	Le workflow ngs est composé de trois pipelines pour la technologie Illumina. Le premier (ngs\_rg), permet la génération des reads. Le second (ngs\_qc), permet de réaliser le contrôle qualité. Le dernier (ngs\_ba), permet de faire les analyses biologiques. Ces trois pipelines sont automatisés dans le workflow et permmettent de réaliser la disribution des données de séquences par projet, de les trier par échantillons, runs et technologies de séquençage. Ils réalisent aussi le nettoyage, l'analyse de ces fichiers et mettent à jour la base de données de référence ngl.
+	Le workflow ngs\footnote{\emph{Next Generation Sequencing}} est composé de trois pipelines pour les technologies Illumina, Oxford Nanopore, PacBio. Le premier (ngs\_rg\footnote{\emph{Next Generation Sequencing - reads generation}}), permet la génération des reads\footnote{Lecture d'une séquence par un séquenceur d'un fragments d'ADN}. Le second (ngs\_qc\footnote{\emph{Next Generation Sequencing - quality control}}), permet de réaliser le contrôle qualité des fichiers de séquences. Le dernier (ngs\_ba\footnote{\emph{Next Generation Sequencing - biological analysis}}), permet de faire les analyses biologiques de lot de séquence\footnote{un lot de séquences est une instance de séquences (ou reads) d'un échantillon}. Ces trois pipelines sont automatisés dans le workflow et permmettent de réaliser la distribution des données de séquences par projet, de les trier par échantillons, runs\footnote{séquençage d'un ou plusieurs échantillons sur un séquenceur} et technologies de séquençage. Ils réalisent aussi le nettoyage, l'analyse de ces fichiers et mettent à jour la base de données de référence ngl\footnote{\emph{Next Generation LIMS (Laboratory Information Management System)}}.
 \end{minipage} 
 
 \subsection{La technologie MGI}
@@ -60,7 +59,7 @@ Le genoscope et le CNRGH\footnote{Centre National de Recherche en Génétique Hu
 \end{minipage} 
 \hfill
 \begin{minipage}{0.45\textwidth}
-    Il s'agit de séquenceurs à haut débit équavalent à un HiSeq 4000 (Illumina) pour le DNBSEQ-G400 et à un NovaSeq 6000 (Illumina) pour le DNBSEQ-T7. Les principales différences entre MGI et Illumina sont dans la création des librairies et dans la méthode d'amplification d'ADN. Les librairies sont double brins circualaire pour MGI, alors que pour Illumina elle est double brins linéaire. L'amplification ADN est réalisée en solution pour MGI puis déposée sur la Flowcell\footnote{Lame d'absorbtion des fragment d'ADN et cuve réacteur du séquençage}, alors que pour Illumina elle esr réalisée après immobilisation sur les Flowcell.
+    Il s'agit de séquenceurs à haut débit, dont les principales différences entre MGI et Illumina sont dans la création des librairies et la méthode d'amplification d'ADN. Les librairies sont double brins circulaire pour MGI, alors que pour Illumina elle est double brins linéaire. L'amplification ADN est réalisée en solution et forme des \emph{DNA-nanoballs}\footnote{nanobilles d'ADN générer par la réplication de l'ADN circulaire} pour MGI puis déposée sur la Flowcell\footnote{Lame d'absorbtion des fragment d'ADN et cuve réacteur du séquençage}, alors que pour Illumina elle esr réalisée après immobilisation sur les Flowcell.
 \end{minipage}
 
 \begin{table}[H]
@@ -71,7 +70,8 @@ Le genoscope et le CNRGH\footnote{Centre National de Recherche en Génétique Hu
     Max Number of Flow Cells & 2 & 4 & 2 & 2 \\\hline
     Max Lane/Flow Cell & 4 & 1 & 4 & 4 \\\hline
     Run Time & $\sim$ 14-37 h & $\sim$ 20-30 h & $\sim$ 24-84 h & $\sim$ 13-44 h \\\hline
-    Max Reads Per Run & 1.8 billion & 5 billion & 10 billion & 20 billion \\\hline
+    \textbf{Data ouput/Run} & 0.27-1.4 Tb & 1-6 Tb & 0.9-1.8 Tb & 1-6 Tb \\\hline
+    Max Reads/Run & 1.8 billions & 5 billions & 10 billions & 20 billions \\\hline
     Max Read Length & 2 $\times$ 200 bp & 2 $\times$ 150 bp & 2 $\times$ 150 bp & 2 $\times$ 250 bp \\\hline
 \end{tabular}
     \caption{Spécification des séquenceurs}
@@ -80,11 +80,11 @@ Le genoscope et le CNRGH\footnote{Centre National de Recherche en Génétique Hu
 
 %==============================================================================%
 %=============================== Objectifs ====================================%
-\section{Ojectifs}
-L'objectif principale de ma mission est la mise en place d'un workflow pour les séquenceurs de MGI. Plus précissément il s'agira de créer un pipeline de génération de reads (ngs\_rg\_mgi) et un pour le contrôle qualité (ngs\_qc\_mgi). Le workflow devra créer et mettre à jour l'état des run et des \emph{lanes} dans ngl, réaliser le démultiplexage\footnote{Séparation des différents reads d'une \emph{lane} en fonction de l'index d'échantillon} et faire un contrôle qualité des fastq à chaque étapes. De plus, il renommera les fichiers fastq et les déplacera dans le projet associé dans ngl. Il devra aussi déplacer les fichiers de statistques et les fichiers fastq correspondant aux index non attendus dans leurs répertoire dédiés dans ngl.
+\section{Objectifs}
+L'objectif principal de ma mission est la mise en place d'un workflow pour les séquenceurs de MGI. Plus précissément il s'agira de créer un pipeline de génération de reads (ngs\_rg\_mgi\footnote{\emph{Next Generation Sequencing - reads generation - mgi}) et un pour le contrôle qualité (ngs\_qc\_mgi\footnote{\emph{Next Generation Sequencing - quality control - mgi}). Le workflow devra créer et mettre à jour l'état des runs et des \emph{lanes}\footnote{pistes présentes sur la \emph{flow cell}} dans ngl, réaliser le contrôle qualité des fichiers de séquence, au format fastq, obtenu après démultiplexage\footnote{Séparation des différents \emph{reads} d'une \emph{lane} en fonction de l'index d'échantillon} des runs. Il devra mettre à jour l'avancement du traitement d'un run dans ngl, en y indiquant les statistiques obtenu lors du démultiplexage, les résultats des contrôles qualités, etc. Puisque l'objectif est d'obtenir un premier niveau de valorisation des fichier de séquences, permettant aux autres groupes (\emph{assemblage}, \emph{anotation}) de prendre en charge ses fichier avant de les mettrent à disposition des laboratoires collaborateurs.
 
-Les autres objectifs de ma mission sont de réaliser des évaluations de nouveaux outils pour les différents pipelines mis en place pour les différentes technologies de séquençage. Tel que l'évaluation d'outils de génération de fichier fastq et de démultiplexage en vu du remplacement de bcl2fastq par bcl-convert.
-Ainsi que de maintenir les pipelines des différentes technologies en ajoutant, remplaçant certains outils suite à une évaluation de ces derniers ; notament pour le workflow d'Illumina et celui de MGI une fois ce dernier créé.
+
+Je devrais également, rechercher et réaliser des évaluations de nouveaux outils pour les différents pipelines des différentes technologies de séquençage. En vue d'un potentiel ajout d'outils ou de remplacement d'outils. Il sera donc necessaire de maintenir les pipelines des différentes technologies de séquençage en conséquence.
 
 
 %==============================================================================%
