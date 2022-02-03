@@ -51,7 +51,26 @@
 
 \gantttitlecalendar{year, month=name}\\
 
-% 1er goupe ======================================================%
+
+
+% 1er groupe =====================================================%
+\ganttgroup[
+    group left shift=0,
+    group right shift=0,
+    group label font=\color{gray},
+]{\Large{\textbf{bcl2fastq vs bcl-convert}}~~~~~~~~}{2022-01-01}{2022-03-01}\\
+
+\ganttbar[
+    name=T1A,
+    bar label font=\normalsize\color{barblue},
+]{Benchmark bcl2fastq vs bcl-convert}{2022-01-01}{2022-01-29}\\
+
+\ganttlinkedbar[
+    bar label font=\normalsize\color{barblue},
+    name=pp
+   ]{rédaction cahier des charges}{2022-02-03}{2022-03-14} \\
+
+% 2ème groupe ======================================================%
 \ganttgroup[
     group left shift=0,
     group right shift=0,
@@ -87,22 +106,7 @@
 \ganttlink[link mid=.4]{P1-T2.1}{P1-T3}
 
 
-% 2eme groupe =====================================================%
-\ganttgroup[
-    group left shift=0,
-    group right shift=0,
-    group label font=\color{gray},
-]{\Large{\textbf{bcl2fastq vs bcl-convert}}~~~~~~~~}{2022-01-01}{2022-03-01}\\
 
-\ganttbar[
-    name=T1A,
-    bar label font=\normalsize\color{barblue},
-]{Benchmark bcl2fastq vs bcl-convert}{2022-01-01}{2022-01-29}\\
-
-\ganttlinkedbar[
-    bar label font=\normalsize\color{barblue},
-    name=pp
-   ]{rédaction cahier des charges}{2022-02-03}{2022-03-14} \\
 
 
 % 3eme groupe ======================================================%
