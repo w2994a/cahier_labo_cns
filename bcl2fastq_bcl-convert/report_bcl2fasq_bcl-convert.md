@@ -323,7 +323,11 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 
 
 ## Différences d'arborescence entre bcl2fastq et bcl-convert
-### exemple d'arborescence de bcl2fastq
+### Commande pour lancé bcl2fastq
+
+jobify -c <span style="color: #47a3f5"><nombre de cœur (8, 12 ou 16)></span> -p <span style="color: #47a3f5"><partition (production)></span> -t <span style="color: #47a3f5"><D:HH:MM:SS></span> -b -w <span style="color: #47a3f5"><noeud (pas obligatoire)></span> 'bcl2fastq --input-dir <span style="color: #47a3f5"><path du répertoire du run contenant les Bases Calling></span> --min-log-level WARNING --barcode-mismatches <span style="color: #47a3f5"><nombre de missmatch autorisé></span> --sample-sheet <span style="color: #47a3f5"><path de la sample sheet></span> --runfolder-dir <span style="color: #47a3f5"><path du répertoire du run></span> --output-dir <span style="color: #47a3f5"><répertoire de sortie du démultiplexage (le créé s'il n'existe pas)></span> -r <span style="color: #47a3f5"><nombre de threads pour la décompression/lecture></span> -p <nombre de threads pour la convertion> -w <span style="color: #47a3f5"><nombre de threads pour l'écriture/compression></span> --use-bases-mask <span style="color: #47a3f5"><mask à utilisé pour les index (Y*,I12,Y*)></span>' &
+
+### Exemple d'arborescence de bcl2fastq
 
 bcl2fastq  
 ├── Project_1  
@@ -434,6 +438,8 @@ bcl2fastq
 ├── Undetermined_S0_L001_R1_001.fastq.gz  
 └── Undetermined_S0_L001_R2_001.fastq.gz  
 
+### Commande de bcl-convert
+jobify -c <span style="color: #47a3f5"><nombre de cœur (8, 12 ou 16)></span> -p <span style="color: #47a3f5"><partition (production)></span> -t <span style="color: #47a3f5"><D:HH:MM:SS></span> -b -w <span style="color: #47a3f5"><noeud (pas obligatoire)></span> 'bcl-convert --bcl-input-directory <span style="color: #47a3f5"><path du répertoire du run></span> --output-directory <span style="color: #47a3f5"><path du répertoire de sortie du démultiplexage (ne doit pas déja existé sinon kill l'execution)></span> --sample-sheet  <span style="color: #47a3f5"><path de la sample sheet (obligatoire)></span> --bcl-sampleproject-subdirectories true --bcl-num-parallel-tiles 1 --bcl-num-compression-threads <span style="color: #47a3f5"><nombre de threads pour la décompression/lecture></span> --bcl-num-conversion-threads <span style="color: #47a3f5"><nombre de threads pour la convertion></span> --bcl-num-decompression-threads <span style="color: #47a3f5"><nombre de threads pour l'écriture/compression></span>' &
 
 ### exemple d'arborescence de bcl-convert
 
@@ -487,38 +493,60 @@ bcl-convert
 - Répertoire `Reports` ==> contient les fichiers de statistiques, des métriques et la liste des échantillons
 	- `Adapter_Metrics.csv` ==> contient les informations à propos des adaptateurs
 		- $1^{er}$ colonne {Lane} : numéro de la _Lane_ 
-		- $2^{éme}$ colonne {Sample_ID} : l'ID de l'échantillon 
-		- $3^{éme}$ colonne {index} : l'index 1 
-		- $4^{éme}$ colonne {index2} : l'index 2 
-		- $5^{éme}$ colonne {ReadNumber} : # du reads (forward ou reverse) 
-		- $6^{éme}$ colonne {AdapterBases} : # de base provenant des adapteurs 
-		- $7^{éme}$ colonne {SampleBases} : # de base provenant de l'échantillon 
-		- $8^{éme}$ colonne {% Adapter Bases} : % de bases provenant des adaptateurs 
+		- $2^{éme}$ colonne {Sample_ID} : ID de l'échantillon 
+		- $3^{éme}$ colonne {index} : index 1 
+		- $4^{éme}$ colonne {index2} : index 2 
+		- $5^{éme}$ colonne {ReadNumber} : numéro du read 1 ou 2 (forward ou reverse) 
+		- $6^{éme}$ colonne {AdapterBases} : nombre de base provenant des adapteurs 
+		- $7^{éme}$ colonne {SampleBases} : nombre de base provenant de l'échantillon 
+		- $8^{éme}$ colonne {% Adapter Bases} : pourcentage de bases provenant des adaptateurs 
 	- `Demultiplex_Stats.csv` ==> contient les informations à propos du demultiplexage
 		- $1^{er}$ colonne {Lane} : numéro de la _Lane_ 
-		- $2^{éme}$ colonne {SampleID} : l'ID de l'échantillon
-		- $3^{éme}$ colonne {Index} : la séquence de l'index
-		- $4^{éme}$ colonne {# Reads} : le nombre de reads de l'échatillon
-		- $5^{éme}$ colonne {# Perfect Index Reads} : le nombre de reads sans miss match
-		- $6^{éme}$ colonne {# One Mismatch Index Reads} :
-		- $7^{éme}$ colonne {# Two Mismatch Index Reads} :
-		- $8^{éme}$ colonne {% Reads} :
-		- $9^{éme}$ colonne {% Perfect Index Reads} :
-		- $10^{éme}$ colonne {% One Mismatch Index Reads} :
-		- $11^{éme}$ colonne {% Two Mismatch Index Reads} :
-		3,Sample_IND19_3,GTGAAA-,112436289,111210391,1225898,0,0.0342,0.9891,0.0109,0.0000
+		- $2^{éme}$ colonne {SampleID} : ID de l'échantillon
+		- $3^{éme}$ colonne {Index} : séquence de l'index
+		- $4^{éme}$ colonne {# Reads} : nombre de reads de l'échantillon
+		- $5^{éme}$ colonne {# Perfect Index Reads} : nombre de reads sans miss match
+		- $6^{éme}$ colonne {# One Mismatch Index Reads} : nombre de reads avec un missmatch
+		- $7^{éme}$ colonne {# Two Mismatch Index Reads} : nombre de reads avec deux missmatch
+		- $8^{éme}$ colonne {% Reads} : pourcentage de reads appartenant à cette échantillon
+		- $9^{éme}$ colonne {% Perfect Index Reads} : pourcentage de reads sans missmatch
+		- $10^{éme}$ colonne {% One Mismatch Index Reads} : pourcentage de reads avec un missmatch
+		- $11^{éme}$ colonne {% Two Mismatch Index Reads} : pourcentage de reads avec deux missmatch
 	- `fastq_list.csv` ==> contient les informations des echantillons et de leurs reads
-		- $1^{er}$ colonne {RGID} : l'ID de l'index
-		- $2^{éme}$ colonne {RGSM} : l'ID de l'échantillon
-		- $3^{éme}$ colonne {RGLB} : nom ou type de librairie
+		- $1^{er}$ colonne {RGID} : ID de l'index
+		- $2^{éme}$ colonne {RGSM} : ID de l'échantillon
+		- $3^{éme}$ colonne {RGLB} : librairie inconnue
 		- $4^{éme}$ colonne {Lane} : numéro de la _Lane_ 
 		- $5^{éme}$ colonne {Read1File} : path vers le fichier fastq du read 1 (forward) de l'échantillon
 		- $6^{éme}$ colonne {Read2File} : path vers le fichier fastq du read 2 (reverse) de l'échantillon
-	- `Index_Hopping_Counts.csv`
-	- `IndexMetricsOut.bin`
-	- `Quality_Metrics.csv`
-	- `RunInfo.xml`
-	- `SampleSheet.csv`
+	- `Index_Hopping_Counts.csv` ==> contient les index hopping "saut d'index" (index fixé au mauvais échantillon). Si l'execution contient aucun ou un seul index, le fichier n'est édité qu'avec l'en-tête.
+		- $1^{er}$ colonne {Lane} :numéro de la _Lane_
+		- $2^{éme}$ colonne {Sample_ID} : ID de l'échantillon
+		- $3^{éme}$ colonne {index} : index 1
+		- $4^{éme}$ colonne {index2} : index 2
+		- $5^{éme}$ colonne {# Reads} : nombre de reads de l'échantillon
+		- $6^{éme}$ colonne {% of Hopped Reads} : pourcentage de reads qui on un "saut d'index"
+		- $7^{éme}$ colonne {% of All Reads} : pourcentage total de reads
+	- `IndexMetricsOut.bin` ==> fichier de sortie des métriques d'index au format binaire qui contient les statistiques d'index pour chaque combinaison d'échantillons et d'index par _lane_.
+	- `Quality_Metrics.csv`==> fichier regroupant les métriques de qualité de chaque échantillons
+		- $1^{er}$ colonne {Lane} : numéro de la _Lane_ 
+		- $2^{éme}$ colonne {SampleID} : ID de l'échantillon
+		- $3^{éme}$ colonne {index} : index 1
+		- $4^{éme}$ colonne {index2} : index 2
+		- $5^{éme}$ colonne {ReadNumber} : numéro du read 1 ou 2 (forward ou reverse) 
+		- $6^{éme}$ colonne {Yield} : rendement (nombre de read de cette échantillon) 
+		- $7^{éme}$ colonne {YieldQ30} : rendement supérieur ou égale à une qualité de Q30 (nombre de read de cette échantillon >= Q30) 
+		- $8^{éme}$ colonne {QualityScoreSum} : somme de la qualité moyenne de chaque reads
+		- $9^{éme}$ colonne {Mean Quality Score (PF)} : moyenne de la qualité des reads de l'échantillon
+		- $10^{éme}$ colonne {% Q30} : pourcentage de reads yant une qualité >= à Q30
+	- `RunInfo.xml` ==> copie du RunInfo.xml utilisé par bcl-convert
+	- `SampleSheet.csv` ==> copie de la smple sheet utilisé par bcl-convert
 	- `Top_Unknown_Barcodes.csv`
+		- $1^{er}$ colonne {Lane} : numéro de la _Lane_ 
+		- $2^{éme}$ colonne {index} : index 1
+		- $3^{éme}$ colonne {index2} : index 2
+		- $4^{éme}$ colonne {# Reads} : nombre de reads
+		- $5^{éme}$ colonne {% of Unknown Barcodes} : pourcentage de barcodes inconnu pour c'est index
+		- $6^{éme}$ colonne {% of All Reads} : pourcentage des reads dont le barcodes est inconnus pour ces index.  
 - Les fichiers fastq des reads indétermnés
 
