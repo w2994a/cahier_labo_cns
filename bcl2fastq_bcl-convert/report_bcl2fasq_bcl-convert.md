@@ -37,6 +37,12 @@
 	* 8.2. [Comparaison du tems cpu](#Comparaisondutemscpu)
 	* 8.3. [Comparaison du pourcentage d'utilisation des cpu](#Comparaisondupourcentagedutilisationdescpu)
 	* 8.4. [Tableau comparatif entre bcl2fastq et bcl-convert](#Tableaucomparatifentrebcl2fastqetbcl-convert)
+* 9. [Différences d'arborescence entre bcl2fastq et bcl-convert](#Diffrencesdarborescenceentrebcl2fastqetbcl-convert)
+	* 9.1. [Commande pour lancé bcl2fastq](#Commandepourlancbcl2fastq)
+	* 9.2. [Exemple d'arborescence de bcl2fastq](#Exempledarborescencedebcl2fastq)
+	* 9.3. [Commande de bcl-convert](#Commandedebcl-convert)
+	* 9.4. [exemple d'arborescence de bcl-convert](#exempledarborescencedebcl-convert)
+* 10. [Description des sorties de bcl-convert](#Descriptiondessortiesdebcl-convert)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -322,12 +328,12 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 |r16 p16 w16 #coeurs 16|7.07|5.18|96.29|51.56|84.90|61.78|
 
 
-## Différences d'arborescence entre bcl2fastq et bcl-convert
-### Commande pour lancé bcl2fastq
+##  9. <a name='Diffrencesdarborescenceentrebcl2fastqetbcl-convert'></a>Différences d'arborescence entre bcl2fastq et bcl-convert
+###  9.1. <a name='Commandepourlancbcl2fastq'></a>Commande pour lancé bcl2fastq
 
 jobify -c <span style="color: #47a3f5"><nombre de cœur (8, 12 ou 16)></span> -p <span style="color: #47a3f5"><partition (production)></span> -t <span style="color: #47a3f5"><D:HH:MM:SS></span> -b -w <span style="color: #47a3f5"><noeud (pas obligatoire)></span> 'bcl2fastq --input-dir <span style="color: #47a3f5"><path du répertoire du run contenant les Bases Calling></span> --min-log-level WARNING --barcode-mismatches <span style="color: #47a3f5"><nombre de missmatch autorisé></span> --sample-sheet <span style="color: #47a3f5"><path de la sample sheet></span> --runfolder-dir <span style="color: #47a3f5"><path du répertoire du run></span> --output-dir <span style="color: #47a3f5"><répertoire de sortie du démultiplexage (le créé s'il n'existe pas)></span> -r <span style="color: #47a3f5"><nombre de threads pour la décompression/lecture></span> -p <nombre de threads pour la convertion> -w <span style="color: #47a3f5"><nombre de threads pour l'écriture/compression></span> --use-bases-mask <span style="color: #47a3f5"><mask à utilisé pour les index (Y*,I12,Y*)></span>' &
 
-### Exemple d'arborescence de bcl2fastq
+###  9.2. <a name='Exempledarborescencedebcl2fastq'></a>Exemple d'arborescence de bcl2fastq
 
 bcl2fastq  
 ├── Project_1  
@@ -438,10 +444,10 @@ bcl2fastq
 ├── Undetermined_S0_L001_R1_001.fastq.gz  
 └── Undetermined_S0_L001_R2_001.fastq.gz  
 
-### Commande de bcl-convert
+###  9.3. <a name='Commandedebcl-convert'></a>Commande de bcl-convert
 jobify -c <span style="color: #47a3f5"><nombre de cœur (8, 12 ou 16)></span> -p <span style="color: #47a3f5"><partition (production)></span> -t <span style="color: #47a3f5"><D:HH:MM:SS></span> -b -w <span style="color: #47a3f5"><noeud (pas obligatoire)></span> 'bcl-convert --bcl-input-directory <span style="color: #47a3f5"><path du répertoire du run></span> --output-directory <span style="color: #47a3f5"><path du répertoire de sortie du démultiplexage (ne doit pas déja existé sinon kill l'execution)></span> --sample-sheet  <span style="color: #47a3f5"><path de la sample sheet (obligatoire)></span> --bcl-sampleproject-subdirectories true --bcl-num-parallel-tiles 1 --bcl-num-compression-threads <span style="color: #47a3f5"><nombre de threads pour la décompression/lecture></span> --bcl-num-conversion-threads <span style="color: #47a3f5"><nombre de threads pour la convertion></span> --bcl-num-decompression-threads <span style="color: #47a3f5"><nombre de threads pour l'écriture/compression></span>' &
 
-### exemple d'arborescence de bcl-convert
+###  9.4. <a name='exempledarborescencedebcl-convert'></a>exemple d'arborescence de bcl-convert
 
 bcl-convert  
 ├── Logs  
@@ -477,7 +483,7 @@ bcl-convert
 
 
 
-## Description des sorties de bcl-convert
+##  10. <a name='Descriptiondessortiesdebcl-convert'></a>Description des sorties de bcl-convert
 
 - Répertoire `logs` ==> contient les différents log
 	- `Errors.log` ==> log des erreurs qu'il y a eu lors l'execution
