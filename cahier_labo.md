@@ -3,7 +3,8 @@
 <!-- vscode-markdown-toc -->
 * 1. [Semaine du 9/09/2021 au 22/10/2021](#Semainedu9092021au22102021)
 * 2. [Semaine du 28/10/2021 au 23/12/2021](#Semainedu28102021au23122021)
-* 3. [Semaine du 20/01/2022 au ??/??/2022](#Semainedu20012022au2022)
+* 3. [Semaine du 20/01/2022 au 04/02/2022](#Semainedu20012022au04022022)
+* 4. [Semaine du 07/02/2022 au ??/??/2022](#Semainedu07022022au2022)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -40,7 +41,14 @@ Lecture de la doc cd bcl-convert, ayant pour objectif de déterminer les différ
 	- cf. rapport du benchmark entre bcl2fastq et bcl-convert.
 	- Les sorties de bcl-convert sont différentes dde bcl2fastq et il est impossible de reproduire la même arborescence obtenu avec bcl2fastq. Il faut donc soit adapter les workflow qui utilisaient ces sorties ou bien créer un worflow qui ce chargera de créer la même arborescence de bcl2fastq. Néaimoins si la seconde méthodes est priviligier il y aura quand des adaptation à faire car le format des fichier de sortie (notament ceux des stats) sont différents.
 
-##  3. <a name='Semainedu20012022au2022'></a>Semaine du 20/01/2022 au ??/??/2022
+##  3. <a name='Semainedu20012022au04022022'></a>Semaine du 20/01/2022 au 04/02/2022
 
 1. Préparation du diapo et de la soutenance pour le 24/01/2022 (20 et 21/01/2022)
 1. Rédaction du rapport de 5 pages pour le 03/02/2022.
+
+##  4. <a name='Semainedu07022022au2022'></a>Semaine du 07/02/2022 au ??/??/2022
+
+1. Test de bcl-convert avec d'autres paramètres + en utilisant l'option du nombre de tâches effecturer en parallèle
+1. préparation de la présentation des tests et des changement à effectuer entre bcl2fastq et bcl-convert à l'équipe (présentation au groupe _production_ prévue pour la semaine du 21/02/2022)
+1. Création du ticket JIRA pour le changement de bcl2fastq vers bcl-convert
+1. Tableaux et graphiques de comparaison des nouveux tests effectuer sur bcl-convert
