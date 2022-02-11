@@ -327,6 +327,21 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 |r12 p12 w12 #coeurs 12|8.58|5.83|98.65|56.91|95.75|81.00|
 |r16 p16 w16 #coeurs 16|7.07|5.18|96.29|51.56|84.90|61.78|
 
+## Comparaison des performance en utilisant le paramètre du nombre de tâches en paralèlles
+
+### Tableau
+
+### Graphiques
+#### p = w = r = nb de coeurs
+![](img/barplot_cum_bcl-convert.png "")
+
+### P = nb de coeurs et r = w = 4
+![](img/barplot_cum_bcl-convert2.png "")
+
+### utilisation du nombre de tâches à effectuer en paralèlles
+![](img/?? ""  )
+
+
 
 ##  9. <a name='Diffrencesdarborescenceentrebcl2fastqetbcl-convert'></a>Différences d'arborescence entre bcl2fastq et bcl-convert
 ###  9.1. <a name='Commandepourlancbcl2fastq'></a>Commande pour lancé bcl2fastq
