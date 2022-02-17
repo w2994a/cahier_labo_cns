@@ -339,7 +339,7 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ![](img/barplot_cum_bcl-convert2.png "")
 
 ### utilisation du nombre de tâches à effectuer en paralèlles
-![](img/?? ""  )
+![](img/barplot_cum_bcl-convert2_tasks.png ""  )
 
 
 
@@ -569,5 +569,5 @@ bcl-convert
 		- $4^{éme}$ colonne {# Reads} : nombre de reads
 		- $5^{éme}$ colonne {% of Unknown Barcodes} : pourcentage de barcodes inconnu pour c'est index
 		- $6^{éme}$ colonne {% of All Reads} : pourcentage des reads dont le barcodes est inconnus pour ces index.  
-- Les fichiers fastq des reads indétermnés
+- Les fichiers fastq des reads indéterminés
 
