@@ -336,7 +336,6 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ##  9. <a name='Comparaisondesperformanceenutilisantleparamtredunombredetchesenparallles'></a>Comparaison des performance en utilisant le paramètre du nombre de tâches en paralèlles
 
 ###  9.1. <a name='Tableau'></a>Tableau
-
 |type run|param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
 |---|---|---|---|---|---|
 |JARVIS|c8 p8 r4 w4 t1|04:25:03 + 04:22:35|86084.99 + 82980.53|67.63 + 65.75|23.933228 + 15.670624|
@@ -365,8 +364,16 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ####  9.2.2. <a name='Pnbdecoeursetrw4'></a>P = nb de coeurs et r = w = 4
 ![](img/barplot_cum_bcl-convert2.png "")
 
-###  9.3. <a name='utilisationdunombredetcheseffectuerenparallles'></a>utilisation du nombre de tâches à effectuer en paralèlles
+####  9.3. <a name='utilisationdunombredetcheseffectuerenparallles'></a>utilisation du nombre de tâches à effectuer en paralèlles
 ![](img/barplot_cum_bcl-convert2_tasks.png ""  )
+
+### bcl-convert lancé sur prod
+#### Tableau
+|param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
+|---|---|---|---|---|
+|c16 no params|02:29:24 + 02:36:24|110117.3 + 109588.75|76.75 + 72.94|33.110112 + 28020204|
+|c12 p12 r12 w12 t1 (que sur 8-8)|02:50:25|104738.44|85.33|16.513288|
+|c16 p10 r3 w3 t1 (que sur 8-8)|en cours|
 
 
 
