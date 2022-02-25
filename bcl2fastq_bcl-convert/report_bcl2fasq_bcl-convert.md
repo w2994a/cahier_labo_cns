@@ -37,12 +37,18 @@
 	* 8.2. [Comparaison du tems cpu](#Comparaisondutemscpu)
 	* 8.3. [Comparaison du pourcentage d'utilisation des cpu](#Comparaisondupourcentagedutilisationdescpu)
 	* 8.4. [Tableau comparatif entre bcl2fastq et bcl-convert](#Tableaucomparatifentrebcl2fastqetbcl-convert)
-* 9. [Différences d'arborescence entre bcl2fastq et bcl-convert](#Diffrencesdarborescenceentrebcl2fastqetbcl-convert)
-	* 9.1. [Commande pour lancé bcl2fastq](#Commandepourlancbcl2fastq)
-	* 9.2. [Exemple d'arborescence de bcl2fastq](#Exempledarborescencedebcl2fastq)
-	* 9.3. [Commande de bcl-convert](#Commandedebcl-convert)
-	* 9.4. [exemple d'arborescence de bcl-convert](#exempledarborescencedebcl-convert)
-* 10. [Description des sorties de bcl-convert](#Descriptiondessortiesdebcl-convert)
+* 9. [Comparaison des performance en utilisant le paramètre du nombre de tâches en paralèlles](#Comparaisondesperformanceenutilisantleparamtredunombredetchesenparallles)
+	* 9.1. [Tableau](#Tableau)
+	* 9.2. [Graphiques](#Graphiques)
+		* 9.2.1. [p = w = r = nb de coeurs](#pwrnbdecoeurs)
+		* 9.2.2. [P = nb de coeurs et r = w = 4](#Pnbdecoeursetrw4)
+	* 9.3. [utilisation du nombre de tâches à effectuer en paralèlles](#utilisationdunombredetcheseffectuerenparallles)
+* 10. [Différences d'arborescence entre bcl2fastq et bcl-convert](#Diffrencesdarborescenceentrebcl2fastqetbcl-convert)
+	* 10.1. [Commande pour lancé bcl2fastq](#Commandepourlancbcl2fastq)
+	* 10.2. [Exemple d'arborescence de bcl2fastq](#Exempledarborescencedebcl2fastq)
+	* 10.3. [Commande de bcl-convert](#Commandedebcl-convert)
+	* 10.4. [exemple d'arborescence de bcl-convert](#exempledarborescencedebcl-convert)
+* 11. [Description des sorties de bcl-convert](#Descriptiondessortiesdebcl-convert)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -327,28 +333,28 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 |r12 p12 w12 #coeurs 12|8.58|5.83|98.65|56.91|95.75|81.00|
 |r16 p16 w16 #coeurs 16|7.07|5.18|96.29|51.56|84.90|61.78|
 
-## Comparaison des performance en utilisant le paramètre du nombre de tâches en paralèlles
+##  9. <a name='Comparaisondesperformanceenutilisantleparamtredunombredetchesenparallles'></a>Comparaison des performance en utilisant le paramètre du nombre de tâches en paralèlles
 
-### Tableau
+###  9.1. <a name='Tableau'></a>Tableau
 
-### Graphiques
-#### p = w = r = nb de coeurs
+###  9.2. <a name='Graphiques'></a>Graphiques
+####  9.2.1. <a name='pwrnbdecoeurs'></a>p = w = r = nb de coeurs
 ![](img/barplot_cum_bcl-convert.png "")
 
-### P = nb de coeurs et r = w = 4
+####  9.2.2. <a name='Pnbdecoeursetrw4'></a>P = nb de coeurs et r = w = 4
 ![](img/barplot_cum_bcl-convert2.png "")
 
-### utilisation du nombre de tâches à effectuer en paralèlles
+###  9.3. <a name='utilisationdunombredetcheseffectuerenparallles'></a>utilisation du nombre de tâches à effectuer en paralèlles
 ![](img/barplot_cum_bcl-convert2_tasks.png ""  )
 
 
 
-##  9. <a name='Diffrencesdarborescenceentrebcl2fastqetbcl-convert'></a>Différences d'arborescence entre bcl2fastq et bcl-convert
-###  9.1. <a name='Commandepourlancbcl2fastq'></a>Commande pour lancé bcl2fastq
+##  10. <a name='Diffrencesdarborescenceentrebcl2fastqetbcl-convert'></a>Différences d'arborescence entre bcl2fastq et bcl-convert
+###  10.1. <a name='Commandepourlancbcl2fastq'></a>Commande pour lancé bcl2fastq
 
 jobify -c <span style="color: #47a3f5"><nombre de cœur (8, 12 ou 16)></span> -p <span style="color: #47a3f5"><partition (production)></span> -t <span style="color: #47a3f5"><D:HH:MM:SS></span> -b -w <span style="color: #47a3f5"><noeud (pas obligatoire)></span> 'bcl2fastq --input-dir <span style="color: #47a3f5"><path du répertoire du run contenant les Bases Calling></span> --min-log-level WARNING --barcode-mismatches <span style="color: #47a3f5"><nombre de missmatch autorisé></span> --sample-sheet <span style="color: #47a3f5"><path de la sample sheet></span> --runfolder-dir <span style="color: #47a3f5"><path du répertoire du run></span> --output-dir <span style="color: #47a3f5"><répertoire de sortie du démultiplexage (le créé s'il n'existe pas)></span> -r <span style="color: #47a3f5"><nombre de threads pour la décompression/lecture></span> -p <nombre de threads pour la convertion> -w <span style="color: #47a3f5"><nombre de threads pour l'écriture/compression></span> --use-bases-mask <span style="color: #47a3f5"><mask à utilisé pour les index (Y*,I12,Y*)></span>' &
 
-###  9.2. <a name='Exempledarborescencedebcl2fastq'></a>Exemple d'arborescence de bcl2fastq
+###  10.2. <a name='Exempledarborescencedebcl2fastq'></a>Exemple d'arborescence de bcl2fastq
 
 bcl2fastq  
 ├── Project_1  
@@ -459,10 +465,10 @@ bcl2fastq
 ├── Undetermined_S0_L001_R1_001.fastq.gz  
 └── Undetermined_S0_L001_R2_001.fastq.gz  
 
-###  9.3. <a name='Commandedebcl-convert'></a>Commande de bcl-convert
+###  10.3. <a name='Commandedebcl-convert'></a>Commande de bcl-convert
 jobify -c <span style="color: #47a3f5"><nombre de cœur (8, 12 ou 16)></span> -p <span style="color: #47a3f5"><partition (production)></span> -t <span style="color: #47a3f5"><D:HH:MM:SS></span> -b -w <span style="color: #47a3f5"><noeud (pas obligatoire)></span> 'bcl-convert --bcl-input-directory <span style="color: #47a3f5"><path du répertoire du run></span> --output-directory <span style="color: #47a3f5"><path du répertoire de sortie du démultiplexage (ne doit pas déja existé sinon kill l'execution)></span> --sample-sheet  <span style="color: #47a3f5"><path de la sample sheet (obligatoire)></span> --bcl-sampleproject-subdirectories true --bcl-num-parallel-tiles 1 --bcl-num-compression-threads <span style="color: #47a3f5"><nombre de threads pour la décompression/lecture></span> --bcl-num-conversion-threads <span style="color: #47a3f5"><nombre de threads pour la convertion></span> --bcl-num-decompression-threads <span style="color: #47a3f5"><nombre de threads pour l'écriture/compression></span>' &
 
-###  9.4. <a name='exempledarborescencedebcl-convert'></a>exemple d'arborescence de bcl-convert
+###  10.4. <a name='exempledarborescencedebcl-convert'></a>exemple d'arborescence de bcl-convert
 
 bcl-convert  
 ├── Logs  
@@ -498,7 +504,7 @@ bcl-convert
 
 
 
-##  10. <a name='Descriptiondessortiesdebcl-convert'></a>Description des sorties de bcl-convert
+##  11. <a name='Descriptiondessortiesdebcl-convert'></a>Description des sorties de bcl-convert
 
 - Répertoire `logs` ==> contient les différents log
 	- `Errors.log` ==> log des erreurs qu'il y a eu lors l'execution
