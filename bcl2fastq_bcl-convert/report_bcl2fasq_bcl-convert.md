@@ -337,6 +337,27 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 
 ###  9.1. <a name='Tableau'></a>Tableau
 
+|type run|param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
+|---|---|---|---|---|---|
+|JARVIS|c8 p8 r4 w4 t1|04:25:03 + 04:22:35|86084.99 + 82980.53|67.63 + 65.75|23.933228 + 15.670624|
+|JARVIS|c12 p12 r4 w4 t1|04:18:56 + 04:37:15|86994.43 + 94440.35|46.58 + 47.25|21.266720 + 15.072964 |
+|JARVIS|c16 p16 r4 w4 t1|04:15:57 + 04:14:07|87586.30 + 85394.20|35.63 + 35.00|18.884748 + 15.479748|
+|JARVIS|c16 p8 r4 w4 t2|04:13:33 + 04:04:22|97273.08 + 94120.37|39.94 + 40.06|32.821016 + 20.821300|
+|JARVIS|c16 p8 r8 w8 t2|02:36:00 + 02:31:28|85626.33 + 86572.85|57.13 + 59.50|19.449732 + 31.199964|
+|JARVIS|c8 p4 r4 w4 t2|04:10:13 + 04:04:37|86673.48 + 84256.27|72.13 + 71.75|33.038984 + 23.701368|
+|JARVIS|c12 p4 r4 w4 t3|04:18:58 + 04:08:39|99684.36 + 95528.38|53.42 + 53.33|45.420504 + 30.568516|
+|JARVIS|c8 p8 r8 w8 t2|err|err|err|err|
+|JARVIS|c8 p8 r8 w8 t3|08:51:33 + 03:12:17|86667.2 + 80765.37|33.88 + 87.5|36.365148 + 20.891836|
+|JARVIS|c8 p8 r8 w8 t4|err|err|err|err|
+|JARVIS|c12 p6 r6 w6 t2|err|err|err|err|
+|JARVIS|c12 p6 r6 w6 t3|08:38:18 + 08:36:37|87169.64 + 84253.28|23.33 + 22.58|32.774200 + 18.149312|
+|JARVIS|c12 p6 r6 w6 t4|08:36:30 + 08:35:04|87149.26 + 84272.81|23.42 + 22.67|37.760016 + 18.785000|
+|JARVIS|c12 p12 r12 w12 t2|err|err|err|err|
+|JARVIS|c16 p8 r8 w8 t3|err|err|err|err|
+|JARVIS|c16 p8 r8 w8 t4|err|err|err|err|
+|JARVIS|c16 p8 r8 w8 tnone|err|err|err|err|
+|JARVIS|c16 no params|04:04:58 + 04:05:24|86967.56 + 85309.46|36.94 + 36.19|31.690768 + 18.556820|
+
 ###  9.2. <a name='Graphiques'></a>Graphiques
 ####  9.2.1. <a name='pwrnbdecoeurs'></a>p = w = r = nb de coeurs
 ![](img/barplot_cum_bcl-convert.png "")
