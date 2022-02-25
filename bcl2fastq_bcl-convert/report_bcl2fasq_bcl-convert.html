@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>report_bcl2fasq_bcl-convert.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="span-style%22font-familycomic-sans-ms%22benchmark-entre-bcl2fastq-et-bcl-convert-span"><span style="font-family:Comic Sans MS">Benchmark entre bcl2fastq et bcl-convert </span></h1>
+<!-- vscode-markdown-toc -->
+<ul>
+<li>
+<ol>
+<li><a href="#Diffrencesdutilisationentrebcl2fastqetbcl-convert">Différences d'utilisation entre bcl2fastq et bcl-convert</a></li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><a href="#Rsultatstestbcl2fastqvariationduparamtrepavecr4etw4">Résultats test bcl2fastq (variation du paramètre p avec r = 4 et w = 4)</a></li>
+</ol>
+<ul>
+<li>2.1. <a href="#Tableaudesperformancedebcl2fastq">Tableau des performance de bcl2fastq</a></li>
+<li>2.2. <a href="#Graphiquesdesperformancesdebcl2fastq">Graphiques des performances de bcl2fastq</a>
+<ul>
+<li>2.2.1. <a href="#Tempstotal">Temps total</a></li>
+<li>2.2.2. <a href="#Tempscpu">Temps cpu</a></li>
+<li>2.2.3. <a href="#BarplotcummuldesdeuxrundeJARVISNovaSeq6000">Barplot cummulé des deux run de JARVIS (NovaSeq 6000)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ol start="3">
+<li><a href="#Rsultatstestbcl2fastqvariationduparamtreretwavecp12">Résultats test bcl2fastq (variation du paramètre r et w avec p = 12)</a></li>
+</ol>
+<ul>
+<li>3.1. <a href="#Tableaudesperformancedebcl2fastq-1">Tableau des performance de bcl2fastq</a></li>
+<li>3.2. <a href="#Graphiquesdesperformancesdebcl2fastq-1">Graphiques des performances de bcl2fastq</a>
+<ul>
+<li>3.2.1. <a href="#Tempstotal-1">Temps total</a></li>
+<li>3.2.2. <a href="#Tempscpu-1">Temps cpu</a></li>
+<li>3.2.3. <a href="#BarplotcummuldesdeuxrundeJARVISNovaSeq6000-1">Barplot cummulé des deux run de JARVIS (NovaSeq 6000)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ol start="4">
+<li><a href="#Rsultatstestbcl2fastqvariationduparamtrepretw">Résultats test bcl2fastq (variation du paramètre p, r et w)</a></li>
+</ol>
+<ul>
+<li>4.1. <a href="#Tableaudesperformancedebcl2fastq-1">Tableau des performance de bcl2fastq</a></li>
+<li>4.2. <a href="#Graphiquesdesperformancesdebcl2fastq-1">Graphiques des performances de bcl2fastq</a>
+<ul>
+<li>4.2.1. <a href="#Tempstotal-1">Temps total</a></li>
+<li>4.2.2. <a href="#Tempscpu-1">Temps cpu</a></li>
+<li>4.2.3. <a href="#BarplotcummuldesdeuxrundeJARVISNovaSeq6000-1">Barplot cummulé des deux run de JARVIS (NovaSeq 6000)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ol start="5">
+<li><a href="#Rsultatstestbcl2fastqvariationduparamtreretwavecp8">Résultats test bcl2fastq (variation du paramètre r et w avec p = 8)</a></li>
+</ol>
+<ul>
+<li>5.1. <a href="#Tableaudesperformancedebcl2fastq-1">Tableau des performance de bcl2fastq</a></li>
+<li>5.2. <a href="#Graphiquesdesperformancesdebcl2fastq-1">Graphiques des performances de bcl2fastq</a>
+<ul>
+<li>5.2.1. <a href="#Tempstotal-1">Temps total</a></li>
+<li>5.2.2. <a href="#Tempscpu-1">Temps cpu</a></li>
+<li>5.2.3. <a href="#BarplotcummuldesdeuxrundeJARVISNovaSeq6000-1">Barplot cummulé des deux run de JARVIS (NovaSeq 6000)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ol start="6">
+<li><a href="#Tableaurcapitulatifdesrsultatsobtenuspourbcl2fastq">Tableau récapitulatif des résultats obtenus pour bcl2fastq</a></li>
+</ol>
+<ul>
+<li>6.1. <a href="#MELISSE">MELISSE</a></li>
+<li>6.2. <a href="#JARVIS">JARVIS</a></li>
+</ul>
+</li>
+<li>
+<ol start="7">
+<li><a href="#Rsultatsdebcl-convert">Résultats de bcl-convert</a></li>
+</ol>
+<ul>
+<li>7.1. <a href="#Tableaudesperformancedebcl2fastqprw">Tableau des performance de bcl2fastq (p = r = w)</a></li>
+<li>7.2. <a href="#Graphiquesdesperformancesdebcl-convert">Graphiques des performances de bcl-convert</a></li>
+</ul>
+</li>
+<li>
+<ol start="8">
+<li><a href="#Comparaisonbcl2fastqetbcl-convert">Comparaison bcl2fastq et bcl-convert</a></li>
+</ol>
+<ul>
+<li>8.1. <a href="#Comparaisondutempstotal">Comparaison du temps total</a></li>
+<li>8.2. <a href="#Comparaisondutemscpu">Comparaison du tems cpu</a></li>
+<li>8.3. <a href="#Comparaisondupourcentagedutilisationdescpu">Comparaison du pourcentage d'utilisation des cpu</a></li>
+<li>8.4. <a href="#Tableaucomparatifentrebcl2fastqetbcl-convert">Tableau comparatif entre bcl2fastq et bcl-convert</a></li>
+</ul>
+</li>
+<li>
+<ol start="9">
+<li><a href="#Comparaisondesperformanceenutilisantleparamtredunombredetchesenparallles">Comparaison des performance en utilisant le paramètre du nombre de tâches en paralèlles</a></li>
+</ol>
+<ul>
+<li>9.1. <a href="#Tableau">Tableau</a></li>
+<li>9.2. <a href="#Graphiques">Graphiques</a>
+<ul>
+<li>9.2.1. <a href="#pwrnbdecoeurs">p = w = r = nb de coeurs</a></li>
+<li>9.2.2. <a href="#Pnbdecoeursetrw4">P = nb de coeurs et r = w = 4</a></li>
+</ul>
+</li>
+<li>9.3. <a href="#utilisationdunombredetcheseffectuerenparallles">utilisation du nombre de tâches à effectuer en paralèlles</a></li>
+</ul>
+</li>
+<li>
+<ol start="10">
+<li><a href="#Diffrencesdarborescenceentrebcl2fastqetbcl-convert">Différences d'arborescence entre bcl2fastq et bcl-convert</a></li>
+</ol>
+<ul>
+<li>10.1. <a href="#Commandepourlancbcl2fastq">Commande pour lancé bcl2fastq</a></li>
+<li>10.2. <a href="#Exempledarborescencedebcl2fastq">Exemple d'arborescence de bcl2fastq</a></li>
+<li>10.3. <a href="#Commandedebcl-convert">Commande de bcl-convert</a></li>
+<li>10.4. <a href="#exempledarborescencedebcl-convert">exemple d'arborescence de bcl-convert</a></li>
+</ul>
+</li>
+<li>
+<ol start="11">
+<li><a href="#Descriptiondessortiesdebcl-convert">Description des sorties de bcl-convert</a></li>
+</ol>
+</li>
+</ul>
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+<p>Ce document à pour objectif de comparer les différences entre le logiciel de &quot;<em>base calling</em>&quot; bcl2fastq et BCL convert, qui sont des locgiciels de &quot;<em>base calling</em>&quot; conçue par illumina pour leurs séquenceurs.</p>
+<hr>
+<hr>
+<h2 id="1-a-namediffrencesdutilisationentrebcl2fastqetbcl-convertadiff%C3%A9rences-dutilisation-entre-bcl2fastq-et-bcl-convert">1. <a name='Diffrencesdutilisationentrebcl2fastqetbcl-convert'></a>Différences d'utilisation entre bcl2fastq et bcl-convert</h2>
+<p><strong>bcl2fastq :</strong><br>
+Options utilisées en ligne de commande :<br>
+<code>--inputdir</code> ==&gt; path des fichier BCL<br>
+<code>--min-log-level</code> ==&gt;<br>
+<code>--barcode-mismatches</code> ==&gt; nombre de mismatches acceptés sur les index<br>
+<code>--runfolder-dir</code> ==&gt; path du répertoire où le run à été effectué<br>
+<code>--output-dir</code> ==&gt; path du répertoire de sortie des fichiers générés par bcl2fastq (dont les FASTQ)<br>
+<code>--use-base-mask</code> ==&gt; indique le nobre de bases pris en compte pour les index<br>
+<code>-r</code> ==&gt; nombre de coeurs alloués en lecture (fichiers BCL)<br>
+<code>-p</code> ==&gt; nombre de coeurs alloués pour le processus de bcl2fastq<br>
+<code>-w</code> ==&gt; nombre de coeurs alloués en ecriture (FASTQ)<br>
+<code>-d</code> ==&gt; nombre de coeurs alloués pour le démultipléxage</p>
+<p>Autres options :<br>
+<code>--sample-sheet</code> ==&gt; path de la sample sheet (par défaut : &lt;<code>runfolder-dir</code>&gt;/SampleSheet.csv)</p>
+<p>Options de bcl2fasq dans les fichiers SampleSheet (seul le format V1 est accepté) :<br>
+Data section :<br>
+<code>Lane</code><br>
+<code>Sample_ID</code><br>
+<code>Sample_name</code><br>
+<code>Sample_plate</code><br>
+<code>Sample_well</code><br>
+<code>I7_index_ID</code>
+<code>index</code><br>
+<code>ìndex2</code><br>
+<code>Sample_Project</code><br>
+<code>Description</code></p>
+<p><strong>bcl-convert :</strong><br>
+Option utilisées en ligne de commande :<br>
+<code>--bcl-input-directory</code> ==&gt; path du répertoire où le run à été effectué<br>
+<code>--output-directory</code> ==&gt; path du répertoire de sortie des fichiers générés par bcl-convert. cette option est obligatoire et le répertoire spécifié ne doit pas exister. (si le répertoire existe alors il faut utiliser <code>--force</code> / <code>-f</code> en plus)<br>
+<code>--sample-sheet</code> ==&gt; path de la sample sheet (oblgatoire, par défaut : &lt;<code>--bcl-input-directory</code>&gt;/SampleSheet.csv)<br>
+Option non mentionnées dans la doc de bcl-convert :<br>
+<code>--bcl-sampleproject-subdirectories</code> ==&gt; création de sous-répertoires Sample_ Project comme spécifié dans la SampleSheet<br>
+<code>--bcl-num-decompression-threads</code> ==&gt; nombre de coeurs alloués en lecture (fichiers BCL)<br>
+<code>--bcl-num-conversion-threads</code> ==&gt; nombre de coeurs alloués pour le processus de bcl2fastq<br>
+<code>--bcl-num-compression-threads</code> ==&gt; nombre de coeurs alloués en ecriture (FASTQ)<br>
+<code>--bcl-num-parallel-tiles</code> ==&gt;  nombre de tâche effectuer en parallèle</p>
+<p>Option de bcl-convert dans les fichiers SampleSheet (formats V1 et V2 acceptés) :<br>
+Data section (comme pour bcl2fastq):<br>
+<code>Lane</code><br>
+<code>Sample_ID</code><br>
+<code>index</code><br>
+<code>ìndex2</code><br>
+<code>Sample_Project</code><br>
+Settings section :<br>
+<code>BarcodeMismatchesIndex1</code><br>
+<code>BarcodeMismatchesIndex2</code><br>
+<code>OverrideCycles</code></p>
+<p><strong>Différences d'utilisations en ligne de commande (utilisé actuellement) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>bcl2fastq</th>
+<th>bcl-convert</th>
+<th>changement utilisation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--inputdir</code></td>
+<td>None</td>
+<td>Inpossible de spécifier le path des BaseCalls</td>
+</tr>
+<tr>
+<td><code>--min-log-level</code></td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><code>--barcode-mismatches</code></td>
+<td>None</td>
+<td>À mettre dans la Sample Sheet (dans la partie settings ==&gt; <code>BarcodeMismatchesIndex1</code> / <code>BarcodeMismatchesIndex2</code>)</td>
+</tr>
+<tr>
+<td><code>--runfolder-dir</code></td>
+<td><code>--bcl-input-directory</code></td>
+<td>même utilisation</td>
+</tr>
+<tr>
+<td><code>--output-dir</code></td>
+<td><code>--output-directory</code></td>
+<td>même utilisation, mais devient obligatoire (utiliser <code>--force</code>/<code>-f</code> si le rep de sortie existe déjà)</td>
+</tr>
+<tr>
+<td><code>--sample-sheet</code></td>
+<td><code>--sample-sheet</code></td>
+<td>même utilisation</td>
+</tr>
+<tr>
+<td><code>--use-base-mask</code></td>
+<td>None</td>
+<td>À mettre dans la Sample Sheet (dans la partie settings ==&gt; <code>OverrideCycles</code>)</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td><code>--bcl-num-decompression-threads</code></td>
+<td>même utilisation</td>
+</tr>
+<tr>
+<td><code>-p</code></td>
+<td><code>--bcl-num-conversion-threads</code></td>
+<td>même utilisation</td>
+</tr>
+<tr>
+<td><code>-w</code></td>
+<td><code>--bcl-num-compression-threads</code></td>
+<td>même utilisation</td>
+</tr>
+<tr>
+<td>None</td>
+<td><code>--bcl-num-parallel-tiles</code></td>
+<td>spécifier le nombre de tâche à efectuer en parallèle</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<hr>
+<h2 id="2-a-namersultatstestbcl2fastqvariationduparamtrepavecr4etw4ar%C3%A9sultats-test-bcl2fastq-variation-du-param%C3%A8tre-p-avec-r--4-et-w--4">2. <a name='Rsultatstestbcl2fastqvariationduparamtrepavecr4etw4'></a>Résultats test bcl2fastq (variation du paramètre p avec r = 4 et w = 4)</h2>
+<h3 id="21-a-nametableaudesperformancedebcl2fastqatableau-des-performance-de-bcl2fastq">2.1. <a name='Tableaudesperformancedebcl2fastq'></a>Tableau des performance de bcl2fastq</h3>
+<table>
+<thead>
+<tr>
+<th>bcl2fastq</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MELISSE</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>param utilisé</td>
+<td>temps écoulé (h)</td>
+<td>temps cpu</td>
+<td>utilisation cpu (%)</td>
+<td>mémoire utilisé (Gb)</td>
+</tr>
+<tr>
+<td>p4 w4 r4</td>
+<td>00:00:12.47</td>
+<td>40.38</td>
+<td>80.95</td>
+<td>2.346448</td>
+</tr>
+<tr>
+<td>p8 w4 r4</td>
+<td>00:00:07.59</td>
+<td>43.18</td>
+<td>71.12</td>
+<td>2.361540</td>
+</tr>
+<tr>
+<td>p12 w4 r4</td>
+<td>00:00:06.45</td>
+<td>43.21</td>
+<td>55.75</td>
+<td>2.386592</td>
+</tr>
+<tr>
+<td>p16 w4 r4</td>
+<td>00:00:11.31</td>
+<td>62.62</td>
+<td>34.56</td>
+<td>2.365040</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>param utilisé</td>
+<td>temps écoulé (h)</td>
+<td>temps cpu</td>
+<td>utilisation cpu (%)</td>
+<td>mémoire utilisé (Gb)</td>
+</tr>
+<tr>
+<td>p4 w4 r4</td>
+<td>10:48:31 + 11:35:17</td>
+<td>154644.12 + 161789.16</td>
+<td>99.25 + 96.75</td>
+<td>12.459632 + 26.311436</td>
+</tr>
+<tr>
+<td>p8 w4 r4</td>
+<td>05:48:32 + 06:13:34</td>
+<td>165298.55 + 170323.1</td>
+<td>98.75 + 94.88</td>
+<td>12.226456 + 29.826448</td>
+</tr>
+<tr>
+<td>p12 w4 r4</td>
+<td>04:04:10 + 04:36:05</td>
+<td>172296.87 + 182714.38</td>
+<td>98.00 + 91.83</td>
+<td>10.649516 + 35.187044</td>
+</tr>
+<tr>
+<td>p16 w4 r4</td>
+<td>02:58:41 + 05:51:39</td>
+<td>167139.05 + 314416.25</td>
+<td>97.38 + 93.13</td>
+<td>11.353516 + 43.053008</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-a-namegraphiquesdesperformancesdebcl2fastqagraphiques-des-performances-de-bcl2fastq">2.2. <a name='Graphiquesdesperformancesdebcl2fastq'></a>Graphiques des performances de bcl2fastq</h3>
+<h4 id="221-a-nametempstotalatemps-total">2.2.1. <a name='Tempstotal'></a>Temps total</h4>
+<p><img src="img/temps_total1.png" alt=""></p>
+<h4 id="222-a-nametempscpuatemps-cpu">2.2.2. <a name='Tempscpu'></a>Temps cpu</h4>
+<p><img src="img/temps_cpu1.png" alt=""></p>
+<h4 id="223-a-namebarplotcummuldesdeuxrundejarvisnovaseq6000abarplot-cummul%C3%A9-des-deux-run-de-jarvis-novaseq-6000">2.2.3. <a name='BarplotcummuldesdeuxrundeJARVISNovaSeq6000'></a>Barplot cummulé des deux run de JARVIS (NovaSeq 6000)</h4>
+<p><img src="img/barplot_cum_jarvis1.png" alt=""></p>
+<h2 id="3-a-namersultatstestbcl2fastqvariationduparamtreretwavecp12ar%C3%A9sultats-test-bcl2fastq-variation-du-param%C3%A8tre-r-et-w-avec-p--12">3. <a name='Rsultatstestbcl2fastqvariationduparamtreretwavecp12'></a>Résultats test bcl2fastq (variation du paramètre r et w avec p = 12)</h2>
+<h3 id="31-a-nametableaudesperformancedebcl2fastq-1atableau-des-performance-de-bcl2fastq">3.1. <a name='Tableaudesperformancedebcl2fastq-1'></a>Tableau des performance de bcl2fastq</h3>
+<table>
+<thead>
+<tr>
+<th>bcl2fastq</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MELISSE</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>param utilisé</td>
+<td>temps écoulé (h)</td>
+<td>temps cpu (s)</td>
+<td>utilisation cpu (%)</td>
+<td>mémoire utilisé (Gb)</td>
+</tr>
+<tr>
+<td>p12 r4 w4</td>
+<td>00:00:08.58</td>
+<td>57.98</td>
+<td>56.25</td>
+<td>2.360844</td>
+</tr>
+<tr>
+<td>p12 r8 w8</td>
+<td>00:00:18.38</td>
+<td>58.11</td>
+<td>26.33</td>
+<td>2.354396</td>
+</tr>
+<tr>
+<td>p12 r12 w12</td>
+<td>00:00:07.51</td>
+<td>57.26</td>
+<td>63.50</td>
+<td>2.359704</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>param utilisé</td>
+<td>temps écoulé (h)</td>
+<td>temps cpu (s)</td>
+<td>utilisation cpu (%)</td>
+<td>mémoire utilisé (Gb)</td>
+</tr>
+<tr>
+<td>p12 r4 w4</td>
+<td>04:04:10 + 04:36:05</td>
+<td>172296.87 + 182714.38</td>
+<td>98.00 + 91.83</td>
+<td>10.649516 +  35.187044</td>
+</tr>
+<tr>
+<td>p12 r8 w8</td>
+<td>03:57:35 + 04:38:53</td>
+<td>168491.81 + 187202.29</td>
+<td>98.42 + 93.17</td>
+<td>12.122880 + 37.427376</td>
+</tr>
+<tr>
+<td>p12 r12 w12</td>
+<td>04:01:35 + 04:34:25</td>
+<td>171504.55 + 183624.04</td>
+<td>98.58 + 92.92</td>
+<td>11.171612 + 38.953616</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-a-namegraphiquesdesperformancesdebcl2fastq-1agraphiques-des-performances-de-bcl2fastq">3.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq</h3>
+<h4 id="321-a-nametempstotal-1atemps-total">3.2.1. <a name='Tempstotal-1'></a>Temps total</h4>
+<p><img src="img/temps_total2.png" alt=""></p>
+<h4 id="322-a-nametempscpu-1atemps-cpu">3.2.2. <a name='Tempscpu-1'></a>Temps cpu</h4>
+<p><img src="img/temps_cpu2.png" alt=""></p>
+<h4 id="323-a-namebarplotcummuldesdeuxrundejarvisnovaseq6000-1abarplot-cummul%C3%A9-des-deux-run-de-jarvis-novaseq-6000">3.2.3. <a name='BarplotcummuldesdeuxrundeJARVISNovaSeq6000-1'></a>Barplot cummulé des deux run de JARVIS (NovaSeq 6000)</h4>
+<p><img src="img/barplot_cum_jarvis2.png" alt=""></p>
+<h2 id="4-a-namersultatstestbcl2fastqvariationduparamtrepretwar%C3%A9sultats-test-bcl2fastq-variation-du-param%C3%A8tre-p-r-et-w">4. <a name='Rsultatstestbcl2fastqvariationduparamtrepretw'></a>Résultats test bcl2fastq (variation du paramètre p, r et w)</h2>
+<h3 id="41-a-nametableaudesperformancedebcl2fastq-1atableau-des-performance-de-bcl2fastq">4.1. <a name='Tableaudesperformancedebcl2fastq-1'></a>Tableau des performance de bcl2fastq</h3>
+<table>
+<thead>
+<tr>
+<th>bcl2fastq</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MELISSE</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>param utilisé</td>
+<td>temps écoulé (h)</td>
+<td>temps cpu</td>
+<td>utilisation cpu (%)</td>
+<td>mémoire utilisé (Gb)</td>
+</tr>
+<tr>
+<td>p4 r4 w4</td>
+<td>00:00:12.47</td>
+<td>40.38</td>
+<td>80.95</td>
+<td>2.346448</td>
+</tr>
+<tr>
+<td>p8 r8 w8</td>
+<td>00:00:34.75</td>
+<td>51.98</td>
+<td>18.63</td>
+<td>1.869064</td>
+</tr>
+<tr>
+<td>p12 r12 w12</td>
+<td>00:00:07.51</td>
+<td>57.30</td>
+<td>63.50</td>
+<td>2.359704</td>
+</tr>
+<tr>
+<td>p16 r16 w16</td>
+<td>00:00:08.02</td>
+<td>60.47</td>
+<td>49.19</td>
+<td>2.360132</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>param utilisé</td>
+<td>temps écoulé (h)</td>
+<td>temps cpu</td>
+<td>utilisation cpu (%)</td>
+<td>mémoire utilisé (Gb)</td>
+</tr>
+<tr>
+<td>p4 r4 w4</td>
+<td>10:21:47 + 16:42:32</td>
+<td>148369.72 + 215649.95</td>
+<td>99.20 + 89.50</td>
+<td>10.226312 + 22.814680</td>
+</tr>
+<tr>
+<td>p8 r8 w8</td>
+<td>05:40:55 + 06:51:09</td>
+<td>160477.90 + 174911.9</td>
+<td>98.00 + 88.63</td>
+<td>10.509808 + 30.503808</td>
+</tr>
+<tr>
+<td>p12 r12 w12</td>
+<td>04:01:35 + 04:34:25</td>
+<td>171504.55 + 183624.04</td>
+<td>98.58 + 92.92</td>
+<td>11.171612 + 38.953616</td>
+</tr>
+<tr>
+<td>p16 r16 w16</td>
+<td>03:24:32 + 03:40:24</td>
+<td>165158.86 + 181473.41</td>
+<td>84.06 + 85.75</td>
+<td>11.793640 + 44.042212</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-a-namegraphiquesdesperformancesdebcl2fastq-1agraphiques-des-performances-de-bcl2fastq">4.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq</h3>
+<h4 id="421-a-nametempstotal-1atemps-total">4.2.1. <a name='Tempstotal-1'></a>Temps total</h4>
+<p><img src="img/temps_total3.png" alt=""></p>
+<h4 id="422-a-nametempscpu-1atemps-cpu">4.2.2. <a name='Tempscpu-1'></a>Temps cpu</h4>
+<p><img src="img/temps_cpu3.png" alt=""></p>
+<h4 id="423-a-namebarplotcummuldesdeuxrundejarvisnovaseq6000-1abarplot-cummul%C3%A9-des-deux-run-de-jarvis-novaseq-6000">4.2.3. <a name='BarplotcummuldesdeuxrundeJARVISNovaSeq6000-1'></a>Barplot cummulé des deux run de JARVIS (NovaSeq 6000)</h4>
+<p><img src="img/barplot_cum_jarvis3.png" alt=""></p>
+<h2 id="5-a-namersultatstestbcl2fastqvariationduparamtreretwavecp8ar%C3%A9sultats-test-bcl2fastq-variation-du-param%C3%A8tre-r-et-w-avec-p--8">5. <a name='Rsultatstestbcl2fastqvariationduparamtreretwavecp8'></a>Résultats test bcl2fastq (variation du paramètre r et w avec p = 8)</h2>
+<h3 id="51-a-nametableaudesperformancedebcl2fastq-1atableau-des-performance-de-bcl2fastq">5.1. <a name='Tableaudesperformancedebcl2fastq-1'></a>Tableau des performance de bcl2fastq</h3>
+<table>
+<thead>
+<tr>
+<th>bcl2fastq</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MELISSE</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>param utilisé</td>
+<td>temps écoulé (h)</td>
+<td>temps cpu</td>
+<td>utilisation cpu (%)</td>
+<td>mémoire utilisé (Gb)</td>
+</tr>
+<tr>
+<td>p8 r2 w2</td>
+<td>00:00:36.49</td>
+<td>53.16</td>
+<td>18.13</td>
+<td>1.872452</td>
+</tr>
+<tr>
+<td>p8 r4 w4</td>
+<td>00:00:07.59</td>
+<td>43.18</td>
+<td>71.00</td>
+<td>2.361540</td>
+</tr>
+<tr>
+<td>p8 r6 w6</td>
+<td>00:00:08.55</td>
+<td>50.79</td>
+<td>74.25</td>
+<td>2.346620</td>
+</tr>
+<tr>
+<td>p8 r8 w8</td>
+<td>00:00:34.75</td>
+<td>51.98</td>
+<td>18.63</td>
+<td>1.869064</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>param utilisé</td>
+<td>temps écoulé (h)</td>
+<td>temps cpu</td>
+<td>utilisation cpu (%)</td>
+<td>mémoire utilisé (Gb)</td>
+</tr>
+<tr>
+<td>p8 r2 w2</td>
+<td>05:56:38 + 06:50:56</td>
+<td>167567.71 + 188531.43</td>
+<td>97.88 + 95.5</td>
+<td>10.172972 + 27.979624</td>
+</tr>
+<tr>
+<td>p8 r4 w4</td>
+<td>05:48:32 + 06:13:34</td>
+<td>165298.55 + 170323.10</td>
+<td>98.75 + 94.88</td>
+<td>12.226456 + 29.826448</td>
+</tr>
+<tr>
+<td>p8 r6 w6</td>
+<td>05:54:49 + 06:31:55</td>
+<td>167594.55 + 180114.75</td>
+<td>98.38 + 95.63</td>
+<td>10.559480 + 30.853492</td>
+</tr>
+<tr>
+<td>p8 r8 w8</td>
+<td>05:40:55 + 06:51:09</td>
+<td>160477.90 + 174911.90</td>
+<td>98.0 + 88.63</td>
+<td>10.509808 + 30.503808</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-a-namegraphiquesdesperformancesdebcl2fastq-1agraphiques-des-performances-de-bcl2fastq">5.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq</h3>
+<h4 id="521-a-nametempstotal-1atemps-total">5.2.1. <a name='Tempstotal-1'></a>Temps total</h4>
+<p><img src="img/temps_total4.png" alt=""></p>
+<h4 id="522-a-nametempscpu-1atemps-cpu">5.2.2. <a name='Tempscpu-1'></a>Temps cpu</h4>
+<p><img src="img/temps_cpu4.png" alt=""></p>
+<h4 id="523-a-namebarplotcummuldesdeuxrundejarvisnovaseq6000-1abarplot-cummul%C3%A9-des-deux-run-de-jarvis-novaseq-6000">5.2.3. <a name='BarplotcummuldesdeuxrundeJARVISNovaSeq6000-1'></a>Barplot cummulé des deux run de JARVIS (NovaSeq 6000)</h4>
+<p><img src="img/barplot_cum_jarvis4.png" alt=""></p>
+<hr>
+<h2 id="6-a-nametableaurcapitulatifdesrsultatsobtenuspourbcl2fastqatableau-r%C3%A9capitulatif-des-r%C3%A9sultats-obtenus-pour-bcl2fastq">6. <a name='Tableaurcapitulatifdesrsultatsobtenuspourbcl2fastq'></a>Tableau récapitulatif des résultats obtenus pour bcl2fastq</h2>
+<h3 id="61-a-namemelisseamelisse">6.1. <a name='MELISSE'></a>MELISSE</h3>
+<table>
+<thead>
+<tr>
+<th>type run</th>
+<th>param utilisé</th>
+<th>temps écoulé (h : m : s)</th>
+<th>temps cpu (h : m : s)</th>
+<th>utilisation cpu (%)</th>
+<th>mémoire utilisé (Gb)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MELISSE</td>
+<td>p4 w4 r4</td>
+<td>00:00:12.47</td>
+<td>00:00:40</td>
+<td>80.95</td>
+<td>2.346448</td>
+</tr>
+<tr>
+<td>MELISSE</td>
+<td>p8 w4 r4</td>
+<td><span style="color: green">00:00:07.59</span></td>
+<td>00:00:43</td>
+<td>71.12</td>
+<td>2.361540</td>
+</tr>
+<tr>
+<td>MELISSE</td>
+<td>p12 w4 r4</td>
+<td><span style="color: green">00:00:06.45</span></td>
+<td>00:00:43</td>
+<td>55.75</td>
+<td>2.386592</td>
+</tr>
+<tr>
+<td>MELISSE</td>
+<td>p16 w4 r4</td>
+<td>00:00:11.31</td>
+<td>00:01:02</td>
+<td>34.56</td>
+<td>2.365040</td>
+</tr>
+<tr>
+<td>MELISSE</td>
+<td>p12 r8 w8</td>
+<td>00:00:18.38</td>
+<td>00:00:58</td>
+<td>26.33</td>
+<td>2.354396</td>
+</tr>
+<tr>
+<td>MELISSE</td>
+<td>p8 r8 w8</td>
+<td><span style="color: orange">00:00:34.75</span></td>
+<td>00:00:51</td>
+<td>18.63</td>
+<td>1.869064</td>
+</tr>
+<tr>
+<td>MELISSE</td>
+<td>p12 r12 w12</td>
+<td><span style="color: green">00:00:07.51</span></td>
+<td>00:00:57</td>
+<td>63.50</td>
+<td>2.359704</td>
+</tr>
+<tr>
+<td>MELISSE</td>
+<td>p16 r16 w16</td>
+<td><span style="color: green">00:00:08.02</span></td>
+<td>00:01:00</td>
+<td>49.19</td>
+<td>2.360132</td>
+</tr>
+<tr>
+<td>MELISSE</td>
+<td>p8 r2 w2</td>
+<td><span style="color: orange">00:00:36.49</span></td>
+<td>00:00:53</td>
+<td>18.13</td>
+<td>1.872452</td>
+</tr>
+<tr>
+<td>MELISSE</td>
+<td>p8 r6 w6</td>
+<td><span style="color: green">00:00:08.55</span></td>
+<td>00:00:50</td>
+<td>74.25</td>
+<td>2.346620</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-a-namejarvisajarvis">6.2. <a name='JARVIS'></a>JARVIS</h3>
+<table>
+<thead>
+<tr>
+<th>type run</th>
+<th>param utilisé</th>
+<th>temps écoulé (h : m : s)</th>
+<th>temps cpu (h : m : s)</th>
+<th>utilisation cpu (%)</th>
+<th>mémoire utilisé (Gb)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JARVIS</td>
+<td>p4 w4 r4</td>
+<td><span style="color: red">10:48:31 + 11:35:17</span></td>
+<td>42:57:24 + 44:56:29</td>
+<td>99.25 + 96.75</td>
+<td>12.459632 + 26.311436</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p8 w4 r4</td>
+<td><span style="color: red">05:48:32 + 06:13:34</span></td>
+<td>45:54:58 + 47:18:43</td>
+<td>98.75 + 94.88</td>
+<td>12.226456 + 29.826448</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p12 w4 r4</td>
+<td><span style="color: orange">04:04:10 + 04:36:05</span></td>
+<td>47:51:36 + 50:45:14</td>
+<td>98.00 + 91.83</td>
+<td>10.649516 + 35.187044</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p16 w4 r4</td>
+<td><span style="color: orange">02:58:41 + 05:51:39</span></td>
+<td>46:25:39 + 87:20:16</td>
+<td>97.38 + 93.13</td>
+<td>11.353516 + 43.053008</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p12 r8 w8</td>
+<td><span style="color: green">03:57:35 + 04:38:53</span></td>
+<td>46:48:11 + 52:00:02</td>
+<td>98.42 + 93.17</td>
+<td>12.122880 + 37.427376</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p8 r8 w8</td>
+<td><span style="color: red">05:40:55 + 06:51:09</span></td>
+<td>44:34:37 + 48:35:11</td>
+<td>98.00 + 88.63</td>
+<td>10.509808 + 30.503808</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p12 r12 w12</td>
+<td><span style="color: orange">04:01:35 + 04:34:25</span></td>
+<td>47:38:24 + 51:00:24</td>
+<td>98.58 + 92.92</td>
+<td>11.171612 + 38.953616</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p16 r16 w16</td>
+<td><span style="color: green">03:24:32 + 03:40:24</span></td>
+<td>45:52:38 + 50:24:33</td>
+<td>84.06 + 85.75</td>
+<td>11.793640 + 44.042212</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p8 r2 w2</td>
+<td><span style="color: red">05:56:38 + 06:50:56</span></td>
+<td>46:32:47 + 52:22:11</td>
+<td>97.88 + 95.5</td>
+<td>10.172972 + 27.979624</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p8 r6 w6</td>
+<td><span style="color: red">05:54:49 + 06:31:55</span></td>
+<td>46:33:14 + 50:01:54</td>
+<td>98.38 + 95.63</td>
+<td>10.559480 + 30.853492</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>bcl2fastq : Somme des parramètres pour le nombre de coeurs</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JARVIS</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>param utilisé</td>
+<td>temps écoulé (h)</td>
+<td>temps cpu</td>
+<td>utilisation cpu (%)</td>
+<td>mémoire utilisé (Gb)</td>
+</tr>
+<tr>
+<td>c28 p12 r8 w8</td>
+<td>03:46:19 + 04:23:50</td>
+<td>154089.97 + 166287.98</td>
+<td>40.50 + 37.50</td>
+<td>10.811548 + 37.494200</td>
+</tr>
+<tr>
+<td>c20 p12 r4 w4</td>
+<td>03:35:04 + 04:12:16</td>
+<td>132959.17 + 148482.30</td>
+<td>51.50 + 49.0</td>
+<td>10.508500</td>
+</tr>
+<tr>
+<td>c24 p8 r8 w8</td>
+<td>sortie du chrono vide</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>c16 p8 r4 w4</td>
+<td>sortie du chrono vide</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<hr>
+<h2 id="7-a-namersultatsdebcl-convertar%C3%A9sultats-de-bcl-convert">7. <a name='Rsultatsdebcl-convert'></a>Résultats de bcl-convert</h2>
+<h3 id="71-a-nametableaudesperformancedebcl2fastqprwatableau-des-performance-de-bcl2fastq-p--r--w">7.1. <a name='Tableaudesperformancedebcl2fastqprw'></a>Tableau des performance de bcl2fastq (p = r = w)</h3>
+<table>
+<thead>
+<tr>
+<th>type run</th>
+<th>param utilisé</th>
+<th>temps écoulé (h)</th>
+<th>temps cpu</th>
+<th>utilisation cpu (%)</th>
+<th>mémoire utilisé (Gb)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JARVIS</td>
+<td>p8 r8 w8</td>
+<td><span style="color: red">04:03:46 + 04:01:15</span></td>
+<td>81043.66 + 86491.64</td>
+<td>69.25 + 74.63</td>
+<td>13.563916 + 22.383716</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p12 r12 w12</td>
+<td><span style="color: green">02:54:04 + 02:56:50</span></td>
+<td>96397.79 + 108461.85</td>
+<td><span style="color: green">76.83 + 85.17</span></td>
+<td>16.297744 + 24.742460</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>p16 r16 w16</td>
+<td><span style="color: green">02:43:45 + 02:28:32</span></td>
+<td>99892.88 + 85732.81</td>
+<td><span style="color: orange">63.5 + 60.06</span></td>
+<td>15.500356 + 20.536340</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-a-namegraphiquesdesperformancesdebcl-convertagraphiques-des-performances-de-bcl-convert">7.2. <a name='Graphiquesdesperformancesdebcl-convert'></a>Graphiques des performances de bcl-convert</h3>
+<p><img src="img/barplot_cum_bcl-convert.png" alt=""></p>
+<h2 id="8-a-namecomparaisonbcl2fastqetbcl-convertacomparaison-bcl2fastq-et-bcl-convert">8. <a name='Comparaisonbcl2fastqetbcl-convert'></a>Comparaison bcl2fastq et bcl-convert</h2>
+<h3 id="81-a-namecomparaisondutempstotalacomparaison-du-temps-total">8.1. <a name='Comparaisondutempstotal'></a>Comparaison du temps total</h3>
+<p><img src="img/barplot_total_time_comp.png" alt=""></p>
+<h3 id="82-a-namecomparaisondutemscpuacomparaison-du-tems-cpu">8.2. <a name='Comparaisondutemscpu'></a>Comparaison du tems cpu</h3>
+<p><img src="img/barplot_cpu_time_comp.png" alt=""></p>
+<h3 id="83-a-namecomparaisondupourcentagedutilisationdescpuacomparaison-du-pourcentage-dutilisation-des-cpu">8.3. <a name='Comparaisondupourcentagedutilisationdescpu'></a>Comparaison du pourcentage d'utilisation des cpu</h3>
+<p><img src="img/barplot_pourcnetage_cpu_comp.png" alt=""></p>
+<h3 id="84-a-nametableaucomparatifentrebcl2fastqetbcl-convertatableau-comparatif-entre-bcl2fastq-et-bcl-convert">8.4. <a name='Tableaucomparatifentrebcl2fastqetbcl-convert'></a>Tableau comparatif entre bcl2fastq et bcl-convert</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>temps total (h)</th>
+<th></th>
+<th>temps cpu (h)</th>
+<th></th>
+<th>Utilisation cpu (%)</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>paramètres</td>
+<td>bcl2fasq</td>
+<td>bcl-convert</td>
+<td>bcl2fasq</td>
+<td>bcl-convert</td>
+<td>bcl2fasq</td>
+<td>bcl-convert</td>
+</tr>
+<tr>
+<td>r8 p8 w8 #coeurs 8</td>
+<td><span style="color: red">12.52</span></td>
+<td>8.07</td>
+<td>93.16</td>
+<td>46.54</td>
+<td><span style="color: green">93.23</span></td>
+<td><span style="color: orange">71.94</span></td>
+</tr>
+<tr>
+<td>r12 p12 w12 #coeurs 12</td>
+<td>8.58</td>
+<td><span style="color: orange">5.83</span></td>
+<td>98.65</td>
+<td>56.91</td>
+<td><span style="color: green">95.75</span></td>
+<td>81.00</td>
+</tr>
+<tr>
+<td>r16 p16 w16 #coeurs 16</td>
+<td>7.07</td>
+<td><span style="color: orange">5.18</span></td>
+<td>96.29</td>
+<td>51.56</td>
+<td><span style="color: green">84.90</span></td>
+<td><span style="color: red">61.78</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-a-namecomparaisondesperformanceenutilisantleparamtredunombredetchesenparalllesacomparaison-des-performance-en-utilisant-le-param%C3%A8tre-du-nombre-de-t%C3%A2ches-en-paral%C3%A8lles">9. <a name='Comparaisondesperformanceenutilisantleparamtredunombredetchesenparallles'></a>Comparaison des performance en utilisant le paramètre du nombre de tâches en paralèlles</h2>
+<h3 id="91-a-nametableauatableau">9.1. <a name='Tableau'></a>Tableau</h3>
+<table>
+<thead>
+<tr>
+<th>type run</th>
+<th>param utilisé</th>
+<th>temps écoulé (h)</th>
+<th>temps cpu</th>
+<th>utilisation cpu (%)</th>
+<th>mémoire utilisé (Gb)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JARVIS</td>
+<td>c8 p8 r4 w4 t1</td>
+<td>04:25:03 + 04:22:35</td>
+<td>86084.99 + 82980.53</td>
+<td><span style="color: orange">67.63 + 65.75</span></td>
+<td>23.933228 + 15.670624</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c12 p12 r4 w4 t1</td>
+<td>04:18:56 + 04:37:15</td>
+<td>86994.43 + 94440.35</td>
+<td>46.58 + 47.25</td>
+<td>21.266720 + 15.072964</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c16 p16 r4 w4 t1</td>
+<td>04:15:57 + 04:14:07</td>
+<td>87586.30 + 85394.20</td>
+<td><span style="color: red">35.63 + 35.00</span></td>
+<td>18.884748 + 15.479748</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c16 p8 r4 w4 t2</td>
+<td>04:13:33 + 04:04:22</td>
+<td>97273.08 + 94120.37</td>
+<td><span style="color: red">39.94 + 40.06</span></td>
+<td>32.821016 + 20.821300</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c16 p8 r8 w8 t2</td>
+<td><span style="color: green">02:36:00 + 02:31:28</span></td>
+<td>85626.33 + 86572.85</td>
+<td><span style="color: orange">57.13 + 59.50</span></td>
+<td>19.449732 + 31.199964</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c8 p4 r4 w4 t2</td>
+<td>04:10:13 + 04:04:37</td>
+<td>86673.48 + 84256.27</td>
+<td><span style="color: green">72.13 + 71.750</span></td>
+<td>33.038984 + 23.701368</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c12 p4 r4 w4 t3</td>
+<td>04:18:58 + 04:08:39</td>
+<td>99684.36 + 95528.38</td>
+<td>53.42 + 53.33</td>
+<td>45.420504 + 30.568516</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c8 p8 r8 w8 t2</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c8 p8 r8 w8 t3</td>
+<td><span style="color: red">08:51:33</span> + <span style="color: green">03:12:17</span></td>
+<td>86667.2 + 80765.37</td>
+<td><span style="color: red">33.88</span> + <span style="color: green">87.5</span></td>
+<td>36.365148 + 20.891836</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c8 p8 r8 w8 t4</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c12 p6 r6 w6 t2</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c12 p6 r6 w6 t3</td>
+<td><span style="color: red">08:38:18 + 08:36:37</span></td>
+<td>87169.64 + 84253.28</td>
+<td><span style="color: red">23.33 + 22.58</span></td>
+<td>32.774200 + 18.149312</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c12 p6 r6 w6 t4</td>
+<td><span style="color: red">08:36:30 + 08:35:04</td>
+<td>87149.26 + 84272.81</td>
+<td><span style="color: red">23.42 + 22.67</span></td>
+<td>37.760016 + 18.785000</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c12 p12 r12 w12 t2</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c16 p8 r8 w8 t3</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c16 p8 r8 w8 t4</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c16 p8 r8 w8 tnone</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+<td>err</td>
+</tr>
+<tr>
+<td>JARVIS</td>
+<td>c16 no params</td>
+<td>04:04:58 + 04:05:24</td>
+<td>86967.56 + 85309.46</td>
+<td><span style="color: red">36.94 + 36.19</span></td>
+<td>31.690768 + 18.556820</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-a-namegraphiquesagraphiques">9.2. <a name='Graphiques'></a>Graphiques</h3>
+<h4 id="921-a-namepwrnbdecoeursap--w--r--nb-de-coeurs--t--1">9.2.1. <a name='pwrnbdecoeurs'></a>p = w = r = nb de coeurs , t = 1</h4>
+<p><img src="img/barplot_cum_bcl-convert.png" alt=""></p>
+<h4 id="922-a-namepnbdecoeursetrw4ap--nb-de-coeurs-et-r--w--4-t--1">9.2.2. <a name='Pnbdecoeursetrw4'></a>P = nb de coeurs et r = w = 4, t = 1</h4>
+<p><img src="img/barplot_cum_bcl-convert2.png" alt=""></p>
+<h4 id="93-a-nameutilisationdunombredetcheseffectuerenparalllesautilisation-du-nombre-de-t%C3%A2ches-%C3%A0-effectuer-en-paral%C3%A8lles">9.3. <a name='utilisationdunombredetcheseffectuerenparallles'></a>utilisation du nombre de tâches à effectuer en paralèlles</h4>
+<p><img src="img/barplot_cum_bcl-convert2_tasks.png" alt=""></p>
+<h3 id="bcl-convert-lanc%C3%A9-sur-prod">bcl-convert lancé sur prod</h3>
+<h4 id="tableau">Tableau</h4>
+<table>
+<thead>
+<tr>
+<th>param utilisé</th>
+<th>temps écoulé (h)</th>
+<th>temps cpu</th>
+<th>utilisation cpu (%)</th>
+<th>mémoire utilisé (Gb)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c16 no params</td>
+<td><span style="color: green">02:29:24 + 02:36:24</span></td>
+<td>110117.3 + 109588.75</td>
+<td><span style="color: orange">76.75 + 72.94</span></td>
+<td>33.110112 + 28.020204</td>
+</tr>
+<tr>
+<td>c12 p12 r12 w12 t1 (que sur 8-8)</td>
+<td><span style="color: green">02:50:25</span></td>
+<td>104738.44</td>
+<td><span style="color: green">85.33</span></td>
+<td>16.513288</td>
+</tr>
+<tr>
+<td>c16 p10 r3 w3 t1 (que sur 8-8)</td>
+<td>en cours</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-a-namediffrencesdarborescenceentrebcl2fastqetbcl-convertadiff%C3%A9rences-darborescence-entre-bcl2fastq-et-bcl-convert">10. <a name='Diffrencesdarborescenceentrebcl2fastqetbcl-convert'></a>Différences d'arborescence entre bcl2fastq et bcl-convert</h2>
+<h3 id="101-a-namecommandepourlancbcl2fastqacommande-pour-lanc%C3%A9-bcl2fastq">10.1. <a name='Commandepourlancbcl2fastq'></a>Commande pour lancé bcl2fastq</h3>
+<p>jobify -c <span style="color: #47a3f5">&lt;nombre de cœur (8, 12 ou 16)&gt;</span> -p <span style="color: #47a3f5">&lt;partition (production)&gt;</span> -t <span style="color: #47a3f5">&lt;D:HH:MM:SS&gt;</span> -b -w <span style="color: #47a3f5">&lt;noeud (pas obligatoire)&gt;</span> 'bcl2fastq --input-dir <span style="color: #47a3f5">&lt;path du répertoire du run contenant les Bases Calling&gt;</span> --min-log-level WARNING --barcode-mismatches <span style="color: #47a3f5">&lt;nombre de missmatch autorisé&gt;</span> --sample-sheet <span style="color: #47a3f5"><path de la sample sheet></span> --runfolder-dir <span style="color: #47a3f5">&lt;path du répertoire du run&gt;</span> --output-dir <span style="color: #47a3f5">&lt;répertoire de sortie du démultiplexage (le créé s'il n'existe pas)&gt;</span> -r <span style="color: #47a3f5">&lt;nombre de threads pour la décompression/lecture&gt;</span> -p <nombre de threads pour la convertion> -w <span style="color: #47a3f5">&lt;nombre de threads pour l'écriture/compression&gt;</span> --use-bases-mask <span style="color: #47a3f5">&lt;mask à utilisé pour les index (Y*,I12,Y*)&gt;</span>' &amp;</p>
+<h3 id="102-a-nameexempledarborescencedebcl2fastqaexemple-darborescence-de-bcl2fastq">10.2. <a name='Exempledarborescencedebcl2fastq'></a>Exemple d'arborescence de bcl2fastq</h3>
+<p>bcl2fastq<br>
+├── Project_1<br>
+│   ├── Sample_12BA131_1<br>
+│   │   ├── 12BA131_S3_L001_R1_001.fastq.gz<br>
+│   │   └── 12BA131_S3_L001_R2_001.fastq.gz<br>
+│   ├── Sample_12BA132_1<br>
+│   │   ├── 12BA132_S6_L001_R1_001.fastq.gz<br>
+│   │   └── 12BA132_S6_L001_R2_001.fastq.gz<br>
+│   ├── Sample_12BA133_1<br>
+│   │   ├── 12BA133_S1_L001_R1_001.fastq.gz<br>
+│   │   └── 12BA133_S1_L001_R2_001.fastq.gz<br>
+│   ├── Sample_12BA134_1<br>
+│   │   ├── 12BA134_S2_L001_R1_001.fastq.gz<br>
+│   │   └── 12BA134_S2_L001_R2_001.fastq.gz<br>
+│   ├── Sample_12BA135_1<br>
+│   │   ├── 12BA135_S5_L001_R1_001.fastq.gz<br>
+│   │   └── 12BA135_S5_L001_R2_001.fastq.gz<br>
+│   └── Sample_12BA136_1<br>
+│       ├── 12BA136_S4_L001_R1_001.fastq.gz<br>
+│       └── 12BA136_S4_L001_R2_001.fastq.gz<br>
+├── Reports<br>
+│   └── html<br>
+│       ├── 000000000-DDL9H<br>
+│       │   ├── all<br>
+│       │   │   └── all<br>
+│       │   │       ├── all<br>
+│       │   │       │   ├── laneBarcode.html<br>
+│       │   │       │   └── lane.html<br>
+│       │   │       └── unknown<br>
+│       │   ├── default<br>
+│       │   │   ├── all<br>
+│       │   │   │   ├── all<br>
+│       │   │   │   │   ├── laneBarcode.html<br>
+│       │   │   │   │   └── lane.html<br>
+│       │   │   │   └── unknown<br>
+│       │   │   └── Undetermined<br>
+│       │   │       ├── all<br>
+│       │   │       │   ├── laneBarcode.html<br>
+│       │   │       │   └── lane.html<br>
+│       │   │       └── unknown<br>
+│       │   │           ├── laneBarcode.html<br>
+│       │   │           └── lane.html<br>
+│       │   └── Project_1<br>
+│       │       ├── 12BA131<br>
+│       │       │   ├── all<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   ├── GTCGAAGGAGCC<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   └── unknown<br>
+│       │       ├── 12BA132<br>
+│       │       │   ├── AATATGCATCGG<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   ├── all<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   └── unknown<br>
+│       │       ├── 12BA133<br>
+│       │       │   ├── all<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   ├── CAGCTAGGATCC<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   └── unknown<br>
+│       │       ├── 12BA134<br>
+│       │       │   ├── all<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   ├── TGCGCTAATCTT<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   └── unknown<br>
+│       │       ├── 12BA135<br>
+│       │       │   ├── all<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   ├── TTCAGGAGAGCC<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   └── unknown<br>
+│       │       ├── 12BA136<br>
+│       │       │   ├── ACGTAATATCGG<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   ├── all<br>
+│       │       │   │   ├── laneBarcode.html<br>
+│       │       │   │   └── lane.html<br>
+│       │       │   └── unknown<br>
+│       │       └── all<br>
+│       │           ├── all<br>
+│       │           │   ├── laneBarcode.html<br>
+│       │           │   └── lane.html<br>
+│       │           └── unknown<br>
+│       ├── index.html<br>
+│       ├── Report.css<br>
+│       └── tree.html<br>
+├── Stats<br>
+│   ├── AdapterTrimming.txt<br>
+│   ├── ConversionStats.xml<br>
+│   ├── DemultiplexingStats.xml<br>
+│   ├── DemuxSummaryF1L1.txt<br>
+│   ├── FastqSummaryF1L1.txt<br>
+│   └── Stats.json<br>
+├── Undetermined_S0_L001_R1_001.fastq.gz<br>
+└── Undetermined_S0_L001_R2_001.fastq.gz</p>
+<h3 id="103-a-namecommandedebcl-convertacommande-de-bcl-convert">10.3. <a name='Commandedebcl-convert'></a>Commande de bcl-convert</h3>
+<p>jobify -c <span style="color: #47a3f5">&lt;nombre de cœur (8, 12 ou 16)&gt;</span> -p <span style="color: #47a3f5">&lt;partition (production)&gt;</span> -t <span style="color: #47a3f5">&lt;D:HH:MM:SS&gt;</span> -b -w <span style="color: #47a3f5">&lt;noeud (pas obligatoire)&gt;</span> 'bcl-convert --bcl-input-directory <span style="color: #47a3f5">&lt;path du répertoire du run&gt;</span> --output-directory <span style="color: #47a3f5">&lt;path du répertoire de sortie du démultiplexage (ne doit pas déja existé sinon kill l'execution)&gt;</span> --sample-sheet  <span style="color: #47a3f5">&lt;path de la sample sheet (obligatoire)&gt;</span> --bcl-sampleproject-subdirectories true --bcl-num-parallel-tiles 1 --bcl-num-compression-threads <span style="color: #47a3f5">&lt;nombre de threads pour la décompression/lecture&gt;</span> --bcl-num-conversion-threads <span style="color: #47a3f5"><nombre de threads pour la convertion></span> --bcl-num-decompression-threads <span style="color: #47a3f5">&lt;nombre de threads pour l'écriture/compression&gt;</span>' &amp;</p>
+<h3 id="104-a-nameexempledarborescencedebcl-convertaexemple-darborescence-de-bcl-convert">10.4. <a name='exempledarborescencedebcl-convert'></a>exemple d'arborescence de bcl-convert</h3>
+<p>bcl-convert<br>
+├── Logs<br>
+│   ├── Errors.log<br>
+│   ├── FastqComplete.txt<br>
+│   ├── Info.log<br>
+│   └── Warnings.log<br>
+├── Project_1<br>
+│   ├── 12BA131_S3_L001_R1_001.fastq.gz<br>
+│   ├── 12BA131_S3_L001_R2_001.fastq.gz<br>
+│   ├── 12BA132_S6_L001_R1_001.fastq.gz<br>
+│   ├── 12BA132_S6_L001_R2_001.fastq.gz<br>
+│   ├── 12BA133_S1_L001_R1_001.fastq.gz<br>
+│   ├── 12BA133_S1_L001_R2_001.fastq.gz<br>
+│   ├── 12BA134_S2_L001_R1_001.fastq.gz<br>
+│   ├── 12BA134_S2_L001_R2_001.fastq.gz<br>
+│   ├── 12BA135_S5_L001_R1_001.fastq.gz<br>
+│   ├── 12BA135_S5_L001_R2_001.fastq.gz<br>
+│   ├── 12BA136_S4_L001_R1_001.fastq.gz<br>
+│   └── 12BA136_S4_L001_R2_001.fastq.gz<br>
+├── Reports<br>
+│   ├── Adapter_Metrics.csv<br>
+│   ├── Demultiplex_Stats.csv<br>
+│   ├── fastq_list.csv<br>
+│   ├── Index_Hopping_Counts.csv<br>
+│   ├── IndexMetricsOut.bin<br>
+│   ├── Quality_Metrics.csv<br>
+│   ├── RunInfo.xml<br>
+│   ├── SampleSheet.csv<br>
+│   └── Top_Unknown_Barcodes.csv<br>
+├── Undetermined_S0_L001_R1_001.fastq.gz<br>
+└── Undetermined_S0_L001_R2_001.fastq.gz</p>
+<h2 id="11-a-namedescriptiondessortiesdebcl-convertadescription-des-sorties-de-bcl-convert">11. <a name='Descriptiondessortiesdebcl-convert'></a>Description des sorties de bcl-convert</h2>
+<ul>
+<li>Répertoire <code>logs</code> ==&gt; contient les différents log
+<ul>
+<li><code>Errors.log</code> ==&gt; log des erreurs qu'il y a eu lors l'execution</li>
+<li><code>FastqComplete.txt</code> ==&gt; Contient la version utilisé de bcl-convert et la date et l'heure de fin d'excution de bcl-convert</li>
+<li><code>Info.log</code> ==&gt; Contient les information sur l'execution de bcl-convert
+<ul>
+<li>les réglages de la partie settings de la sample sheet</li>
+<li>les info sur la version de bcl-convert et les options désactivés, le copyright</li>
+<li>la ligne de commande lancé pour executer bcl-convert</li>
+<li>les information à propos des cpu utilisés (le nombre de cpu dispo sur le neud, le nombre de cpu utilisés, le nombre de cpu utilisé pour la décompression et la compression)</li>
+<li>indique si la converssion est complétée ou non</li>
+</ul>
+</li>
+<li><code>Warnings.log</code> ==&gt; contient tous les warrnings détecter lors de l'execution</li>
+</ul>
+</li>
+<li>Répertoire <code>Project_1</code> ==&gt; contient les fastq du projet 1  (<span style="color: red">Attention ne trie pas par échantillons</span>)</li>
+<li>Répertoire <code>Reports</code> ==&gt; contient les fichiers de statistiques, des métriques et la liste des échantillons
+<ul>
+<li><code>Adapter_Metrics.csv</code> ==&gt; contient les informations à propos des adaptateurs
+<ul>
+<li>$1^{er}$ colonne {Lane} : numéro de la <em>Lane</em></li>
+<li>$2^{éme}$ colonne {Sample_ID} : ID de l'échantillon</li>
+<li>$3^{éme}$ colonne {index} : index 1</li>
+<li>$4^{éme}$ colonne {index2} : index 2</li>
+<li>$5^{éme}$ colonne {ReadNumber} : numéro du read 1 ou 2 (forward ou reverse)</li>
+<li>$6^{éme}$ colonne {AdapterBases} : nombre de base provenant des adapteurs</li>
+<li>$7^{éme}$ colonne {SampleBases} : nombre de base provenant de l'échantillon</li>
+<li>$8^{éme}$ colonne {% Adapter Bases} : pourcentage de bases provenant des adaptateurs</li>
+</ul>
+</li>
+<li><code>Demultiplex_Stats.csv</code> ==&gt; contient les informations à propos du demultiplexage
+<ul>
+<li>$1^{er}$ colonne {Lane} : numéro de la <em>Lane</em></li>
+<li>$2^{éme}$ colonne {SampleID} : ID de l'échantillon</li>
+<li>$3^{éme}$ colonne {Index} : séquence de l'index</li>
+<li>$4^{éme}$ colonne {# Reads} : nombre de reads de l'échantillon</li>
+<li>$5^{éme}$ colonne {# Perfect Index Reads} : nombre de reads sans miss match</li>
+<li>$6^{éme}$ colonne {# One Mismatch Index Reads} : nombre de reads avec un missmatch</li>
+<li>$7^{éme}$ colonne {# Two Mismatch Index Reads} : nombre de reads avec deux missmatch</li>
+<li>$8^{éme}$ colonne {% Reads} : pourcentage de reads appartenant à cette échantillon</li>
+<li>$9^{éme}$ colonne {% Perfect Index Reads} : pourcentage de reads sans missmatch</li>
+<li>$10^{éme}$ colonne {% One Mismatch Index Reads} : pourcentage de reads avec un missmatch</li>
+<li>$11^{éme}$ colonne {% Two Mismatch Index Reads} : pourcentage de reads avec deux missmatch</li>
+</ul>
+</li>
+<li><code>fastq_list.csv</code> ==&gt; contient les informations des echantillons et de leurs reads
+<ul>
+<li>$1^{er}$ colonne {RGID} : ID de l'index</li>
+<li>$2^{éme}$ colonne {RGSM} : ID de l'échantillon</li>
+<li>$3^{éme}$ colonne {RGLB} : librairie inconnue</li>
+<li>$4^{éme}$ colonne {Lane} : numéro de la <em>Lane</em></li>
+<li>$5^{éme}$ colonne {Read1File} : path vers le fichier fastq du read 1 (forward) de l'échantillon</li>
+<li>$6^{éme}$ colonne {Read2File} : path vers le fichier fastq du read 2 (reverse) de l'échantillon</li>
+</ul>
+</li>
+<li><code>Index_Hopping_Counts.csv</code> ==&gt; contient les index hopping &quot;saut d'index&quot; (index fixé au mauvais échantillon). Si l'execution contient aucun ou un seul index, le fichier n'est édité qu'avec l'en-tête.
+<ul>
+<li>$1^{er}$ colonne {Lane} :numéro de la <em>Lane</em></li>
+<li>$2^{éme}$ colonne {Sample_ID} : ID de l'échantillon</li>
+<li>$3^{éme}$ colonne {index} : index 1</li>
+<li>$4^{éme}$ colonne {index2} : index 2</li>
+<li>$5^{éme}$ colonne {# Reads} : nombre de reads de l'échantillon</li>
+<li>$6^{éme}$ colonne {% of Hopped Reads} : pourcentage de reads qui on un &quot;saut d'index&quot;</li>
+<li>$7^{éme}$ colonne {% of All Reads} : pourcentage total de reads</li>
+</ul>
+</li>
+<li><code>IndexMetricsOut.bin</code> ==&gt; fichier de sortie des métriques d'index au format binaire qui contient les statistiques d'index pour chaque combinaison d'échantillons et d'index par <em>lane</em>.</li>
+<li><code>Quality_Metrics.csv</code>==&gt; fichier regroupant les métriques de qualité de chaque échantillons
+<ul>
+<li>$1^{er}$ colonne {Lane} : numéro de la <em>Lane</em></li>
+<li>$2^{éme}$ colonne {SampleID} : ID de l'échantillon</li>
+<li>$3^{éme}$ colonne {index} : index 1</li>
+<li>$4^{éme}$ colonne {index2} : index 2</li>
+<li>$5^{éme}$ colonne {ReadNumber} : numéro du read 1 ou 2 (forward ou reverse)</li>
+<li>$6^{éme}$ colonne {Yield} : rendement (nombre de read de cette échantillon)</li>
+<li>$7^{éme}$ colonne {YieldQ30} : rendement supérieur ou égale à une qualité de Q30 (nombre de read de cette échantillon &gt;= Q30)</li>
+<li>$8^{éme}$ colonne {QualityScoreSum} : somme de la qualité moyenne de chaque reads</li>
+<li>$9^{éme}$ colonne {Mean Quality Score (PF)} : moyenne de la qualité des reads de l'échantillon</li>
+<li>$10^{éme}$ colonne {% Q30} : pourcentage de reads yant une qualité &gt;= à Q30</li>
+</ul>
+</li>
+<li><code>RunInfo.xml</code> ==&gt; copie du RunInfo.xml utilisé par bcl-convert</li>
+<li><code>SampleSheet.csv</code> ==&gt; copie de la smple sheet utilisé par bcl-convert</li>
+<li><code>Top_Unknown_Barcodes.csv</code>
+<ul>
+<li>$1^{er}$ colonne {Lane} : numéro de la <em>Lane</em></li>
+<li>$2^{éme}$ colonne {index} : index 1</li>
+<li>$3^{éme}$ colonne {index2} : index 2</li>
+<li>$4^{éme}$ colonne {# Reads} : nombre de reads</li>
+<li>$5^{éme}$ colonne {% of Unknown Barcodes} : pourcentage de barcodes inconnu pour c'est index</li>
+<li>$6^{éme}$ colonne {% of All Reads} : pourcentage des reads dont le barcodes est inconnus pour ces index.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Les fichiers fastq des reads indéterminés</li>
+</ul>
+
+</body>
+</html>

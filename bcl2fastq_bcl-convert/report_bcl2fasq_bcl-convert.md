@@ -307,9 +307,9 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 
 |type run|param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
 |---|---|---|---|---|---|
-|JARVIS|p8 r8 w8|04:03:46 + 04:01:15|81043.66 + 86491.64|69.25 + 74.63|13.563916 + 22.383716|
-|JARVIS|p12 r12 w12|02:54:04 + 02:56:50|96397.79 + 108461.85|76.83 + 85.17|16.297744 + 24.742460|
-|JARVIS|p16 r16 w16|02:43:45 + 02:28:32|99892.88 + 85732.81|63.5 + 60.06|15.500356 + 20.536340|
+|JARVIS|p8 r8 w8|<span style="color: red">04:03:46 + 04:01:15</span>|81043.66 + 86491.64|69.25 + 74.63|13.563916 + 22.383716|
+|JARVIS|p12 r12 w12|<span style="color: green">02:54:04 + 02:56:50</span>|96397.79 + 108461.85|<span style="color: green">76.83 + 85.17</span>|16.297744 + 24.742460|
+|JARVIS|p16 r16 w16|<span style="color: green">02:43:45 + 02:28:32</span>|99892.88 + 85732.81|<span style="color: orange">63.5 + 60.06</span>|15.500356 + 20.536340|
 
 ###  7.2. <a name='Graphiquesdesperformancesdebcl-convert'></a>Graphiques des performances de bcl-convert
 ![](img/barplot_cum_bcl-convert.png "")
@@ -329,39 +329,39 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 |   |temps total (h)|   |temps cpu (h)|   |Utilisation cpu (%)|   |
 |---|---|---|---|---|---|---|
 |paramètres|bcl2fasq|bcl-convert|bcl2fasq|bcl-convert|bcl2fasq|bcl-convert|
-|r8 p8 w8 #coeurs 8|12.52|8.07|93.16|46.54|93.23|71.94|
-|r12 p12 w12 #coeurs 12|8.58|5.83|98.65|56.91|95.75|81.00|
-|r16 p16 w16 #coeurs 16|7.07|5.18|96.29|51.56|84.90|61.78|
+|r8 p8 w8 #coeurs 8|<span style="color: red">12.52</span>|8.07|93.16|46.54|<span style="color: green">93.23</span>|<span style="color: orange">71.94</span>|
+|r12 p12 w12 #coeurs 12|8.58|<span style="color: orange">5.83</span>|98.65|56.91|<span style="color: green">95.75</span>|81.00|
+|r16 p16 w16 #coeurs 16|7.07|<span style="color: orange">5.18</span>|96.29|51.56|<span style="color: green">84.90</span>|<span style="color: red">61.78</span>|
 
 ##  9. <a name='Comparaisondesperformanceenutilisantleparamtredunombredetchesenparallles'></a>Comparaison des performance en utilisant le paramètre du nombre de tâches en paralèlles
 
 ###  9.1. <a name='Tableau'></a>Tableau
 |type run|param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
 |---|---|---|---|---|---|
-|JARVIS|c8 p8 r4 w4 t1|04:25:03 + 04:22:35|86084.99 + 82980.53|67.63 + 65.75|23.933228 + 15.670624|
+|JARVIS|c8 p8 r4 w4 t1|04:25:03 + 04:22:35|86084.99 + 82980.53|<span style="color: orange">67.63 + 65.75</span>|23.933228 + 15.670624|
 |JARVIS|c12 p12 r4 w4 t1|04:18:56 + 04:37:15|86994.43 + 94440.35|46.58 + 47.25|21.266720 + 15.072964 |
-|JARVIS|c16 p16 r4 w4 t1|04:15:57 + 04:14:07|87586.30 + 85394.20|35.63 + 35.00|18.884748 + 15.479748|
-|JARVIS|c16 p8 r4 w4 t2|04:13:33 + 04:04:22|97273.08 + 94120.37|39.94 + 40.06|32.821016 + 20.821300|
-|JARVIS|c16 p8 r8 w8 t2|02:36:00 + 02:31:28|85626.33 + 86572.85|57.13 + 59.50|19.449732 + 31.199964|
-|JARVIS|c8 p4 r4 w4 t2|04:10:13 + 04:04:37|86673.48 + 84256.27|72.13 + 71.75|33.038984 + 23.701368|
+|JARVIS|c16 p16 r4 w4 t1|04:15:57 + 04:14:07|87586.30 + 85394.20|<span style="color: red">35.63 + 35.00</span>|18.884748 + 15.479748|
+|JARVIS|c16 p8 r4 w4 t2|04:13:33 + 04:04:22|97273.08 + 94120.37|<span style="color: red">39.94 + 40.06</span>|32.821016 + 20.821300|
+|JARVIS|c16 p8 r8 w8 t2|<span style="color: green">02:36:00 + 02:31:28</span>|85626.33 + 86572.85|<span style="color: orange">57.13 + 59.50</span>|19.449732 + 31.199964|
+|JARVIS|c8 p4 r4 w4 t2|04:10:13 + 04:04:37|86673.48 + 84256.27|<span style="color: green">72.13 + 71.750</span>|33.038984 + 23.701368|
 |JARVIS|c12 p4 r4 w4 t3|04:18:58 + 04:08:39|99684.36 + 95528.38|53.42 + 53.33|45.420504 + 30.568516|
 |JARVIS|c8 p8 r8 w8 t2|err|err|err|err|
-|JARVIS|c8 p8 r8 w8 t3|08:51:33 + 03:12:17|86667.2 + 80765.37|33.88 + 87.5|36.365148 + 20.891836|
+|JARVIS|c8 p8 r8 w8 t3|<span style="color: red">08:51:33</span> + <span style="color: green">03:12:17</span>|86667.2 + 80765.37|<span style="color: red">33.88</span> + <span style="color: green">87.5</span>|36.365148 + 20.891836|
 |JARVIS|c8 p8 r8 w8 t4|err|err|err|err|
 |JARVIS|c12 p6 r6 w6 t2|err|err|err|err|
-|JARVIS|c12 p6 r6 w6 t3|08:38:18 + 08:36:37|87169.64 + 84253.28|23.33 + 22.58|32.774200 + 18.149312|
-|JARVIS|c12 p6 r6 w6 t4|08:36:30 + 08:35:04|87149.26 + 84272.81|23.42 + 22.67|37.760016 + 18.785000|
+|JARVIS|c12 p6 r6 w6 t3|<span style="color: red">08:38:18 + 08:36:37</span>|87169.64 + 84253.28|<span style="color: red">23.33 + 22.58</span>|32.774200 + 18.149312|
+|JARVIS|c12 p6 r6 w6 t4|<span style="color: red">08:36:30 + 08:35:04|87149.26 + 84272.81|<span style="color: red">23.42 + 22.67</span>|37.760016 + 18.785000|
 |JARVIS|c12 p12 r12 w12 t2|err|err|err|err|
 |JARVIS|c16 p8 r8 w8 t3|err|err|err|err|
 |JARVIS|c16 p8 r8 w8 t4|err|err|err|err|
 |JARVIS|c16 p8 r8 w8 tnone|err|err|err|err|
-|JARVIS|c16 no params|04:04:58 + 04:05:24|86967.56 + 85309.46|36.94 + 36.19|31.690768 + 18.556820|
+|JARVIS|c16 no params|04:04:58 + 04:05:24|86967.56 + 85309.46|<span style="color: red">36.94 + 36.19</span>|31.690768 + 18.556820|
 
 ###  9.2. <a name='Graphiques'></a>Graphiques
-####  9.2.1. <a name='pwrnbdecoeurs'></a>p = w = r = nb de coeurs
+####  9.2.1. <a name='pwrnbdecoeurs'></a>p = w = r = nb de coeurs , t = 1
 ![](img/barplot_cum_bcl-convert.png "")
 
-####  9.2.2. <a name='Pnbdecoeursetrw4'></a>P = nb de coeurs et r = w = 4
+####  9.2.2. <a name='Pnbdecoeursetrw4'></a>P = nb de coeurs et r = w = 4, t = 1
 ![](img/barplot_cum_bcl-convert2.png "")
 
 ####  9.3. <a name='utilisationdunombredetcheseffectuerenparallles'></a>utilisation du nombre de tâches à effectuer en paralèlles
@@ -371,8 +371,8 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 #### Tableau
 |param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
 |---|---|---|---|---|
-|c16 no params|02:29:24 + 02:36:24|110117.3 + 109588.75|76.75 + 72.94|33.110112 + 28020204|
-|c12 p12 r12 w12 t1 (que sur 8-8)|02:50:25|104738.44|85.33|16.513288|
+|c16 no params|<span style="color: green">02:29:24 + 02:36:24</span>|110117.3 + 109588.75|<span style="color: orange">76.75 + 72.94</span>|33.110112 + 28.020204|
+|c12 p12 r12 w12 t1 (que sur 8-8)|<span style="color: green">02:50:25</span>|104738.44|<span style="color: green">85.33</span>|16.513288|
 |c16 p10 r3 w3 t1 (que sur 8-8)|en cours|
 
 
