@@ -142,17 +142,17 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | bcl2fastq |||||
 |---|---|---|---|---|
 | MELISSE |
-| param utilisé | temps écoulé (h) | temps cpu |  utilisation cpu (%) | mémoire utilisé (Gb) |
+| param utilisé | temps écoulé (h : m : s) | temps cpu (s)|  utilisation cpu (%) | mémoire utilisé (Gb) |
 | p4 w4 r4 | 00:00:12.47 | 40.38 | 80.95 | 2.346448 |
 | p8 w4 r4 | 00:00:07.59 | 43.18 | 71.12 | 2.361540 |
 | p12 w4 r4 | 00:00:06.45 | 43.21 | 55.75 | 2.386592 |
 | p16 w4 r4 | 00:00:11.31 | 62.62 | 34.56 | 2.365040 |
 | JARVIS |
-| param utilisé | temps écoulé (h) | temps cpu |  utilisation cpu (%) | mémoire utilisé (Gb) |
-| p4 w4 r4 | 10:48:31 + 11:35:17 | 154644.12 + 161789.16 | 99.25 + 96.75 | 12.459632 + 26.311436 |
-| p8 w4 r4 | 05:48:32 + 06:13:34  | 165298.55 + 170323.1 | 98.75 + 94.88 | 12.226456 + 29.826448 |
-| p12 w4 r4 | 04:04:10 + 04:36:05 | 172296.87 + 182714.38 | 98.00 + 91.83 | 10.649516 + 35.187044 |
-| p16 w4 r4 | 02:58:41 + 05:51:39 | 167139.05 + 314416.25 | 97.38 + 93.13 | 11.353516 + 43.053008 |
+| param utilisé | temps écoulé (h : m : s) | temps cpu (h : m : s)|  utilisation cpu (%) | mémoire utilisé (Gb) |
+| p4 w4 r4 | 10:48:31 + 11:35:17 | 42:57:24 + 44:56:29 | 99.25 + 96.75 | 12.459632 + 26.311436 |
+| p8 w4 r4 | 05:48:32 + 06:13:34  | 45:54:58 + 47:18:43 | 98.75 + 94.88 | 12.226456 + 29.826448 |
+| p12 w4 r4 | 04:04:10 + 04:36:05 | 47:51:36 + 50:45:14 | 98.00 + 91.83 | 10.649516 + 35.187044 |
+| p16 w4 r4 | 02:58:41 + 05:51:39 | 46:25:39 + 87:20:16 | 97.38 + 93.13 | 11.353516 + 43.053008 |
 
 
 ###  2.2. <a name='Graphiquesdesperformancesdebcl2fastq'></a>Graphiques des performances de bcl2fastq
@@ -171,15 +171,15 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | bcl2fastq |||||
 |---|---|---|---|---|
 | MELISSE |
-| param utilisé | temps écoulé (h) | temps cpu (s) |  utilisation cpu (%) |mémoire utilisé (Gb) |
+| param utilisé | temps écoulé (h : m : s) | temps cpu (s) |  utilisation cpu (%) |mémoire utilisé (Gb) |
 | p12 r4 w4 | 00:00:08.58 | 57.98 | 56.25 | 2.360844 |
 | p12 r8 w8 | 00:00:18.38 | 58.11 | 26.33 | 2.354396 |
 | p12 r12 w12 | 00:00:07.51 | 57.26 | 63.50 | 2.359704 |
 | JARVIS |
-| param utilisé | temps écoulé (h) | temps cpu (s) |  utilisation cpu (%) |mémoire utilisé (Gb) |
-| p12 r4 w4 | 04:04:10 + 04:36:05 | 172296.87 + 182714.38 | 98.00 + 91.83 | 10.649516 +  35.187044 |
-| p12 r8 w8 | 03:57:35 + 04:38:53 | 168491.81 + 187202.29 | 98.42 + 93.17 | 12.122880 + 37.427376 |
-| p12 r12 w12 | 04:01:35 + 04:34:25 | 171504.55 + 183624.04 | 98.58 + 92.92 | 11.171612 + 38.953616 |  
+| param utilisé | temps écoulé (h : m : s) | temps cpu (h : m : s) |  utilisation cpu (%) |mémoire utilisé (Gb) |
+| p12 r4 w4 | 04:04:10 + 04:36:05 | 47:51:36 + 50:45:14 | 98.00 + 91.83 | 10.649516 +  35.187044 |
+| p12 r8 w8 | 03:57:35 + 04:38:53 | 46:48:11 + 52:00:02 | 98.42 + 93.17 | 12.122880 + 37.427376 |
+| p12 r12 w12 | 04:01:35 + 04:34:25 | 47:38:24 + 51:00:24 | 98.58 + 92.92 | 11.171612 + 38.953616 |  
 
 ###  3.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
 
@@ -199,17 +199,17 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | bcl2fastq |||||
 |---|---|---|---|---|
 | MELISSE |
-| param utilisé | temps écoulé (h) | temps cpu |  utilisation cpu (%) |mémoire utilisé (Gb) |
+| param utilisé | temps écoulé (h : m : s) | temps cpu (s)|  utilisation cpu (%) |mémoire utilisé (Gb) |
 | p4 r4 w4 | 00:00:12.47 | 40.38 | 80.95 | 2.346448 |
 | p8 r8 w8 | 00:00:34.75 | 51.98 | 18.63 | 1.869064 |
 | p12 r12 w12 | 00:00:07.51 | 57.30 | 63.50 | 2.359704 |
 | p16 r16 w16 | 00:00:08.02 | 60.47 | 49.19 | 2.360132 |
 | JARVIS |
-| param utilisé | temps écoulé (h) | temps cpu |  utilisation cpu (%) |mémoire utilisé (Gb) |
-| p4 r4 w4 | 10:21:47 + 16:42:32 | 148369.72 + 215649.95 | 99.20 + 89.50 | 10.226312 + 22.814680 |
-| p8 r8 w8 | 05:40:55 + 06:51:09 | 160477.90 + 174911.9 | 98.00 + 88.63 | 10.509808 + 30.503808 |
-| p12 r12 w12 | 04:01:35 + 04:34:25 | 171504.55 + 183624.04 | 98.58 + 92.92 | 11.171612 + 38.953616 |
-| p16 r16 w16 | 03:24:32 + 03:40:24 | 165158.86 + 181473.41 | 84.06 + 85.75 | 11.793640 + 44.042212 |
+| param utilisé | temps écoulé (h : m : s) | temps cpu (h : m : s)|  utilisation cpu (%) |mémoire utilisé (Gb) |
+| p4 r4 w4 | 10:21:47 + 16:42:32 | 41:12:49 + 59:54:09 | 99.20 + 89.50 | 10.226312 + 22.814680 |
+| p8 r8 w8 | 05:40:55 + 06:51:09 | 44:34:37 + 48:35:11 | 98.00 + 88.63 | 10.509808 + 30.503808 |
+| p12 r12 w12 | 04:01:35 + 04:34:25 | 47:38:24 + 51:00:24 | 98.58 + 92.92 | 11.171612 + 38.953616 |
+| p16 r16 w16 | 03:24:32 + 03:40:24 | 45:52:38 + 50:24:33 | 84.06 + 85.75 | 11.793640 + 44.042212 |
 
 
 ###  4.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
@@ -230,17 +230,17 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | bcl2fastq |||||
 |---|---|---|---|---|
 | MELISSE |
-| param utilisé | temps écoulé (h) | temps cpu |  utilisation cpu (%) |mémoire utilisé (Gb) |
+| param utilisé | temps écoulé (h : m : s) | temps cpu (s)|  utilisation cpu (%) |mémoire utilisé (Gb) |
 | p8 r2 w2 | 00:00:36.49 | 53.16 | 18.13 | 1.872452 |
 | p8 r4 w4 | 00:00:07.59 | 43.18 | 71.00 | 2.361540 |
 | p8 r6 w6 | 00:00:08.55 | 50.79 | 74.25 | 2.346620 |
 | p8 r8 w8 | 00:00:34.75 | 51.98 | 18.63 | 1.869064 |
 | JARVIS |
-| param utilisé | temps écoulé (h) | temps cpu |  utilisation cpu (%) |mémoire utilisé (Gb) |
-| p8 r2 w2 | 05:56:38 + 06:50:56 | 167567.71 + 188531.43 | 97.88 + 95.5 | 10.172972 + 27.979624 |
-| p8 r4 w4 | 05:48:32 + 06:13:34 | 165298.55 + 170323.10 | 98.75 + 94.88 | 12.226456 + 29.826448 |
-| p8 r6 w6 | 05:54:49 + 06:31:55 | 167594.55 + 180114.75 | 98.38 + 95.63 | 10.559480 + 30.853492 |
-| p8 r8 w8 | 05:40:55 + 06:51:09 | 160477.90 + 174911.90 | 98.0 + 88.63 | 10.509808 + 30.503808 |
+| param utilisé | temps écoulé (h : m : s) | temps cpu (h : m : s)|  utilisation cpu (%) |mémoire utilisé (Gb) |
+| p8 r2 w2 | 05:56:38 + 06:50:56 | 46:32:47 + 52:22:11 | 97.88 + 95.5 | 10.172972 + 27.979624 |
+| p8 r4 w4 | 05:48:32 + 06:13:34 | 45:54:58 + 47:18:43 | 98.75 + 94.88 | 12.226456 + 29.826448 |
+| p8 r6 w6 | 05:54:49 + 06:31:55 |46:33:14  + 50:01:54 | 98.38 + 95.63 | 10.559480 + 30.853492 |
+| p8 r8 w8 | 05:40:55 + 06:51:09 |44:34:37  + 48:35:11 | 98.0 + 88.63 | 10.509808 + 30.503808 |
 
 
 ###  5.2. <a name='Graphiquesdesperformancesdebcl2fastq-1'></a>Graphiques des performances de bcl2fastq
@@ -292,9 +292,9 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 | bcl2fastq : Somme des parramètres pour le nombre de coeurs |||||
 |---|---|---|---|---|
 | JARVIS |
-| param utilisé | temps écoulé (h) | temps cpu | utilisation cpu (%) | mémoire utilisé (Gb) |
-| c28 p12 r8 w8 | 03:46:19 + 04:23:50 | 154089.97 + 166287.98 | 40.50 + 37.50 | 10.811548 + 37.494200 |
-| c20 p12 r4 w4 | 03:35:04 + 04:12:16 | 132959.17 + 148482.30 | 51.50 + 49.0 | 10.508500 | 36.604624 |
+| param utilisé | temps écoulé (h : m : s) | temps cpu (h : m : s)| utilisation cpu (%) | mémoire utilisé (Gb) |
+| c28 p12 r8 w8 | 03:46:19 + 04:23:50 | 42:48:09 + 46:11:27 | 40.50 + 37.50 | 10.811548 + 37.494200 |
+| c20 p12 r4 w4 | 03:35:04 + 04:12:16 |36:55:59  + 41:14:42 | 51.50 + 49.0 | 10.508500 | 36.604624 |
 | c24 p8 r8 w8 | sortie du chrono vide |  |  |  |  |
 | c16 p8 r4 w4 | sortie du chrono vide |  |  |  |  |
 
@@ -305,11 +305,11 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 
 ###  7.1. <a name='Tableaudesperformancedebcl2fastqprw'></a>Tableau des performance de bcl2fastq (p = r = w)
 
-|type run|param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
+|type run|param utilisé|temps écoulé (h : m : s)|temps cpu (h : m : s)|utilisation cpu (%)|mémoire utilisé (Gb)|
 |---|---|---|---|---|---|
-|JARVIS|p8 r8 w8|<span style="color: red">04:03:46 + 04:01:15</span>|81043.66 + 86491.64|69.25 + 74.63|13.563916 + 22.383716|
-|JARVIS|p12 r12 w12|<span style="color: green">02:54:04 + 02:56:50</span>|96397.79 + 108461.85|<span style="color: green">76.83 + 85.17</span>|16.297744 + 24.742460|
-|JARVIS|p16 r16 w16|<span style="color: green">02:43:45 + 02:28:32</span>|99892.88 + 85732.81|<span style="color: orange">63.5 + 60.06</span>|15.500356 + 20.536340|
+|JARVIS|p8 r8 w8|<span style="color: red">04:03:46 + 04:01:15</span>|22:30:43 + 24:01:31|69.25 + 74.63|13.563916 + 22.383716|
+|JARVIS|p12 r12 w12|<span style="color: green">02:54:04 + 02:56:50</span>|26:46:37 + 30:07:41|<span style="color: green">76.83 + 85.17</span>|16.297744 + 24.742460|
+|JARVIS|p16 r16 w16|<span style="color: green">02:43:45 + 02:28:32</span>|27:44:52 + 23:48:52|<span style="color: orange">63.5 + 60.06</span>|15.500356 + 20.536340|
 
 ###  7.2. <a name='Graphiquesdesperformancesdebcl-convert'></a>Graphiques des performances de bcl-convert
 ![](img/barplot_cum_bcl-convert.png "")
@@ -336,26 +336,26 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 ##  9. <a name='Comparaisondesperformanceenutilisantleparamtredunombredetchesenparallles'></a>Comparaison des performance en utilisant le paramètre du nombre de tâches en paralèlles
 
 ###  9.1. <a name='Tableau'></a>Tableau
-|type run|param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
+|type run|param utilisé|temps écoulé (h : m : s)|temps cpu (h : m : s)|utilisation cpu (%)|mémoire utilisé (Gb)|
 |---|---|---|---|---|---|
-|JARVIS|c8 p8 r4 w4 t1|04:25:03 + 04:22:35|86084.99 + 82980.53|<span style="color: orange">67.63 + 65.75</span>|23.933228 + 15.670624|
-|JARVIS|c12 p12 r4 w4 t1|04:18:56 + 04:37:15|86994.43 + 94440.35|46.58 + 47.25|21.266720 + 15.072964 |
-|JARVIS|c16 p16 r4 w4 t1|04:15:57 + 04:14:07|87586.30 + 85394.20|<span style="color: red">35.63 + 35.00</span>|18.884748 + 15.479748|
-|JARVIS|c16 p8 r4 w4 t2|04:13:33 + 04:04:22|97273.08 + 94120.37|<span style="color: red">39.94 + 40.06</span>|32.821016 + 20.821300|
+|JARVIS|c8 p8 r4 w4 t1|04:25:03 + 04:22:35|23:54:44 + 23:03:00|<span style="color: orange">67.63 + 65.75</span>|23.933228 + 15.670624|
+|JARVIS|c12 p12 r4 w4 t1|04:18:56 + 04:37:15|24:09:54 + 26:14:00|46.58 + 47.25|21.266720 + 15.072964 |
+|JARVIS|c16 p16 r4 w4 t1|04:15:57 + 04:14:07|24:19:46 + 23:43:14|<span style="color: red">35.63 + 35.00</span>|18.884748 + 15.479748|
+|JARVIS|c16 p8 r4 w4 t2|04:13:33 + 04:04:22|27:01:13 + 26:08:40|<span style="color: red">39.94 + 40.06</span>|32.821016 + 20.821300|
 |JARVIS|c16 p8 r8 w8 t2|<span style="color: green">02:36:00 + 02:31:28</span>|85626.33 + 86572.85|<span style="color: orange">57.13 + 59.50</span>|19.449732 + 31.199964|
-|JARVIS|c8 p4 r4 w4 t2|04:10:13 + 04:04:37|86673.48 + 84256.27|<span style="color: green">72.13 + 71.750</span>|33.038984 + 23.701368|
-|JARVIS|c12 p4 r4 w4 t3|04:18:58 + 04:08:39|99684.36 + 95528.38|53.42 + 53.33|45.420504 + 30.568516|
+|JARVIS|c8 p4 r4 w4 t2|04:10:13 + 04:04:37|24:04:33 + 23:24:16|<span style="color: green">72.13 + 71.750</span>|33.038984 + 23.701368|
+|JARVIS|c12 p4 r4 w4 t3|04:18:58 + 04:08:39|27:41:24 + 26:32:08|53.42 + 53.33|45.420504 + 30.568516|
 |JARVIS|c8 p8 r8 w8 t2|err|err|err|err|
-|JARVIS|c8 p8 r8 w8 t3|<span style="color: red">08:51:33</span> + <span style="color: green">03:12:17</span>|86667.2 + 80765.37|<span style="color: red">33.88</span> + <span style="color: green">87.5</span>|36.365148 + 20.891836|
+|JARVIS|c8 p8 r8 w8 t3|<span style="color: red">08:51:33</span> + <span style="color: green">03:12:17</span>|24:04:27 + 22:26:05|<span style="color: red">33.88</span> + <span style="color: green">87.5</span>|36.365148 + 20.891836|
 |JARVIS|c8 p8 r8 w8 t4|err|err|err|err|
 |JARVIS|c12 p6 r6 w6 t2|err|err|err|err|
-|JARVIS|c12 p6 r6 w6 t3|<span style="color: red">08:38:18 + 08:36:37</span>|87169.64 + 84253.28|<span style="color: red">23.33 + 22.58</span>|32.774200 + 18.149312|
-|JARVIS|c12 p6 r6 w6 t4|<span style="color: red">08:36:30 + 08:35:04|87149.26 + 84272.81|<span style="color: red">23.42 + 22.67</span>|37.760016 + 18.785000|
+|JARVIS|c12 p6 r6 w6 t3|<span style="color: red">08:38:18 + 08:36:37</span>|24:12:49 + 23:24:13|<span style="color: red">23.33 + 22.58</span>|32.774200 + 18.149312|
+|JARVIS|c12 p6 r6 w6 t4|<span style="color: red">08:36:30 + 08:35:04|24:12:29 + 23:24:32|<span style="color: red">23.42 + 22.67</span>|37.760016 + 18.785000|
 |JARVIS|c12 p12 r12 w12 t2|err|err|err|err|
 |JARVIS|c16 p8 r8 w8 t3|err|err|err|err|
 |JARVIS|c16 p8 r8 w8 t4|err|err|err|err|
 |JARVIS|c16 p8 r8 w8 tnone|err|err|err|err|
-|JARVIS|c16 no params|04:04:58 + 04:05:24|86967.56 + 85309.46|<span style="color: red">36.94 + 36.19</span>|31.690768 + 18.556820|
+|JARVIS|c16 no params|04:04:58 + 04:05:24|24:09:27 + 23:41:49|<span style="color: red">36.94 + 36.19</span>|31.690768 + 18.556820|
 
 ###  9.2. <a name='Graphiques'></a>Graphiques
 ####  9.2.1. <a name='pwrnbdecoeurs'></a>p = w = r = nb de coeurs , t = 1
@@ -369,11 +369,11 @@ __Différences d'utilisations en ligne de commande (utilisé actuellement) :__
 
 ### bcl-convert lancé sur prod
 #### Tableau
-|param utilisé|temps écoulé (h)|temps cpu|utilisation cpu (%)|mémoire utilisé (Gb)|
+|param utilisé|temps écoulé (h : m : s)|temps cpu (h : m : s)|utilisation cpu (%)|mémoire utilisé (Gb)|
 |---|---|---|---|---|
-|c16 no params|<span style="color: green">02:29:24 + 02:36:24</span>|110117.3 + 109588.75|<span style="color: orange">76.75 + 72.94</span>|33.110112 + 28.020204|
-|c12 p12 r12 w12 t1 (que sur 8-8)|<span style="color: green">02:50:25</span>|104738.44|<span style="color: green">85.33</span>|16.513288|
-|c16 p10 r3 w3 t1 (que sur 8-8)|en cours|
+|c16 no params|<span style="color: green">02:29:24 + 02:36:24</span>|30:35:17 + 30:26:28|<span style="color: orange">76.75 + 72.94</span>|33.110112 + 28.020204|
+|c12 p12 r12 w12 t1 (que sur 8-8)|<span style="color: green">02:50:25 + 02:46:32</span>|29:05:38 + 28:40:33|<span style="color: green">85.33 + 86.08</span>|16.513288 + 13.044264|
+|c16 p10 r3 w3 t1 (que sur 8-8)| <span style="color: red">06:45:44</span> | 32:45:37 | <span style="color: red">30.38</span> | 16.733428 |
 
 
 
