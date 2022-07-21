@@ -16,7 +16,9 @@
 \input{sections/coverpage}
 %\maketitle % afficher titre
 % \addtocontents{toc}{\protect\thispagestyle{empty}} % toc non numéroté
-\tableofcontents % affiche la toc
+{\hypersetup{hidelinks}
+    \tableofcontents}
+% \tableofcontents % affiche la toc
 % \thispagestyle{empty} % suprime le style de la page
 \newpage
 % \setcounter{page}{1} % numérote cette page comme la 1ere

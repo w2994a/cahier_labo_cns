@@ -6,12 +6,35 @@
 \tableofcontents
 
 # CEA - Genoscope  
+
+## Organigrame CEA - Genoscope - LBGB
+\begin{minipage}[t]{0.48\linewidth}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/organigramme.jpg}
+    \caption{\tiny{Organigramme situant l'équipe du \emph{Laboratoire de Bioinformatique pour la Génomique} \newline \emph{et la Biodiversité (LBGB)} au sein du genoscope et du CEA}}
+    \label{fig-organigramme}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\linewidth}
+\begin{block}{CEA (Commissariat à l'énergie atomique et aux énergies)}
+\begin{itemize}
+ \item créé le 18 octobre 1945 par Charles de Gaulle
+ \item 20 000 Salariés
+ \item 4 directions opérationnelles et 9 directions fonctionnelles
+\end{itemize}
+\end{minipage}
+
 ## CEA - Genoscope
 \begin{minipage}[t]{0.48\linewidth}
- CEA (Commissariat à l'énergie atomique et aux énergies)  
-- créé le 18 octobre 1945 par Charles de Gaulle   
-- 20 000 Salariés  
-- 4 directions opérationnelles et 9 directions fonctionnelles  
+\begin{block}{CEA (Commissariat à l'énergie atomique et aux énergies)}
+\begin{itemize}
+ \item créé le 18 octobre 1945 par Charles de Gaulle
+ \item 20 000 Salariés
+ \item 4 directions opérationnelles et 9 directions fonctionnelles
+\end{itemize}
+\end{block}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.48\linewidth}
@@ -23,14 +46,6 @@
     - **France génomique**
     - **Projet Tara Océans** - étude des écosystèmes marins planctoniques
 \end{minipage}
-
-## Organigrame CEA - Genoscope - LBGB
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{img/organigramme.jpg}
-    \caption{\tiny{Organigramme situant l'équipe du \emph{Laboratoire de Bioinformatique pour la Génomique} \newline \emph{et la Biodiversité (LBGB)} au sein du genoscope et du CEA}}
-    \label{fig-organigramme}
-\end{figure}
 
 # Contexte
 ## LBGB (Laboratoire de Bioinformatique pour la Génomique et la Biodiversité)
