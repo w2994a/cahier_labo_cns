@@ -1,0 +1,73 @@
+\input{preamble}
+%=============================================================================%
+%					    	Titre - Auteur - Date	        	 		      %
+%=============================================================================%
+\title{Gestion informatique des données de séquençage \\ Genoscope - LBGB}
+\author{William Amory \\ M1 BI-IPFB Université Paris Cité \\\\ sous la responsabilité de Frédérick Gavory}
+\date{\today}
+%=============================================================================%
+%						        Début document   							  %
+%=============================================================================%
+\begin{document}
+
+%=============================================================================%
+%                             Page de Garde                                   %
+%=============================================================================%
+\input{sections/coverpage}
+%\maketitle % afficher titre
+% \addtocontents{toc}{\protect\thispagestyle{empty}} % toc non numéroté
+{\hypersetup{hidelinks}
+    \tableofcontents}
+% \tableofcontents % affiche la toc
+% \thispagestyle{empty} % suprime le style de la page
+% \setcounter{page}{1} % numérote cette page comme la 1ere
+
+%=============================================================================%
+%                                 Contenu                                     %
+%=============================================================================%
+\newpage
+\input{sections/glossaire.tex}
+
+\newpage
+\input{sections/content}
+
+\newpage
+\addcontentsline{toc}{section}{Notes}
+\theendnotes
+%=============================================================================%
+%============================= reférences ====================================%
+\newpage
+\addcontentsline{toc}{section}{Références}
+\bibliographystyle{abbrv}
+\bibliography{biblio}
+\nocite{*}
+%=============================================================================%
+%		      				Fin document		  							  %
+%=============================================================================%
+\end{document}
+
+\begin{minipage}{0.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{img/optimal_clusters_HCA.png}
+		\caption{Détermination graphique du nombre de clusters optimal pour la classification à l'aide de HCA}
+		\label{fig3}
+	\end{figure}
+\end{minipage} 
+\hfill
+\begin{minipage}{0.5\textwidth}
+	\begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{img/heatmap.png}
+        \caption{Heatmap de la classification des poches et des descripteurs par HCA}
+        \label{fig4}
+    \end{figure}
+\end{minipage}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{img/poucentage_variance_composante_pca.png}
+    \includegraphics[width=0.45\textwidth]{img/pca_biplot_hca.png}
+    \caption{Détermination graphique du nombre de composante nécessaire (à gauche) et visualisation des clusters sur les 2 premières composantes de l'ACP (à droite)}
+    \label{fig5}
+\end{figure}

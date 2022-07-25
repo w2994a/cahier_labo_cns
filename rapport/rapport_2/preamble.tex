@@ -1,0 +1,62 @@
+%=============================================================================%
+%                                 Preamble                                    %
+%=============================================================================%
+\documentclass[12pt,a4paper]{article}
+%=============================================================================%
+%							PACKAGE											  %
+%=============================================================================%
+\usepackage[french]{babel} % langue
+\usepackage[utf8]{inputenc} % encodage
+\usepackage{a4} % format
+\usepackage{setspace} % interligne
+\onehalfspacing % définit un interligne de 1.5
+\usepackage[T1]{fontenc}
+% \usepackage{fontspec}
+% \setmainfont{Times New Roman}
+% \setsansfont{Arial}
+\usepackage[cyr]{aeguill}
+\usepackage{epsfig}
+\usepackage{amsmath, amsthm}
+\usepackage{amsfonts,amssymb}
+\usepackage{float}
+
+\usepackage{multirow} % tableau avancé
+
+\usepackage{endnotes} % note en fin de document
+\let\footnote = \endnote % redéfinit la commande \footnote en \endnote 
+\renewcommand{\notesname}{Notes} % Rennomer le titre des endnotes.
+
+% \renewcommand{\thefigure}{\ifnum\value{section}>0 
+% 	\thesection.\fi\arabic{figure}} % redéfinit la numérotation des figures en fonction des section
+% \renewcommand{\thetable}{\ifnum\value{section}>0 
+% 	\thesection.\fi\arabic{figure}} % redéfinit la numérotation des tables en fonction des section
+%=============== changement de la numérotation des section ect...=============%
+% \renewcommand{\thesection}{\Alph{section}}  % ex: ici les section sont définis avec des lettre
+% \Alph --> Lettre	;	\Roman --> chiffre romain
+%============================= couleur texte =================================%
+\usepackage{xcolor}
+\definecolor{green2}{rgb}{0,0.6,0}
+\definecolor{grey2}{rgb}{0.4,0.4,0.4}
+
+%============================ lien hypertext =================================%
+\usepackage{hyperref}	
+%utilisation href{url}{texte contenant le lien hypertext}
+
+%============================ marge document =================================%
+\usepackage{geometry}
+\geometry{hmargin = 2.5cm, vmargin = 2.5cm}
+
+%============================ mode paysage ===================================%
+\usepackage{lscape} % page en paysage
+
+%=============================== En-têtes et pied de page ====================%
+\usepackage{fancyhdr}
+\pagestyle{fancy} % est un style de page.
+\usepackage{lastpage}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[R]{Gestion informatique des données de séquençage}
+\fancyhead[L]{M1 BI-IPFB Université Paris Cité}
+\renewcommand\footrulewidth{1pt}
+\fancyfoot[l]{William Amory}
+\fancyfoot[c]{\textbf{Page \thepage/\pageref{LastPage}}}
+\fancyfoot[r]{\today}
