@@ -4,6 +4,7 @@ DEP=$(wildcard preamble.tex img/.*png img/*.jpg sections/*.tex)
 
 all: $(INPUT) $(DEP)
 	pdflatex $(INPUT)
+	pdflatex $(INPUT)
 
 run: $(OUTPUT)
 	open $(OUTPUT)
