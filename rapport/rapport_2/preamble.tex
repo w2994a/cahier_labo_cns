@@ -39,8 +39,14 @@
 \definecolor{grey2}{rgb}{0.4,0.4,0.4}
 
 %============================ lien hypertext =================================%
-\usepackage{hyperref}	
+\usepackage{hyperref}
 %utilisation href{url}{texte contenant le lien hypertext}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan
+}
 
 %============================ marge document =================================%
 \usepackage{geometry}
@@ -53,10 +59,10 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy} % est un style de page.
 \usepackage{lastpage}
-\renewcommand\headrulewidth{1pt}
+\renewcommand\headrulewidth{0.5pt}
 \fancyhead[R]{Gestion informatique des données de séquençage}
 \fancyhead[L]{M1 BI-IPFB Université Paris Cité}
-\renewcommand\footrulewidth{1pt}
+\renewcommand\footrulewidth{0.5pt}
 \fancyfoot[l]{William Amory}
 \fancyfoot[c]{\textbf{Page \thepage/\pageref{LastPage}}}
 \fancyfoot[r]{\today}

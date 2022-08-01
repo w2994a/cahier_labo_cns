@@ -15,7 +15,7 @@
 %=============================================================================%
 \input{sections/coverpage}
 %\maketitle % afficher titre
-% \addtocontents{toc}{\protect\thispagestyle{empty}} % toc non numéroté
+\addtocontents{toc}{\protect\thispagestyle{empty}} % toc non numéroté
 {\hypersetup{hidelinks}
     \tableofcontents}
 % \tableofcontents % affiche la toc
@@ -26,15 +26,15 @@
 %                                 Contenu                                     %
 %=============================================================================%
 \newpage
-\input{sections/glossaire}
 \addcontentsline{toc}{section}{Glossaire}
+\input{sections/glossaire}
 
 \newpage
 \input{sections/intro}
 \input{sections/objectifs}
 \input{sections/methodeEtMatos.tex}
 \input{sections/resultats.tex}
-\input{sections/discutions.tex}
+\input{sections/discussions.tex}
 \input{sections/perspectives.tex}
 
 \newpage
