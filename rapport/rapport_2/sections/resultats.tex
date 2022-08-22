@@ -32,6 +32,9 @@ J'ai donc fait varier les paramètres \texttt{p}, \texttt{r} et \texttt{w} de ma
 
 J'ai également échangé avec le service technique d'Illumina à propos des fichiers de sortie et de l'arborescence de bcl-convert. En effet il s'avère que l'arborescence et les fichiers de sortie sont très différents entre les deux logiciels. Ces échange avaient pour objectif de savoir s'il on pouvait obtenir une arboresnce similaire à bcl2fastq, pour minimiser l'impact du changement de logiciel sur les pipelines. Le changement de bcl2fstq, qui sera bientôt obsolète, par bcl-convert va nous obliger à réaliser de gros changements dans tous les pipelines qui utilisent ces fichiers de sortie et va demander aussi au laboratoire de séquençage de s'adapter à la nouvelle \emph{sample sheet} de bcl-convert.
 
+\subsubsection{Migration de bcl2fastq vers bcl-convert}
+Le logiciel bcl-convert étant plus rapide d'environ 1/3 par rapport à bcl2fastq et que ce derniers sera bientôt obsolète. Sachant également, que le nombre de coeurs disponible par noeuds pour la partition \emph{production} du cluster de calcul est de 16 coeurs. Nous avons décidé t'attribuer l'intégralité des coeurs d'un noeud de \og\emph{production} \fg{}, c'est à dire 16 coeurs. L'intégralité des changement entre les deux logiciels à été consignés dans un cahier des charges. Il contient, la commande à lancé pour réaliser le \emph{Base Calling}, modules à charger dans l'environement, le chemin relatif des fichiers de sorties, ainsi qu'un exemple d'arborescence des fichiers de sorties. Ce qui permettera au développeur qui ce chargera de cette migration de suivre ce cahier des charge et ainsi faciliter la migration. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur qui sera en charge de réaliser cette migration.
+
 
 \subsection{Le pipeline NGS\_RG\_MGI}
 \textcolor{red}{description des étapes les plus importantes et de l'intéret de les insérer dans NGL.}
