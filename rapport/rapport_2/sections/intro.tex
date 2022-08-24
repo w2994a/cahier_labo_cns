@@ -1,17 +1,16 @@
 \section{Introduction}
 \subsection{LBGB au sein du Genoscope et du CEA}
-Le Genoscope (CNS) a été créé en 1996 pour participer au projet mondial de séquençage du génome humain (\emph{Human Genome Project}) qui à débuté en 1990 et s'est terminé en 2003. Il a notament participé au séquençage du chromosome 14. Le Genoscope est impliqué dans le développement de programme de génomique en France dans le cadre du projet France génomique. Aujourd'hui les projets phares du Genoscope sont les projets \textbf{Tara} (\emph{Pacific}, Océans, \emph{Artic} ...), qui ont pour objectifs l'étude des écosystèmes marins ; Le projet \textbf{ERGA}, dont l'objectif est de créer une base de données de références de haute qualité des génomes d'espèces européennes.\\
+Le Genoscope (CNS) a été créé en 1996 pour participer au projet mondial de séquençage du génome humain (\emph{Human Genome Project}) qui à débuté en 1990 et s'est terminé en 2003. Il a notament participé au séquençage du chromosome 14. Le Genoscope est impliqué dans le développement de programme de génomique en France dans le cadre du projet France génomique. Aujourd'hui les projets phares du Genoscope sont les projets \textbf{Tara} (\emph{Pacific}, Océans, \emph{Artic} ...), qui ont pour objectifs l'étude des écosystèmes marins ; Le projet \textbf{ERGA}, dont l'objectif est de créer une base de données de références de haute qualité des génomes d'espèces européennes.
 
-\begin{minipage}{0.40\textwidth}
+\begin{minipage}{0.45\textwidth}
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{img/organigramme.png}
+    \includegraphics[width=1.1\textwidth]{img/organigramme.png}
     \caption{Organigramme situant l’équipe du LBGB au sein du Genoscope et du CEA}
     \label{organigramme_LBGB}
 \end{figure}
 \end{minipage} 
 \hfill
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}{0.45\textwidth}
     Le Laboratoire de Bioinformatique pour la Génomique et la Biodiversité (\textbf{LBGB}) dirigé par Jean-Marc Aury, fait partie du Genoscope qui est une composante de l'institut de biologie François Jacob (\textbf{IBFJ}) de la direction de la recherche fondamentale (\textbf{DRF}) du Commissariat à l'Énergie Atomique et aux Énergies Alternatives (\textbf{CEA}), qui a été fondé le 18 octobre 1945 par Charles de Gaulle. L'intégration du genoscope au CEA a été réalisée en 2007, et en 2017 il devient une composante de l'IBFJ.
 \end{minipage}
 
@@ -29,10 +28,10 @@ Les missions du groupe de \og production \fg{} sont de tester des logiciels tier
 		\caption{\footnotesize{Workflow de génération, de contrôle qualité et d’analyse biologique des fastq}}
 		\label{worflow-genoscope}
 	\end{figure}
-\end{minipage} 
+\end{minipage}
 \hfill
 \begin{minipage}{0.45\textwidth}
-	Le workflow NGS est composé de trois pipelines pour les technologies Illumina et Oxford Nanopore. Le premier (ngs\_rg\footnote{\emph{Next Generation Sequencing - reads generation}}), permet la génération des reads\footnote{Lecture d'une séquence par un séquenceur d'un fragments d'ADN} et des fichiers de séquences correspondant aux échantillons. Le second (ngs\_qc\footnote{\emph{Next Generation Sequencing - quality control}}), permet de réaliser leurs contrôle qualité. Le dernier (ngs\_ba\footnote{\emph{Next Generation Sequencing - biological analysis}}), permet de faire les analyses biologiques inter-échantillons (\emph(readset))\footnote{Un lot de séquences est une instance de séquences (ou reads) d'un échantillon}. 
+	Le workflow NGS est composé de trois pipelines pour les technologies Illumina et Oxford Nanopore. Le premier (ngs\_rg\footnote{\emph{Next Generation Sequencing - reads generation}}), permet la génération des reads\footnote{Lecture d'une séquence par un séquenceur d'un fragments d'ADN} et des fichiers de séquences correspondant aux échantillons. Le second (ngs\_qc\footnote{\emph{Next Generation Sequencing - quality control}}), permet de réaliser leurs contrôle qualité. Le dernier (ngs\_ba\footnote{\emph{Next Generation Sequencing - biological analysis}}), permet de faire les analyses biologiques inter-échantillons (\emph{readset})\footnote{Un lot de séquences est une instance de séquences (ou reads) d'un échantillon}. 
 \end{minipage}\\[0.1cm]
 
 Ces trois pipelines sont automatisés dans le workflow et permettent de réaliser la distribution des données de séquençage, par projet, échantillons, runs\footnote{Séquençage d'un ou plusieurs échantillons sur un séquenceur} et technologies de séquençage. Ils réalisent aussi le nettoyage, l'analyse de ces fichiers et mettent à jour la base de données de référence NGL. Les trois pipelines du workflow NGS sont monitorés par NGS \emph{Worqflow Viewer} (NGS\_WV), qui est une application web permettant de surveiller l'avancement des pipelines pour les runs pris en charge par le NGS-workflow.

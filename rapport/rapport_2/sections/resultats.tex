@@ -5,7 +5,7 @@ Après avoir effectué différentes combinaisons des paramètres, il a été mis
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/barplot_cum_jarvis2.png}
+    \includegraphics[width=0.8\textwidth]{img/barplot_cum_jarvis2.png}
     \caption{\footnotesize{Digrammes en bâtons du temps total d'éxécution (à gauche), temps cpu (au milieu) et du pourcentage d'utilisation des cpu (à droite) en fonction des paramètres r et w}}
     \label{barplot-param}
 \end{figure}
@@ -13,7 +13,7 @@ Il y a deux \emph{sample sheet}\footnote{Fichier contenant les informations et i
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{img/barplot_cum_jarvis1.png}
+    \includegraphics[width=0.8\textwidth]{img/barplot_cum_jarvis1.png}
     \caption{\footnotesize{Digrammes en bâtons du temps total d'éxécution (à gauche), temps cpu (au milieu) et du pourcentage d'utilisation des cpu (à droite) en fonction du paramètre p}}
     \label{barplot-param2}
 \end{figure}
@@ -33,11 +33,145 @@ J'ai donc fait varier les paramètres \texttt{p}, \texttt{r} et \texttt{w} de ma
 J'ai également échangé avec le service technique d'Illumina à propos des fichiers de sortie et de l'arborescence de bcl-convert. En effet il s'avère que l'arborescence et les fichiers de sortie sont très différents entre les deux logiciels. Ces échange avaient pour objectif de savoir s'il on pouvait obtenir une arboresnce similaire à bcl2fastq, pour minimiser l'impact du changement de logiciel sur les pipelines. Le changement de bcl2fstq, qui sera bientôt obsolète, par bcl-convert va nous obliger à réaliser de gros changements dans tous les pipelines qui utilisent ces fichiers de sortie et va demander aussi au laboratoire de séquençage de s'adapter à la nouvelle \emph{sample sheet} de bcl-convert.
 
 \subsubsection{Migration de bcl2fastq vers bcl-convert}
-Le logiciel bcl-convert étant plus rapide d'environ 1/3 par rapport à bcl2fastq et que ce derniers sera bientôt obsolète. Sachant également, que le nombre de coeurs disponible par noeuds pour la partition \emph{production} du cluster de calcul est de 16 coeurs. Nous avons décidé t'attribuer l'intégralité des coeurs d'un noeud de \og\emph{production} \fg{}, c'est à dire 16 coeurs. L'intégralité des changement entre les deux logiciels à été consignés dans un cahier des charges. Il contient, la commande à lancé pour réaliser le \emph{Base Calling}, modules à charger dans l'environement, le chemin relatif des fichiers de sorties, ainsi qu'un exemple d'arborescence des fichiers de sorties. Ce qui permettera au développeur qui ce chargera de cette migration de suivre ce cahier des charge et ainsi faciliter la migration. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur qui sera en charge de réaliser cette migration.
+Le logiciel bcl-convert étant plus rapide d'environ 1/3 par rapport à bcl2fastq et que ce derniers sera bientôt obsolète. Sachant également, que le nombre de coeurs disponible par noeuds pour la partition \og \emph{production} \fg{}du cluster de calcul est de 16 coeurs. Nous avons décidé t'attribuer l'intégralité des coeurs d'un noeud de \og\emph{production} \fg{}, c'est à dire 16 coeurs. L'intégralité des changement entre les deux logiciels à été consignés dans un cahier des charges. Il contient, la commande à lancé pour réaliser le \emph{Base Calling}, les modules à charger dans l'environement, le chemin relatif des fichiers de sorties, ainsi qu'un exemple d'arborescence des fichiers de sorties. Ce qui permettera au développeur qui ce chargera de cette migration de suivre ce cahier des charge et ainsi faciliter la migration. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur qui sera en charge de réaliser cette migration.
 
 
-\subsection{Le pipeline NGS\_RG\_MGI}
-\textcolor{red}{description des étapes les plus importantes et de l'intéret de les insérer dans NGL.}
+\subsection{Le pipeline de génération de fichiers de séquences pour la technologie MGI}
+L'objectif principale du pipeline NGS\_RG\_MGI est de générer et distribuer les fichires de séquences dans le bon répertoire de projet, d'échantillon, de type de séquençage et de run.
+Tout en créant et mettant à jour les runs, pistes et readsets.
+Notament concernant les métrics d'évaluations des ces derniers.
+Le pipeline est composé de plusieurs grandes étapes.\\
 
-\subsection{Le pipeline NGS\_QC\_MGI}
-\textcolor{red}{description des étapes les plus importantes et de l'intéret de les insérer dans NGL.}
+La première étape consite à créer le run et ses pistes dans la base de données NGL, en y intégrant les métriques permettant d'évaluer le run et les pistes (figure \ref{NGL-screenshot_run-lane}).
+Le nom du run est constitué de la date de séquençage, le nom du séquenceur et l'identifiant de la flowcell du run.
+
+\begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=1\textwidth]{img/NGL-screenshot_run-lane-ngsrg.png}}
+    \caption{\footnotesize{Capture d'écran de la page du run 200908\_MUSHU\_F300001324 de NGL en cours de génération de fichiers de séquences (étapes d'ajout des métriques d'évaluation du run et des pistes).}}
+    \label{NGL-screenshot_run-lane}
+\end{figure}
+
+On y retrouve notament, le nombres total de reads (Nb Cluster (total)), le nombre de bases total (Nb Bases (total)) générées par le run, la taille des reads et des index (Nb Cycles).
+Concernant les pistes on retrouve le nombre total de bases et de reads générés sur la piste, le pourcentage du bases qui ont une qualité supérieur ou égale à Q30, Q20 et Q10. On a également le pourcentage de bases inconnus (\%N), ainsi que d'autres métriques qui permettent d'avaluer le run et les piste. Celles-ci sont détaillé plus précisement en anexes (page ??).\\
+
+La seconde étape ajoute les rapport de séquençages des pistes que le séquenceurs génére en fin de séquençage.
+Il s'agit de rapport html qui contiennent plusieurs tableaux de métriques et de graphiques permettant d'évaluer les pistes du run.
+Notament les graphiques de la distribution dela qualité moyenne en fonction des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.A}), de la distribution des bases nucléiques en fonction des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.B}), de la distribution du pourcentage de Guanine/Cytosine en fonction des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.C}), de la distribution de l'intensité brut au cours des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.D}) et d'autre graphiques détaillé en annexes (page ??).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{img/mean_quality.png}
+    \includegraphics[width=0.48\textwidth]{img/bases_content.png}\\
+    \includegraphics[width=0.48\textwidth]{img/GC_content.png}
+    \includegraphics[width=0.48\textwidth]{img/raw_intensity.png}
+    \caption{\footnotesize{Graphiques des distributions de la qualité moyenne (A), des bases nucléiques (B), du pourcentage de GC (C) et de l'intensité brut (D) au cours des cycles de séquençage}}
+    \label{Graph-rapport-pistes}
+\end{figure}
+
+Les tableaux et graphiques de ces rapports de séquençage permettent de facilité l'évaluation du run et des ses pistes.
+Toujours dans l'optique de facilité l'évaluation du run et de ces pistes on ajoute, en troisième étape du pipeline, la liste des index représenté à plus de 0.01\% de la pistes, ainsi que les index attendus.
+Ces index sont triés et affiché par ordre croissant dans NGL (figure \ref{top-index}).
+Les index connus sont colorés en vert et les index inconnus sont colorés en rouge, ce qui permet de vérifier que les index attendus sont bien majoritairement représentés sur les pistes de la flowcell du run.
+
+\begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=1\textwidth]{img/Top_index.png}}
+    \caption{\footnotesize{Capture d'écran de la page du run 200908\_MUSHU\_F300001324 de NGL en cours de génération de fichiers de séquences (onglet \og Démultiplexage MGI\fg{})}}
+    \label{top-index}
+\end{figure}
+
+Ensuite la quatrième étapes à pour objectif d'obtenir un seul fichiers FASTQ par readset.
+En effet la technologie MGI requiert une homogénéité de dépôt entre les différents index (aussi appelé\og barcode\fg{}) d'une piste.
+Ce qui implique qu'il est possible d'avoir plusieurs index associés à un même index, donc qu'un échantillon peut être divisé en plusieurs fractions.
+Le démultiplexage est directement réalisé par le séquenceur, il réalise le démultiplaxage à partir des index connus (listes d'index fournis par MGI), on obtient donc un fichier FASTQ par index. Il est impossible de préciser au séquenceur quels index sont associés à un même readset pour le démulitiplexage.
+Cette etapes est donc essentiel pour obtenir un seul fichier FASTQ par readset.
+Si le readset est associé à un seul readset alors on réalise une décompréssion du fichier FASTQ, si le readset est associé à plusieurs index alors on réalise une décompréssion et une concaténation des fichiers FASTQ, tout en le renommant dans un répertoire temporaire (cf. figure \ref{schema-concat-fastq}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/Schéma_concaténation.png}
+    \caption{\footnotesize{Schéma de l'étape de \og concaténation\fg{} des fichiers FASTQ d'un readset}}
+    \label{schema-concat-fastq}
+\end{figure}
+
+La cinquiéme étape a pour objectif de permettre l'évaluation des readsets, en les créant et en insérant les métriques d'évaluation de ces derniers dans NGL (figure \ref{NGL-screenshot_readset}).
+On y retrouve notamament le nombre de bases nucléiques et de reads du readset, ainsi que le pourcentage d'échantillon déposé sur la piste et le pourcentage de séquences valides par rapport au nombre total de séquences de la piste.
+On y insère également certains métriques du run dont le readset fait partie, comme le nombre de cycles des reads et des index, la date de run, ect.
+
+\begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=1\textwidth]{img/NGL-screenshot_readset-ngsrg.png}}
+    \caption{\footnotesize{Capture d'écran de la page du readset APY\_DA\_AEKI\_1\_F300001324.MGI001 de NGL en cours de génération de reads (étapes de création du readset et d'insertion de ces métriques d'évaluation)}}
+    \label{NGL-screenshot_readset}
+\end{figure}
+
+Le nom du readset est condstitué de l'identifiant de projet, de l'identifiant du type de banque utilisé (ADN, ARN ...), de l'identifiant d'échantillon, de l'indice de la lane, de l'identifiant de la flowcell et de l'identifiant du premier barcode.
+On ajoute également la réapartion des index au sein d'un readset (figure \ref{NGL-screenshot_readset-index}), ce qui permet de vérifier la composition en index du readset et de vérifier l'homogénéité de ces index au sein du readset.
+Ce nom de readset est unique, ce qui permet à partir déterminé rapidement et simplement à quel projet, échantillon, ect appartiennent les fichiers séquences de ce readset.
+
+\begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=1\textwidth]{img/NGL-screenshot_readset-index.png}}
+    \caption{\footnotesize{Capture d'écran de la page du readset APY\_DA\_AEKI\_1\_F300001324.MGI001 de NGL en cours de génération de reads (onglet \og Répartition des index\fg{})}}
+    \label{NGL-screenshot_readset-index}
+\end{figure}
+
+Au niveaux du run un tableau référençant les readsets et leurs métriques d'évaluation est également ajoutés (figure \ref{NGL-screenshot_tab-run-readset}).
+
+\begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=1\textwidth]{img/NGL-screenshot_Tab-readset-in-run.png}}
+    \caption{\footnotesize{Capture d'écran de la page du run 200908\_MUSHU\_F300001324 de NGL en cours de génération de fichiers de séquences (Tableau des readset du run)}}
+    \label{NGL-screenshot_tab-run-readset}
+\end{figure}
+
+La sixième étape consiste à renomer les fichers de séquences des readsets et d'insérer les méta-données de ces derniers dans NGL (figure \ref{meta-data-fastq}).
+Le renommage des fichiers est nécessaire pour que chaque fichier de séquence ait un nom unique et \og parlant\fg{}.\\
+
+\begin{minipage}{0.45\textwidth}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\textwidth]{img/Schema-renomage-fastq.png}
+        \caption{\footnotesize{Schéma de l'étape de renommage des fichiers FASTQ d'un readset}}
+        \label{schema-rename-fastq}
+    \end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    Le nom doit permettre d'indentifier rapidement et simplement de quel projet, échantillon, flowcell, ect.
+    appartient le fichier.
+    Le renomage des fichiers est effectuer en créant un lien symbolique des fichiers obtenus à l'étape de \og concaténation\fg{} dans un répertoire temporaire (cf figure \ref{schema-rename-fastq}).
+\end{minipage}\\
+
+Les méta-données, des fichiers de séquences du readset, qui sont insérer dans NGL permtte aux utilisateur de trouvé rapidement l'emplacement de ces derniers sur l' système de fichier, le type de fichier disponible (brut, nettoyer) et s'ils sont utilisables.
+On y retrouve donc le chemin vers le repertoire de ces fichiers, leurs noms, leurs types, s'ils sont utilisable, s'il s'agit du read \emph{forward} ou \emph{reverse}, et le type d'encodage de la quality (Pour les séquenceurs MGI l'encodage est en ASCII 33).
+
+\begin{figure}[H]
+    \centering
+    \fbox{\includegraphics[width=1\textwidth]{img/meta-data-fastq.png}}
+    \caption{\footnotesize{Capture d'écran de la page du readset APY\_DA\_AEKI\_1\_F300001324.MGI001 de NGL en cours de génération de fichiers de séquences (Onglet \og Avancé\fg{})}}
+    \label{meta-data-fastq}
+\end{figure}
+
+La septième étape est de distribuer des fichiers de séquences \og attendus\fg{}, les fichiers de statistiques du run et les fichiers de séquences \og non attandus\fg{} dans leurs répertoires dédiés.
+Les fichiers attendus sont copié vers leurs répertoires final si le séquençage à été effectué au genoscope.
+Si ce dernier à été effectué au CNRGH, alors les fichiers sont copié et compressés.
+Il y a cette différence entre les 2 centres, car le pipline de contrôle qualité prend en charge de fichiers compressés pour le CNRGH, contrairement à celui utilisé pour le Genoscope.
+
+Les fichiers de statistiques du run sont archivé par pistes et par type (.html, .fq.stat) avant d'être copié vers leurs répertoires final.
+Ces fichiers sont conservé dans le cas où une métrique désiré ne fait pas parties de celles insérés dans NGL ou pour tout autres probléme qui nécéssiterait de récupérer les fichiers de statistiques du run.
+
+Concernant les fichiers \og non attendus \fg{}, il s'agit des fichiers de séquence des index ne faisant pas partie d'un readset. Puisque lors du demultiplexage par les séquenceurs, on obtient un fichier FASTQ par index.
+Ces fichier sont renomer et archivé, avant d'être distribuer vers leur répertoire dédié.
+Ces fichers de séquences sont conservé dans l'éventualité d'une mauvaise déclaration d'index par les équpies de séquençage, pour pouvoir récupérer les fichier fastq appartenant à cet index ou s'il l'on souhaite étudié les séquences des fichiers \og non-attendus\fg{}.\\
+
+L'étape finale du pipeline de génération de fichiers de séquences pour la technologie MGI, est de mettre à jour le run et les readset dans l'état de \og fin de génération de reads\fg{}.
+Cela entraine une mise à jour automatique du run à l'état \og d'évaluation en attente\fg{}, ce qui permet d'indiquer au utilisateurs que le run peu être évaluer.
+Les readset sont aussi automatiquement mis à jour vers l'état \og d'attente de contrôle qualité\fg{}, permettant d'indiquer au pipeline de contrôle qualité qu'il peut effectuer le contrôle qualité des readset de ce run.
+
+
+
+
+
+\subsection{Le pipeline de contôle qualité des fichiers de séquences pour la technologie MGI}
