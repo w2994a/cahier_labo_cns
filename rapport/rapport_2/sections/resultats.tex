@@ -35,9 +35,9 @@ J'ai également échangé avec le service technique d'Illumina à propos des fic
 \subsubsection{Migration de bcl2fastq vers bcl-convert}
 Le logiciel bcl-convert étant plus rapide d'environ 1/3 par rapport à bcl2fastq et que ce derniers sera bientôt obsolète. Sachant également, que le nombre de coeurs disponible par noeuds pour la partition \og \emph{production} \fg{}du cluster de calcul est de 16 coeurs. Nous avons décidé t'attribuer l'intégralité des coeurs d'un noeud de \og\emph{production} \fg{}, c'est à dire 16 coeurs. L'intégralité des changement entre les deux logiciels à été consignés dans un cahier des charges. Il contient, la commande à lancé pour réaliser le \emph{Base Calling}, les modules à charger dans l'environement, le chemin relatif des fichiers de sorties, ainsi qu'un exemple d'arborescence des fichiers de sorties. Ce qui permettera au développeur qui ce chargera de cette migration de suivre ce cahier des charge et ainsi faciliter la migration. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur qui sera en charge de réaliser cette migration.
 
-
+\newpage
 \subsection{Le pipeline de génération de fichiers de séquences pour la technologie MGI}
-L'objectif principale du pipeline NGS\_RG\_MGI est de générer et distribuer les fichires de séquences dans le bon répertoire de projet, d'échantillon, de type de séquençage et de run.
+L'objectif du pipeline NGS\_RG\_MGI est de générer et distribuer les fichires de séquences dans le bon répertoire de projet, d'échantillon, de type de séquençage et de run.
 Tout en créant et mettant à jour les runs, pistes et readsets.
 Notament concernant les métrics d'évaluations des ces derniers.
 Le pipeline est composé de plusieurs grandes étapes.\\
@@ -170,8 +170,3 @@ L'étape finale du pipeline de génération de fichiers de séquences pour la te
 Cela entraine une mise à jour automatique du run à l'état \og d'évaluation en attente\fg{}, ce qui permet d'indiquer au utilisateurs que le run peu être évaluer.
 Les readset sont aussi automatiquement mis à jour vers l'état \og d'attente de contrôle qualité\fg{}, permettant d'indiquer au pipeline de contrôle qualité qu'il peut effectuer le contrôle qualité des readset de ce run.
 
-
-
-
-
-\subsection{Le pipeline de contôle qualité des fichiers de séquences pour la technologie MGI}
