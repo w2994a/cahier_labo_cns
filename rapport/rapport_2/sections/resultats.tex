@@ -35,7 +35,9 @@ J'ai également échangé avec le service technique d'Illumina à propos des fic
 \subsubsection{Migration de bcl2fastq vers bcl-convert}
 Le logiciel bcl-convert étant plus rapide d'environ 1/3 par rapport à bcl2fastq et que ce derniers sera bientôt obsolète. Sachant également, que le nombre de coeurs disponible par noeuds pour la partition \og \emph{production} \fg{}du cluster de calcul est de 16 coeurs. Nous avons décidé t'attribuer l'intégralité des coeurs d'un noeud de \og\emph{production} \fg{}, c'est à dire 16 coeurs. L'intégralité des changement entre les deux logiciels à été consignés dans un cahier des charges. Il contient, la commande à lancé pour réaliser le \emph{Base Calling}, les modules à charger dans l'environement, le chemin relatif des fichiers de sorties, ainsi qu'un exemple d'arborescence des fichiers de sorties. Ce qui permettera au développeur qui ce chargera de cette migration de suivre ce cahier des charge et ainsi faciliter la migration. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur qui sera en charge de réaliser cette migration.
 
-\newpage
+%==============================================================================%
+%==============================================================================%
+
 \subsection{Le pipeline de génération de fichiers de séquences pour la technologie MGI}
 L'objectif du pipeline NGS\_RG\_MGI est de générer et distribuer les fichires de séquences dans le bon répertoire de projet, d'échantillon, de type de séquençage et de run.
 Tout en créant et mettant à jour les runs, pistes et readsets.
@@ -53,11 +55,11 @@ Le nom du run est constitué de la date de séquençage, le nom du séquenceur e
 \end{figure}
 
 On y retrouve notament, le nombres total de reads (Nb Cluster (total)), le nombre de bases total (Nb Bases (total)) générées par le run, la taille des reads et des index (Nb Cycles).
-Concernant les pistes on retrouve le nombre total de bases et de reads générés sur la piste, le pourcentage du bases qui ont une qualité supérieur ou égale à Q30, Q20 et Q10. On a également le pourcentage de bases inconnus (\%N), ainsi que d'autres métriques qui permettent d'avaluer le run et les piste. Celles-ci sont détaillé plus précisement en anexes (page ??).\\
+Concernant les pistes on retrouve le nombre total de bases et de reads générés sur la piste, le pourcentage du bases qui ont une qualité supérieur ou égale à Q30, Q20 et Q10. On a également le pourcentage de bases inconnus (\%N), ainsi que d'autres métriques qui permettent d'avaluer le run et les piste. Celles-ci sont détaillé plus précisement en anexes (page \pageref{anexes1}).\\
 
 La seconde étape ajoute les rapport de séquençages des pistes que le séquenceurs génére en fin de séquençage.
 Il s'agit de rapport html qui contiennent plusieurs tableaux de métriques et de graphiques permettant d'évaluer les pistes du run.
-Notament les graphiques de la distribution dela qualité moyenne en fonction des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.A}), de la distribution des bases nucléiques en fonction des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.B}), de la distribution du pourcentage de Guanine/Cytosine en fonction des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.C}), de la distribution de l'intensité brut au cours des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.D}) et d'autre graphiques détaillé en annexes (page ??).
+Notament les graphiques de la distribution dela qualité moyenne en fonction des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.A}), de la distribution des bases nucléiques en fonction des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.B}), de la distribution du pourcentage de Guanine/Cytosine en fonction des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.C}), de la distribution de l'intensité brut au cours des cycles (figure \ref{Graph-rapport-pistes}\textcolor{blue}{.D}) et d'autre graphiques détaillé en annexes (page \pageref{anexes2}).
 
 \begin{figure}[H]
     \centering
@@ -97,7 +99,7 @@ Si le readset est associé à un seul readset alors on réalise une décompréss
 
 La cinquiéme étape a pour objectif de permettre l'évaluation des readsets, en les créant et en insérant les métriques d'évaluation de ces derniers dans NGL (figure \ref{NGL-screenshot_readset}).
 On y retrouve notamament le nombre de bases nucléiques et de reads du readset, ainsi que le pourcentage d'échantillon déposé sur la piste et le pourcentage de séquences valides par rapport au nombre total de séquences de la piste.
-On y insère également certains métriques du run dont le readset fait partie, comme le nombre de cycles des reads et des index, la date de run, ect.
+On y insère également certains métriques du run dont le readset fait partie, comme le nombre de cycles des reads et des index, la date de run, ect. Toutes ces métriques sont décrites en annexes (page \pageref{anexes3})
 
 \begin{figure}[H]
     \centering

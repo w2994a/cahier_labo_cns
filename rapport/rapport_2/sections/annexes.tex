@@ -1,8 +1,51 @@
 \section{Annexes}
-\subsection{Description des métriques d'éavaluation d'un run et des pistes d'un run MGI dans NGL-BI}
+\subsection*{Description des métriques d'éavaluation d'un run et des pistes d'un run MGI dans NGL-BI}
+\label{anexes1}
+\subsubsection*{Liste et les description des métriques d'évaluation du run et des pistes (cf. figure \ref{NGL-screenshot_run-lane} \\page \pageref{NGL-screenshot_run-lane}) :}
+\begin{itemize}
+    \item[\textbf{Nb Cycles Utiles} :] Nombre de cycles des reads et des index (nombre de cyles pour le read \emph{forward}, nombre de cyles pour le premier index  \emph{forward}, nombre de cycles pour le read \emph{reverse}, nombre de cycles pour le second index)
+    \item[\textbf{Nb reads (total)} :] Nombre de reads Total générer par la piste (S'il s'agit d'un run \emph{pair-end} il s'agit du nombre de cluster de reads (read \emph{forward} + read \emph{reverse}))
+    \item[\textbf{\%ESR} :] ???
+    \item[\textbf{\%q30} :] Pourcentage de bases qui ont une qualité supérieur ou égale à 30 (pour un encodage de la qualite en ASCII 33)
+    \item[\textbf{\%q20} :] Pourcentage de bases qui ont une qualité supérieur ou égale à 20 (pour un encodage de la qualite en ASCII 33)
+    \item[\textbf{\%q10} :] Pourcentage de bases qui ont une qualité supérieur ou égale à 10 (pour un encodage de la qualite en ASCII 33)
+    \item[\textbf{\%N} :] Pourcentage de bases inconus
+    \item[\textbf{Recover value} :] ???
+    \item[\textbf{\%Chip productivity} :] Pourcentage de productivité de la piste (nombre de puits actif de la piste de la flowcell / nombre total de puit de la piste)
+    \item[\textbf{Nb bases} :] Nombre total de bases générés par la piste
+    \item[\textbf{\%Runon1} :] Pourcentage de read \emph{forward} qui ont une incorporation de nucléotide d'avance par rapport au cycles en cours
+    \item[\textbf{\%Runon2} :] Pourcentage de read \emph{reverse} qui ont une incorporation de nucléotide d'avance par rapport au cycles en cours
+    \item[\textbf{\%Lag1} :] Pourcentage de read \emph{forward} qui ont une incorporation de nucléotide de retard par rapport au cycles en cours
+    \item[\textbf{\%Lag2} :] Pourcentage de read \emph{reverse} qui ont une incorporation de nucléotide de retard par rapport au cycles en cours
+    \item[\textbf{\%Errors} :] Pourcentage d'erreur d'incorporation de nucléotide
+    \item[\textbf{\%DemultiplexingLoss} :] Pourcentage de read ecartés lors du démultiplexage
+\end{itemize}
 
-\subsection{Description des métriques d'un readset d'un run MGI dans NGL-BI}
+\subsection*{Description des tableaux et graphiques des rapports de séquençage des pistes d'un run}
+\label{anexes2}
 
-\subsection{Autres information à propos d'un run MGI dans NGL-BI}
 
-\subsection{Autres informations à propos d'un readset MGI dans NGL-BI}
+\subsection*{Description des métriques d'un readset d'un run MGI dans NGL-BI}
+\label{anexes3}
+\subsubsection*{Liste des métriques d'évaluation des readset dans NGL\_BI (cf. figure \ref{NGL-screenshot_readset} page \pageref{NGL-screenshot_readset}) : }
+\begin{itemize}
+    \item[\textbf{Nb reads} :] Nombre de reads avant nettoyage des fichiers du readset
+    \item[\textbf{\%déposé} :] Pourcentage d'échantillon déposé sur la piste de la flowcell
+    \item[\textbf{Nb bases} :] Nombre de bases avant nettoyage des fichiers séquences du readset
+    \item[\textbf{\% séquences valides/piste} :] Pourcentage de séquences de la piste appartenant à ce readset (nombre total de reads du readset / nombre total de reads de la piste)
+\end{itemize}
+
+\subsubsection*{Liste des métriques d'évaluation des readsets dans le tableau qui référence tous les readsets d'un run (cf. figure \ref{NGL-screenshot_tab-run-readset} page \pageref{NGL-screenshot_tab-run-readset}) :}
+\begin{itemize}
+    \item[\textbf{\%déposé} :] Pourcentage d'échantillon déposé sur la piste de la flowcell
+    \item[\textbf{\% séquences valides/piste} :] Pourcentage de séquences de la piste appartenant à ce readset (nombre total de reads du readset / nombre total de reads de la piste)
+    \item[\textbf{Nb Séquences valides} :] Nombre de reads du readset
+    \item[\textbf{Nb Bases} :] Nombre de bases du readset
+    \item[\textbf{\% >= Q30} :] Pourcentage de bases qui ont une qualité supérieur ou égale à 30 (pour un encodage de la qualité en ASCII 33)
+    \item[\textbf{Score Qualité moyen} :] Moyenne de la qualité des bases du readset
+\end{itemize}
+
+
+\subsection*{Autres informations à propos d'un run MGI dans NGL-BI}
+
+\subsection*{Autres informations à propos d'un readset MGI dans NGL-BI}
