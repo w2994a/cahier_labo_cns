@@ -1,7 +1,11 @@
 \section{Discussions et perspectives}
+\subsection{perspectives du workflow NGs pour la technologie MGI}
 
-\subsection{Amélioration future du pipeline NGS\_RG pour la technologie MGI}
+\subsubsection{Amélioration future du pipeline NGS\_RG pour la technologie MGI}
 Le pipeline de génération de fichiers de séquences pour la technologie MGI est similaire au pipeline de la technologie Illumina. Néainmoins il n'est pas possible de comparer ces deux derniers au niveau de leurs performances du fait de leurs différences. En effet le pipeline de génération des fichiers de séquences pour la technologie Illumina, contient les étapes de \emph{Base Calling} et de démultiplexage (Conversion des fichiers \emph{Base Calls} en fichiers FASTQ par èchantillon) qui est réalisé par le pipeline NGS\_RG\_ILLUMINA. À contrario, pour la technologie MGI, cette étape est directement réalisée par le séquenceur.\\
 De plus il n'est pas possible de comparer le pipeline de génération de fichiers de séquences avec des pipelines d'autres laboratoire ou outils de génération de fichiers de séquences dû fait de la spécificité du pipeline pour le Genoscope et le CNRGH. En effet l'objectif de celui-ci est de mettre à jour la base de données de référence interne au Genoscope et au CNRGH (NGL), à l'architecture de stockage des fichiers de séquences et aux noms finaux donnés à ces fichiers pour qu'ils soient uniques.\\
 
 La future amélioration du pipeline NGS\_RG\_MGI, consistera à la mise en place d'une étape suplémentaire pour les runs qui comporterons de \emph{mids}\footnote{séquence d'une dizaine de nucléotide ajouté en aval du \emph{primer} du read \emph{forward} permettant de réaliser un second démultiplexage}. Cette étape suplémantaire sera donc le démidage, il s'agit d'un second démultiplaxage en fonction des mids pour la création des readsets et fichiers de séquences.
+
+
+\subsubsection{Développement du pipeline de contrôle qualité pour le technologie MGI}
