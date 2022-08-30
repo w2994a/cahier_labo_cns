@@ -1,7 +1,7 @@
 \section{Discussions et perspectives}
-\subsection{perspectives du workflow NGs pour la technologie MGI}
+\subsection{ perspectives du workflow NGS pour la technologie MGI}
 
-\subsubsection{Amélioration future du pipeline NGS\_RG pour la technologie MGI}
+\subsubsection{Améliorations futures du pipeline NGS\_RG pour la technologie MGI}
 Le pipeline de génération de fichiers de séquences pour la technologie MGI est similaire au pipeline de la technologie Illumina. Néainmoins il n'est pas possible de comparer ces deux derniers au niveau de leurs performances du fait de leurs différences. En effet le pipeline de génération des fichiers de séquences pour la technologie Illumina, contient les étapes de \emph{Base Calling} et de démultiplexage (Conversion des fichiers \emph{Base Calls} en fichiers FASTQ par èchantillon) qui est réalisé par le pipeline NGS\_RG\_ILLUMINA. À contrario, pour la technologie MGI, cette étape est directement réalisée par le séquenceur.\\
 De plus il n'est pas possible de comparer le pipeline de génération de fichiers de séquences avec des pipelines d'autres laboratoire ou outils de génération de fichiers de séquences dû fait de la spécificité du pipeline pour le Genoscope et le CNRGH. En effet l'objectif de celui-ci est de mettre à jour la base de données de référence interne au Genoscope et au CNRGH (NGL), à l'architecture de stockage des fichiers de séquences et aux noms finaux donnés à ces fichiers pour qu'ils soient uniques.\\
 
@@ -18,3 +18,7 @@ Ensuite on réalise le trimming des fichiers brut, comme il n'y a pas de \emph{P
 Le second contrôle qualité réalisé sur les échantillons des fichiers brut, est composé d'un contrôle de la qualité des séquences, d'une assignation taxonomique des séquences des fichiers, l'estimation des duplicats (séquences retrouvés plusieurs fois dans un fichier de séquences), on réalise aussi un alignement des séquences sur un génome de références si ce derniers existe et est disponible et on calcule le pourcentage de reads qui ont le read \emph{forward} et \emph{reverse} qui se chevauchent.\\
 
 Une fois le deuxième contrôle qualité effectué, la dernière étapes du pipeline est de distribuer les fichiers de séquences nettoyés dans leur répertoire final, de rendre indisponible les fichiers de séquences brut avant de les effacer une fois celle-ci copié sur bande magnétique. Durant toutes les etapes du pipeline, on insert les métriques et graphiques qui permettront de réaliser la validation des readset ou non.
+
+\subsection{Evaluation d'outils de contrôle qualité}
+
+Parler de l'évaluation d'outils taxonomique et de trimming.
