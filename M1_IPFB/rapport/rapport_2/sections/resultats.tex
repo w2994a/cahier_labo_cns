@@ -34,7 +34,7 @@ J'ai donc fait varier les paramètres \texttt{p}, \texttt{r} et \texttt{w} de ma
 J'ai également échangé avec le service technique d'Illumina à propos des fichiers de sortie et de l'arborescence de des derniers en utilisant bcl-convert. En effet il s'avère que l'arborescence et les fichiers de sortie sont très différents entre les deux logiciels. Ces échanges avaient pour objectif de savoir s'il on pouvait obtenir une arboresnce similaire à bcl2fastq, pour minimiser l'impact du changement de logiciel sur les pipelines. Le changement de bcl2fstq, qui sera bientôt obsolète, par bcl-convert va nous obliger à réaliser de gros changements dans tous les pipelines qui utilisent ces fichiers de sortie et va demander aussi au laboratoire de séquençage de s'adapter à la nouvelle \emph{sample sheet} de bcl-convert.
 
 \subsubsection{Préparation de la migration de bcl2fastq vers bcl-convert}
-Le logiciel bcl-convert est plus rapide d'environ 1/3 par rapport à bcl2fastq. Sachant également que ce dernier sera bientôt obsolète et que le nombre de coeurs disponibles par noeuds pour la partition \og \emph{production} \fg{}du cluster de calcul est de 16 coeurs. Nous avons décidé t'attribuer l'intégralité des coeurs d'un noeud de \og\emph{production} \fg{}, c'est à dire 16 coeurs. L'intégralité des changement entre les deux logiciels a été consignés dans un cahier des charges. Il contient, la commande à lancer pour réaliser le \emph{Base Calling}, les modules à charger dans l'environement, le chemin relatif des fichiers de sorties, ainsi qu'un exemple d'arborescence des fichiers de sorties. Ce qui permettera au développeur qui ce chargera de cette migration de suivre ce cahier des charges et ainsi faciliter cette migration. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur qui sera en charge de réaliser cette migration.
+Le logiciel bcl-convert est plus rapide d'environ 1/3 par rapport à bcl2fastq. Sachant également que ce dernier sera bientôt obsolète et que le nombre de coeurs disponibles par noeuds pour la partition \og \emph{production} \fg{}du cluster de calcul est de 16 coeurs. Nous avons décidé t'attribuer l'intégralité des coeurs d'un noeud de \og\emph{production} \fg{}, c'est à dire 16 coeurs. L'intégralité des changement entre les deux logiciels a été consignés dans un cahier des charges. Il contient, la commande à lancer pour réaliser le \emph{Base Calling}, les modules à charger dans l'environement, le chemin relatif des fichiers de sorties et leur description, ainsi qu'un exemple d'arborescence des fichiers de sorties. Ce qui permettera au développeur qui ce chargera de cette migration de suivre ce cahier des charges et ainsi faciliter cette migration. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur qui sera en charge de réaliser cette migration.
 
 %==============================================================================%
 %==============================================================================%
@@ -166,11 +166,11 @@ On y retrouve donc le chemin vers le repertoire de ces fichiers, leurs noms, leu
 \subsubsection*{Distribution des Fichiers séquences et des fichiers de statistiques}
 La sixième étape est de distribuer des fichiers de séquences \og attendus\fg{}, les fichiers de statistiques du run et les fichiers de séquences \og non attandus\fg{} dans leurs répertoires dédiés.\\
 
-Les fichiers attendus sont copiés vers leurs répertoires finales si le séquençage a été effectué au genoscope.
-Si ce dernier a été effectué au CNRGH, alors les fichiers sont copiés et compressés.
+Les fichiers attendus sont copiés vers leurs répertoires final si le séquençage a été effectué au genoscope.
+Sinon, si ce dernier a été effectué au CNRGH, alors les fichiers sont copiés et compressés.
 Il y a cette différence entre les 2 centres, car le pipline de contrôle qualité prend en charge de fichiers compressés pour le CNRGH, contrairement à celui utilisé pour le Genoscope.\\
 
-Les fichiers de statistiques du run sont archivés par pistes et par types (.html, .fq.stat) avant d'être copiés vers leurs répertoires finales.
+Les fichiers de statistiques du run sont archivés par pistes et par types (.html, .fq.stat) avant d'être copiés vers leurs répertoires final.
 Ces fichiers sont conservés dans le cas où une métrique désirés ne fait pas partie de celles insérées dans NGL ou pour tout autres problémes qui nécéssiteraient de récupérer les fichiers de statistiques du run.\\
 
 Concernant les fichiers \og non attendus \fg{}, il s'agit des fichiers de séquences des index ne faisant pas partie d'un readset. Puisque lors du demultiplexage par les séquenceurs on obtient un fichier FASTQ par index.
