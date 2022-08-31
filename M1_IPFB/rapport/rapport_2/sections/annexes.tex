@@ -5,13 +5,13 @@
 \begin{itemize}
     \item[\textbf{Nb Cycles Utiles} :] Nombre de cycles des reads et des index (nombre de cyles pour le read \emph{forward}, nombre de cyles pour le premier index  \emph{forward}, nombre de cycles pour le read \emph{reverse}, nombre de cycles pour le second index)
     \item[\textbf{Nb reads (total)} :] Nombre de reads Total générer par la piste (S'il s'agit d'un run \emph{pair-end} il s'agit du nombre de cluster de reads (read \emph{forward} + read \emph{reverse}))
-    \item[\textbf{\%ESR} :] Pourcentage de productivité de la piste
+    \item[\textbf{\%ESR} :] \emph{Effective spot rate} ( (nombre de reads / nombre total de DNB) $\times$ 100 )
     \item[\textbf{\%q30} :] Pourcentage de bases qui ont une qualité supérieur ou égale à 30 (pour un encodage de la qualite en ASCII 33)
     \item[\textbf{\%q20} :] Pourcentage de bases qui ont une qualité supérieur ou égale à 20 (pour un encodage de la qualite en ASCII 33)
     \item[\textbf{\%q10} :] Pourcentage de bases qui ont une qualité supérieur ou égale à 10 (pour un encodage de la qualite en ASCII 33)
     \item[\textbf{\%N} :] Pourcentage de bases inconus
     \item[\textbf{Recover value} :] Rapport d'intensité entre le read \emph{forward} et \emph{reverse}
-    \item[\textbf{\%Chip productivity} :] Pourcentage de productivité de la piste (nombre de puits actif de la piste de la flowcell / nombre total de puit de la piste)
+    \item[\textbf{\%Chip productivity} :] Pourcentage de productivité de la piste (nombre reads qui passent un pré-filtre MGI / nombre total de DNB)
     \item[\textbf{Nb bases} :] Nombre total de bases générés par la piste
     \item[\textbf{\%Runon1} :] Pourcentage de read \emph{forward} qui ont une incorporation de nucléotide d'avance par rapport au cycles en cours
     \item[\textbf{\%Runon2} :] Pourcentage de read \emph{reverse} qui ont une incorporation de nucléotide d'avance par rapport au cycles en cours
