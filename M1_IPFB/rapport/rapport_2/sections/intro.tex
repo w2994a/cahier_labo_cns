@@ -1,6 +1,6 @@
 \section{Introduction}
 \subsection{Le LBGB au sein du Genoscope et du CEA}
-Le Genoscope (CNS) a été créé en 1996 pour participer au projet mondial de séquençage du génome humain (\emph{Human Genome Project}) qui à débuté en 1990 et s'est terminé en 2003. Il a notament participé au séquençage du chromosome 14. Le Genoscope est impliqué dans le développement de programme de génomique en France dans le cadre du projet France génomique. Aujourd'hui les projets phares du Genoscope sont les projets \textbf{Tara} (\emph{Pacific}, Océans, \emph{Artic}, \dots), qui ont pour objectifs l'étude des écosystèmes marins ; Le projet \textbf{ERGA}, dont l'objectif est de créer une base de données de références de haute qualité des génomes d'espèces européennes.
+Le Genoscope (CNS) a été créé en 1996 pour participer au projet mondial de séquençage du génome humain (\emph{Human Genome Project}) qui à débuté en 1990 et s'est terminé en 2003. Il a notamment participé au séquençage du chromosome 14. Le Genoscope est impliqué dans le développement de programme de génomique en France dans le cadre du projet France génomique. Aujourd'hui les projets phares du Genoscope sont les projets \textbf{Tara} (\emph{Pacific}, Océans, \emph{Artic}, \dots), qui ont pour objectifs l'étude des écosystèmes marins ; Le projet \textbf{ERGA}, dont l'objectif est de créer une base de données de références de haute qualité des génomes d'espèces européennes.
 
 \begin{minipage}{0.45\textwidth}
 \begin{figure}[H]
@@ -15,9 +15,9 @@ Le Genoscope (CNS) a été créé en 1996 pour participer au projet mondial de s
 \end{minipage}
 
 \subsection{Contexte et missions du LBGB}
-Les missions qui sont confiées au LBGB sont de réaliser le contrôle qualité des données de séquences issues des différentes technologies de séquençage, d'effectuer l'assemblage\footnote{Reconstruction d'un génome à partir de fragments de ce dernier} des séquences et l'annotation\footnote{Documenter le plus exhaustivement possible les informations de l'assemblage permmettant de prédire la fonction d'un gène, d'une molécule, d'une région de l'ADN, \dots} des génomes, dans l'objectif de mettre à disposition des laboratoires collaborateurs internes ou externes les données avec un premier niveau da valorisation. Le laboratoire est divisé en plusieurs groupes de travail. Le groupe \og production \fg{} (dont je fais partie), le groupe \og assemblage \fg{}, le groupe \og annotation \fg{} et le groupe \og d'évaluation des technologies de séquençage \fg{}.
+Les missions qui sont confiées au LBGB sont de réaliser le contrôle qualité des données de séquences issues des différentes technologies de séquençage, d'effectuer l'assemblage\footnote{Reconstruction d'un génome à partir de fragments de ce dernier} des séquences et l'annotation\footnote{Documenter le plus exhaustivement possible les informations de l'assemblage permettant de prédire la fonction d'un gène, d'une molécule, d'une région de l'ADN, \dots} des génomes, dans l'objectif de mettre à disposition des laboratoires collaborateurs internes ou externes les données avec un premier niveau da valorisation. Le laboratoire est divisé en plusieurs groupes de travail. Le groupe \og production \fg{} (dont je fais partie), le groupe \og assemblage \fg{}, le groupe \og annotation \fg{} et le groupe \og d'évaluation des technologies de séquençage \fg{}.
 
-Les missions du groupe de \og production \fg{} sont : de tester des logiciels tiers, ainsi que développer et maintenir des scripts utilisant ces logiciels pour automatiser la prise en charge des données en sortie de séquençeur. Cette prise en charge peut répondre à une demande de la production et des laboratoires du Genoscope et du CNRGH, mais aussi pour des laboratoires extérieurs. L'objectif principal est la mise en place et le maintient de pipelines automatisant l'ensemble. Le groupe s'appuie sur un travail de veille et d'évaluation technologique pour chacune de ses missions. 
+Les missions du groupe de \og production \fg{} sont : de tester des logiciels tiers, ainsi que développer et maintenir des scripts utilisant ces logiciels pour automatiser la prise en charge des données en sortie de séquenceur. Cette prise en charge peut répondre à une demande de la production et des laboratoires du Genoscope et du CNRGH, mais aussi pour des laboratoires extérieurs. L'objectif principal est la mise en place et le maintient de pipelines automatisant l'ensemble. Le groupe s'appuie sur un travail de veille et d'évaluation technologique pour chacune de ses missions. 
 
 
 \subsection{Présentation du workflow NGS}
@@ -37,14 +37,14 @@ Les missions du groupe de \og production \fg{} sont : de tester des logiciels ti
 Ces trois pipelines sont automatisés dans le workflow et permettent de réaliser la distribution des données de séquençage dans des répertoires dédiés, triées par projet, échantillon, runs\footnote{Séquençage d'un ou plusieurs échantillons sur un séquenceur} et technologie de séquençage. Ils réalisent aussi le nettoyage, l'analyse de ces fichiers et mettent à jour la base de données de référence NGL. Les trois pipelines du workflow NGS sont monitorés par NGS \emph{Workflow Viewer} (NGS\_WV), qui est une application web permettant de surveiller l'avancement des pipelines pour les runs pris en charge par le NGS-workflow.
 
 \subsection{La technologie MGI}
-Le Genoscope et le CNRGH ont récement fait l'aquisition de séquenceurs MGI (2 DNBSEQ-G400 et 1 DNBSEQ-T7).
+Le Genoscope et le CNRGH ont récemment fait l'acquisition de séquenceurs MGI (2 DNBSEQ-G400 et 1 DNBSEQ-T7).
 
 \begin{minipage}{0.45\textwidth}
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.45\textwidth]{img/MGI_G400.jpg}\\
         \includegraphics[width=0.45\textwidth]{img/MGI_T7.jpg}
-        \caption{\footnotesize{Sequenceurs DNBSEQ-G400 (en haut) et DNBSEQT7 (en bas) de MGI \href{https://en.mgi-tech.com/products/}{https://en.mgi-tech.com/products/}}}
+        \caption{\footnotesize{Séquenceurs DNBSEQ-G400 (en haut) et DNBSEQT7 (en bas) de MGI \href{https://en.mgi-tech.com/products/}{https://en.mgi-tech.com/products/}}}
         \label{seq-MGI}
     \end{figure}
 \end{minipage} 
