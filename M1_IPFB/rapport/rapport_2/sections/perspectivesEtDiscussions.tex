@@ -4,7 +4,7 @@
 \subsubsection{Améliorations futures du pipeline NGS\_RG pour la technologie MGI}
 Les pipelines de génération de fichiers de séquences est très spécifique à l'environnement de gestion des projets de séquençage du Genoscope et du CNRGH, ainsi qu'à la base de données NGL. Celui pour la technologie MGI est inspiré du pipeline de l'autre technologie de séquençage \emph{short reads} (Illumina) déjà en place, dont la finalité du pipeline est le même, c'est à dire la prise en charge des données de séquençage en fin de séquençage et la mise à disposition des fichiers de séquences et des métriques d'évaluation.\\
 
-La future amélioration du pipeline NGS\_RG\_MGI, consistera à la mise en place d'une étape supplémentaire pour les runs qui comporterons des \emph{mids}\footnote{un mid (\emph{molecular identifer}) est une séquence d'une dizaine de nucléotides ajoutés en aval du \emph{primer} du read \emph{forward} permettant de réaliser un second démultipléxage}. 
+La future amélioration du pipeline NGS\_RG\_MGI, consistera à la mise en place d'une étape supplémentaire pour les runs qui comporteront des \emph{mids}\footnote{un mid (\emph{molecular identifer}) est une séquence d'une dizaine de nucléotides ajoutés en aval du \emph{primer} du read \emph{forward} permettant de réaliser un second démultipléxage}. 
 Un \emph{mid} est une séquence d'une dizaines de nucléotides ajoutés en amont du primer du read \emph{forward} (figure \ref{schema-mid}). Il s'agit d'un index supplémentaire qui permet lors du séquençage de déposer un nombres plus important d'échantillons différents sur une même piste d'une flowcell. 
 
 \begin{figure}[H]
@@ -43,7 +43,7 @@ Le pipeline devra prendre en charge automatiquement les fichiers dont les readse
 
 \end{minipage}\\[0.5cm]
 
-Le Trimming consistera à retirer les séquences qui ont une qualité moyenne faible (inférieur à 20), les dernières bases des séquences qui ont une faible qualité (inférieur à 20) seront retirer de la séquence. Si il y a trop de bases inconnus dans la séquence celle-ci sera retirée, de même si dans la séquence ont retrouve 3 ou plus de bases inconnus successivement dans la séquence celle-ci sera coupé jusqu'à la fin de la séquence.\\
+Le Trimming consistera à retirer les séquences qui ont une qualité moyenne faible (inférieur à 20), les dernières bases des séquences qui ont une faible qualité (inférieur à 20) seront retirées de la séquence. S'il y a trop de bases inconnus dans la séquence celle-ci sera retirée, de même si dans la séquence ont retrouve 3 ou plus de bases inconnus successivement dans la séquence celle-ci sera coupée jusqu'à la fin de la séquence.\\
 
 
 Les différentes étapes qui seront à réaliser pour la première phase sont :\\
@@ -55,19 +55,19 @@ Les différentes étapes qui seront à réaliser pour la première phase sont :\
 Les différentes étapes qui seront à réaliser pour la seconde phase, une fois le Trimming effectué sont :\\
 \begin{itemize}
     \item[•] Réaliser le contrôle qualité des séquences des fichiers clean, avec l'outil fastx\_clean.
-    \item[•] Réaliser l'estimation des duplicats de séquences des fichier clean, avec l'outil fastx\_estmate\_duplicate.
+    \item[•] Réaliser l'estimation des duplicats de séquences des fichier clean, avec l'outil \\fastx\_estmate\_duplicate.
     \item[•] Réaliser l'assignation taxonomique des séquences des fichiers clean, à l'aide du logiciel \href{https://ccb.jhu.edu/software/centrifuge/manual.shtml}{Centrifuge}.
     \item[•] Réaliser l'alignement des séquences des fichiers clean sur un génome de référence si celui-ci est disponible, à l'aide de l'outil \href{http://bio-bwa.sourceforge.net/bwa.shtml}{BWA}.
-    \item[•] Réaliser le \og\emph{merging}\fg{} des séquences des reads \emph{foward} et \emph{reverse} pour les run \emph{pair end} (calcule du pourcentage de reads qui ont le read \emph{forward} et \emph{reverse} qui se chevauchent, calcule de la moyenne et médiane du nombre de bases qui ce chevauchent entre les 2 reads, \dots), à l'aide de l'outil fastx\_mergepairs de l'extention fastxend de la suite FASTX Toolkit développé par le Genoscope.\\
+    \item[•] Réaliser le \og\emph{merging}\fg{} des séquences des reads \emph{foward} et \emph{reverse} pour les run \emph{pair end} (calcul du pourcentage de reads qui ont le read \emph{forward} et \emph{reverse} qui se chevauchent, calcul de la moyenne et médiane du nombre de bases qui ce chevauchent entre les 2 reads, \dots), à l'aide de l'outil fastx\_mergepairs de l'extention fastxend de la suite FASTX Toolkit développé par le Genoscope.\\
 \end{itemize}
 
 Une fois les étapes de la seconde phase réalisées, il sera nécessaire de réaliser la distribution des fichiers de séquences nettoyés dans leur répertoire final. Les fichiers raw seront alors effacés si ces derniers ont été archivé sur bande magnétique, et rendu indisponible pour les utilisateurs. L'objectif étant de permettre aux utilisateurs d'avoir les fichiers de séquences avec le meilleurs niveau de qualité possible.\\
 
 Durant toutes les étapes du pipeline, on insert les métriques et graphiques obtenus au cours des différentes étapes du pipeline dans NGL\_BI. Ce qui permettra de réaliser la validation des readset ou non. L'interaction entre le pipeline et la base de données est réalisée, comme pour le pipeline NGS\_RG\_MGI, par la librairie Perl (DBFactory) qui permet d'interagir avec NGL (cf. \ref{DBFactory} page \pageref{DBFactory}).\\
 
-L'objectif est d'obtenir un pipeline de contrôle qualité opérationnel le plus rapidement possible, c'est pour cela que les outils utilisés seront les même que ceux utilisés pour le pipeline NGS\_QC\_Illumina. Néanmoins, les outils utilisés évoluerons au fil du temps, avec les évaluations d'outils pour les pipelines de contrôle qualité que je réaliserais au cours de l'année à suivre.
+L'objectif est d'obtenir un pipeline de contrôle qualité opérationnel le plus rapidement possible, c'est pour cela que les outils utilisés seront les même que ceux utilisés pour le pipeline NGS\_QC\_Illumina. Néanmoins, les outils utilisés évolueront au fil du temps, avec les évaluations d'outils pour les pipelines de contrôle qualité que je réaliserai au cours de l'année à suivre.
 
 \subsection{Evaluation d'outils de contrôle qualité}
 Les premiers outils à être évalués sont cutadapt et trimmomatic en vue d'un remplacement de fastx\_clean de FASTX Toolkit. Ce dernier est un logiciels mono-coeur contrairement à cutadapt et trimmomatic qui sont multi-coeurs. Le temps d'exécution entre ces logiciels sera le critère d'évaluation le plus important, néanmoins on prendra également en compte les différents fichiers de sortie (fichiers de statistiques, fichiers de séquences qui ne passe pas les filtres données \dots) pour l'évaluation et le remplacement de fastx\_clean.\\
 
-Un potentiel successeur au logiciels d'assignation taxonomique Centrifuge devra également être effectuer, dans l'optique d'améliorer les pipelines de contrôle qualité. L'objectif est de trouver un logiciels dont les performance son équivalentes ou meilleurs, surtout au niveau du temps d'exécution, mais également au niveau de l'assignation taxinomique des séquences et des fichiers de sortie.
+Un potentiel successeur au logiciel d'assignation taxonomique Centrifuge devra également être effectué, dans l'optique d'améliorer les pipelines de contrôle qualité. L'objectif est de trouver un logiciel dont les performances sont équivalentes ou meilleures, surtout au niveau du temps d'exécution, mais également au niveau de l'assignation taxinomique des séquences et des fichiers de sortie.

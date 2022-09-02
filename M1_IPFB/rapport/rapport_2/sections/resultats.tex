@@ -56,7 +56,7 @@ Tout en créant et mettant à jour les runs, pistes et readsets dans NGL\_BI, à
 \end{figure}
 
 \subsubsection*{Création et insertion des métriques du run et des pistes dans NGL }
-La première étape du pipeline, que je développé, consiste à créer le run et ses pistes dans la base de données NGL, en y insérant les métriques permettant d'évaluer le run et les pistes (figure \ref{NGL-screenshot_run-lane}).
+La première étape du pipeline, que j'ai développé, consiste à créer le run et ses pistes dans la base de données NGL, en y insérant les métriques permettant d'évaluer le run et les pistes (figure \ref{NGL-screenshot_run-lane}).
 Le nom du run est constitué de la date de séquençage, du nom du séquenceur et de l'identifiant de la flowcell du run ce qui le rend unique.\\
 
 Les différentes métriques sont insérées à l'aide des librairies Perl permettant d'interagir avec ngl en postant ses métrique dans le fichier JSON du run de la base de données, ce qui permet l'affichage de ces dernières dans l'interface web de NGL\_BI. Toutes ses métriques sont détaillées plus précisément en annexes (page \pageref{anexes1}).\\
@@ -84,7 +84,7 @@ Les tableaux et graphiques de ces rapports de séquençage permettent de facilit
     \label{Graph-rapport-pistes}
 \end{figure}
 
-Toujours dans l'optique de facilité l'évaluation du run et de ces pistes, l'étape suivante du pipeline, à été  d'ajouter la liste des index représentées à plus de 0.01\% de la piste, ainsi que les index attendus.
+Toujours dans l'optique de facilité l'évaluation du run et de ces pistes, l'étape suivante du pipeline, a été  d'ajouter la liste des index représentés à plus de 0.01\% de la piste, ainsi que les index attendus.
 Ces index sont triés et affichés par ordre décroissant dans NGL (figure \ref{top-index}).
 Les index attendus sont colorés en vert et les index non-attendus ou inconnus sont colorés en rouge, ce qui permet de vérifier que les index attendus sont bien majoritairement représentés sur les pistes de la flowcell du run.
 
@@ -99,9 +99,9 @@ Les index attendus sont colorés en vert et les index non-attendus ou inconnus s
 Ensuite la quatrième étape du pipeline que j'ai développé à pour objectif d'obtenir un seul fichier FASTQ par readset.
 En effet la technologie MGI requiert une homogénéité en composition en base nucléiques (A, T, C, G) au niveau de chaque cycle des index, un déséquilibre étant susceptible d'entraver la récupération du signal pour les bases de ces cycles et donc de fausser leur \emph{base calling} puis le démultipléxage des séquences.
 Ainsi il est recommandé de \og barcoder \fg{} les échantillons avec 4 barcodes (index), dont les séquences assurent une composition égale en A, T, C et G à chaque position des barcodes.
-Dans ce cas, nous obtenons donc plusieurs fichiers par échantillons qu'il faut donc fusionner pour en obtenir qu'un seul par échantillon lors du démultipléxage effectué par le séquenceur.
+Dans ce cas, nous obtenons donc plusieurs fichiers par échantillons qu'il faut donc fusionner pour n'en obtenir qu'un seul par échantillon lors du démultipléxage effectué par le séquenceur.
 
-Si le readset est associé à un seul readset alors on réalise une décompression du fichier FASTQ, à l'inverse si il est associé à plusieurs index on réalise une décompression et une concaténation des fichiers FASTQ (cf. figure \ref{schema-concat-fastq}).
+Si le readset est associé à un seul readset alors on réalise une décompression du fichier FASTQ, à l'inverse s'il est associé à plusieurs index on réalise une décompression et une concaténation des fichiers FASTQ (cf. figure \ref{schema-concat-fastq}).
 
 \begin{figure}[H]
     \centering
@@ -111,7 +111,7 @@ Si le readset est associé à un seul readset alors on réalise une décompressi
 \end{figure}
 
 \subsubsection*{Création et insertion des métriques des readset du run dans NGL}
-La cinquième étape a pour objectif de permettre l'évaluation des readsets, en les créants et en insérant les métriques d'évaluation de ces derniers, récupérer en parssant des fichiers ou/et en les calculant, dans NGL (figure \ref{NGL-screenshot_readset}).
+La cinquième étape a pour objectif de permettre l'évaluation des readsets, en les créant et en insérant les métriques d'évaluation de ces derniers, récupérés en parssant des fichiers ou/et en les calculant, dans NGL (figure \ref{NGL-screenshot_readset}).
 On y retrouve notamment le nombre de bases nucléiques et de reads du readset, ainsi que le pourcentage d'échantillon déposé sur la piste et le pourcentage de séquences valides par rapport au nombre total de séquences de la piste.
 J'y insère également certaines métriques du run dont le readset fait partie, comme le nombre de cycles des reads et des index, la date de run, etc. Toutes ces métriques sont décrites en annexes (page \pageref{anexes3})
 
@@ -156,9 +156,8 @@ Le renommage des fichiers est nécessaire pour que chaque fichiers de séquences
 \end{minipage}
 \hfill
 \begin{minipage}{0.45\textwidth}
-    Le nom doit permettre d'identifier rapidement et simplement de quel projet, échantillon, flowcell, ect.
-    appartiennent les fichiers.
-    Le renommage des fichiers est effectués en créant un lien symbolique des fichiers obtenus à l'étape de \og concaténation\fg{} dans un répertoire temporaire (cf figure \ref{schema-rename-fastq}).
+    Le nom doit permettre d'identifier rapidement et simplement de quel projet, échantillon, flowcell, ect. appartiennent les fichiers.
+    Le renommage des fichiers est effectué en créant un lien symbolique des fichiers obtenus à l'étape de \og concaténation\fg{} dans un répertoire temporaire (cf figure \ref{schema-rename-fastq}).
 \end{minipage}\\\\
 
 Les méta-données des fichiers de séquences du readset que j'insère dans NGL permet aux utilisateurs de trouver rapidement l'emplacement de ces derniers sur le système de fichier, le type de fichier qui est disponible (\og raw\fg{}, \og clean\fg{}) et s'ils sont \og utilisable\fg{}, c'est à dire si ils représentent le niveau de qualité maximale disponible pour les échantillons en question.
@@ -191,5 +190,5 @@ Ces fichiers de séquences sont conservés dans l'éventualité d'une mauvaise d
 L'étape finale du pipeline de génération de fichiers de séquences pour la technologie MGI, est de mettre à jour le run et les readsets dans l'état de \og F-RG\fg{}, correspondant à la fin du pipeline NGS\_RG.
 De plus, les runs n'étant plus dans un état "IW-RG" ou "IP-RG", correspondant à l'attente de prise en charge par NGS\_RG une fois le séquençage terminé ou en cours de génération de reads, ils ne seront plus éligibles à une prise en charge par NGS\_RG.
 Cela entraine donc une mise à jour automatique du run à l'état \og IW-V\fg{}, correspondant à l'attente de validation, ce qui permet d'indiquer aux utilisateurs que le run peut être évalué.
-Les readsets sont aussi automatiquement mis à jour vers l'état \og IW-QC\fg{}, correspondant à l'attente de prise en charge par le pipeline NGS\_QC, ce qui permettre d'indiquer au pipeline de contrôle qualité qu'il peut effectuer le contrôle qualité des readsets de ce run.
+Les readsets sont aussi automatiquement mis à jour vers l'état \og IW-QC\fg{}, correspondant à l'attente de prise en charge par le pipeline NGS\_QC, ce qui permet d'indiquer au pipeline de contrôle qualité qu'il peut effectuer le contrôle qualité des readsets de ce run.
 
