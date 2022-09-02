@@ -1,6 +1,6 @@
 \section{Résultats}
 \subsection{Etude comparative des logiciels bcl2fastq et bcl-convert}
-\subsubsection{Détermination des meilleurs paramètres pour bcl2fastq}
+\subsubsection*{Détermination des meilleurs paramètres pour bcl2fastq}
 Après avoir effectué différentes combinaisons des paramètres, il a été mis en évidence que la variation du paramètre \texttt{r} et \texttt{w} en fixant le paramètre \texttt{p}, n'apportait pas de différences significatives pour le temps total d'exécution, le temps cpu ou le pourcentage d'utilisation cpu, comme on peut l'observer sur la figure \ref{barplot-param}, pour p fixé à 12. Des resultats similaires ont été obtenus pour p égale à 4, 8 et 16. 
 
 \begin{figure}[H]
@@ -24,7 +24,7 @@ Néanmoins, on remarque qu'il n'y a pas d'amélioration du temps total d'executi
 Au vue des résultats obtenus j'ai décidé que les meilleurs paramètres étaient de fixer p à 12, puisque le gain apporté en augmentant à 16 est faible. Néanmoins nous le conserverons pour réaliser la comparaison avec bcl-convert.
 Tout comme nous conservons p fixé à 8, car il nous permettrait de réaliser deux générations de FASTQ et de démultiplexage en simultané sur un seul noeud de calcul de la partition \og production\fg{}.\\
 
-\subsubsection{Comparaison entre bcl2fastq et bcl-convert}
+\subsubsection*{Comparaison entre bcl2fastq et bcl-convert}
 J'ai donc fait varier les paramètres \texttt{p}, \texttt{r} et \texttt{w} de manière à ce que chacun des paramètre soient égale au nombre de coeurs accordés aux deux logiciels. On observe bien, sur la figure \ref{fig-total-time}, que plus on augmente le nombre de cœurs pour chacun des logiciels, plus la génération des FASTQ et le démultiplexage est rapide. De plus on remarque que bcl-convert permet de réduire le temps d'environs 1/3 par rapport à bcl2fastq. 
 
 \begin{figure}[H]
@@ -36,7 +36,7 @@ J'ai donc fait varier les paramètres \texttt{p}, \texttt{r} et \texttt{w} de ma
 
 J'ai également échangé avec le service technique d'Illumina à propos des fichiers de sortie et de l'arborescence de ces derniers en utilisant bcl-convert. En effet il s'avère que l'arborescence et les fichiers de sortie sont très différents entre les deux logiciels. Ces échanges avaient pour objectif de savoir s'il on pouvait obtenir une arboresnce similaire à bcl2fastq, pour minimiser l'impact du changement de logiciel sur les pipelines. Le changement de bcl2fastq, qui sera bientôt obsolète, par bcl-convert va donc nous obliger à réaliser de gros changements dans tous les pipelines qui utilisent ces fichiers de sortie.
 
-\subsubsection{Préparation de la migration de bcl2fastq vers bcl-convert}
+\subsubsection*{Préparation de la migration de bcl2fastq vers bcl-convert}
 Le logiciel bcl-convert est plus rapide d'environ 1/3 par rapport à bcl2fastq. Sachant également que ce dernier sera bientôt obsolète et que le nombre de coeurs disponibles par noeuds pour la partition \og production\fg{} du cluster de calcul est de 16 coeurs, Nous avons décidé t'attribuer l'intégralité des coeurs d'un noeud de \og production\fg{}, c'est à dire 16 coeurs. J'ai consigné l'intégralité des changements entre les deux logiciels dans un cahier des charges. Il contient, la nouvelle commande à lancer, les modules à charger dans l'environement, le chemin relatif des fichiers de sorties et leur description, ainsi qu'un exemple d'arborescence des fichiers de sorties. Ce qui permettera au développeur qui ce chargera de cette migration de suivre ce cahier des charges et ainsi faciliter cette migration. Dû à la pression actuelle autour de la technologie MGI, c'est un autre développeur de l'équipe, qui sera en charge de réaliser cette migration.
 
 %==============================================================================%
@@ -162,9 +162,9 @@ Le renommage des fichiers est nécessaire pour que chaque fichiers de séquences
 Les méta-données des fichiers de séquences du readset que j'insére dans NGL permet aux utilisateurs de trouver rapidement l'emplacement de ces derniers sur le système de fichier, le type de fichier qui est disponible (\og raw\fg{}, \og clean\fg{}) et s'ils sont \og utilisable\fg{}, c'est à dire si ils représentent le niveau de qualité maximale disponible pour les échantillons en question.
 On y retrouve donc le chemin vers le repertoire de ces fichiers, leurs noms, leurs types, s'ils sont utilisable, s'il s'agit du read \emph{forward} ou \emph{reverse}, et le type d'encodage des valeur de la qualité (Pour les séquenceurs MGI l'encodage est en Phred +33).\\
 
-L'encodage Phred +33, signifie que l'encodage des valeurs de la qualité sont encodées à partir du carractère \og !\fg{}, qui vaut 33 en base 10 dans la table ASCII\footnote{\emph{American Standard Code for Information Interchange} est une norme de l'encodage des caractères} pour une valeurs de qualité de 0. Il y a 42 niveaux de valeurs de qualité, 41 étant le niveau maximale de qualité d'une base. L'encodage de la qualité en Phred +33, est donc encodé à partir du caractère \og !\fg jusqu'au caractère \og J\fg{}, qui vaut 74 en base 10 dna sla table ASCII et représente la valeur maximale de la qualité d'une base.
+L'encodage Phred +33, signifie que l'encodage des valeurs de la qualité sont encodées à partir du carractère \og !\fg{}, qui vaut 33 en base 10 dans la table ASCII\footnote{\emph{American Standard Code for Information Interchange} est une norme de l'encodage des caractères} pour une valeurs de qualité de 0. Il y a 42 niveaux de valeurs de qualité, 41 étant le niveau maximale de qualité d'une base nucléique. L'encodage de la qualité en Phred +33, est donc encodé à partir du caractère \og !\fg jusqu'au caractère \og J\fg{}, qui vaut 74 en base 10 dans la table ASCII et représente la valeur maximale de la qualité d'une base.
 
-Un score qualité de 10 indique qu'il y a un probabilité de 90\% que le \emph{base call} (1 risque sur 10 que la base soit incorrect) soit correct et un score de 40 indique une probabilité de 99,99\% que le \emph{base call} soit correct (1 risque sur 10000 que la base soit incorrect).
+Un score qualité de 10 indique qu'il y a un probabilité de 90\% que le \emph{base call} soit correct (1 risque sur 10 que la base soit incorrect) et un score de 40 indique une probabilité de 99,99\% que le \emph{base call} soit correct (1 risque sur 10000 que la base soit incorrect).
 
 \begin{figure}[H]
     \centering
@@ -187,7 +187,7 @@ Ces fichers de séquences sont conservés dans l'éventualité d'une mauvaise d�
 
 \subsubsection*{Mise à jour de fin de génération de fichiers de séquence dans NGL}
 L'étape finale du pipeline de génération de fichiers de séquences pour la technologie MGI, est de mettre à jour le run et les readsets dans l'état de \og F-RG\fg{}, correspondant à la fin du pipeline NGS-RG.
-De plus, les runs n'étant plus dans un état "IW-RG" ou "IP-RG", correspondant à l'attente de prise en charge par NGS\_RG une fois le séquençage termié ou en cours de génération de reads, ils ne seront plus éligibles à une prise en charge par NGS\_RG.
+De plus, les runs n'étant plus dans un état "IW-RG" ou "IP-RG", correspondant à l'attente de prise en charge par NGS\_RG une fois le séquençage terminé ou en cours de génération de reads, ils ne seront plus éligibles à une prise en charge par NGS\_RG.
 Cela entraine donc une mise à jour automatique du run à l'état \og IW-V\fg{}, correspondant à l'attente de validation, ce qui permet d'indiquer aux utilisateurs que le run peut être évalué.
 Les readsets sont aussi automatiquement mis à jour vers l'état \og IW-QC\fg{}, corespondant à l'attente de prise en charge par le pipeline NGS\_QC, ce qui permette d'indiquer au pipeline de contrôle qualité qu'il peut effectuer le contrôle qualité des readsets de ce run.
 
